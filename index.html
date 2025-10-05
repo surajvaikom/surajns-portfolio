@@ -140,6 +140,16 @@
         @keyframes blink {
             50% { opacity: 0; }
         }
+
+        /* Pulse animation for timeline nodes */
+        .timeline-node {
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(57, 211, 211, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(57, 211, 211, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(57, 211, 211, 0); }
+        }
     </style>
 </head>
 
@@ -165,11 +175,11 @@
                 </svg>
             </a>
             <nav class="hidden md:flex space-x-8 items-center font-mono">
-                <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors">/about</a>
-                <a href="#experience" class="text-gray-400 hover:text-cyan-400 transition-colors">/experience</a>
-                <a href="#education" class="text-gray-400 hover:text-cyan-400 transition-colors">/education</a>
-                <a href="#skills" class="text-gray-400 hover:text-cyan-400 transition-colors">/skills</a>
-                <a href="#contact" class="bg-cyan-500/10 text-cyan-400 border border-cyan-400 px-5 py-2 rounded-md hover:bg-cyan-500/20 transition-all shadow-[0_0_15px_rgba(57,211,211,0.4)]">contact()</a>
+                <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/about</a>
+                <a href="#experience" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/experience</a>
+                <a href="#education" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/education</a>
+                <a href="#skills" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/skills</a>
+                <a href="#contact" class="bg-cyan-500/10 text-cyan-400 border border-cyan-400 px-5 py-2 rounded-md hover:bg-cyan-500/20 transition-all shadow-[0_0_15px_rgba(57,211,211,0.4)] transform hover:scale-105">contact()</a>
             </nav>
             <button id="mobile-menu-button" class="md:hidden text-gray-300" aria-label="Open menu">
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
@@ -190,7 +200,7 @@
         <!-- Hero Section -->
         <section id="hero" class="min-h-[80vh] flex items-center fade-in-section">
             <div class="w-full">
-                <p class="font-mono text-cyan-400">Establishing secure connection...</p>
+                <p id="connection-status" class="font-mono text-cyan-400">Establishing secure connection...</p>
                 <h1 class="text-5xl md:text-8xl font-bold mt-4 glitch-text" data-text="Suraj N S">Suraj N S</h1>
                 <h2 id="animated-subtitle" class="text-2xl md:text-4xl font-bold text-gray-400 mt-4 h-14 md:h-16"></h2>
                 <p class="mt-8 text-gray-400 max-w-2xl text-lg">
@@ -211,9 +221,9 @@
         <section id="about" class="py-24 fade-in-section">
             <div class="grid md:grid-cols-5 gap-12 items-center">
                 <div class="md:col-span-2">
-                    <div class="relative w-full max-w-sm mx-auto">
-                        <div class="absolute inset-0 border-2 border-cyan-400 rounded-xl transform -rotate-3 transition-transform duration-300 hover:rotate-0"></div>
-                        <img src="profile.jpg" alt="Suraj N S" class="relative w-full object-cover rounded-xl shadow-2xl z-10 filter grayscale hover:grayscale-0 transition-all duration-300">
+                    <div class="relative w-full max-w-sm mx-auto group">
+                        <div class="absolute inset-0 border-2 border-cyan-400 rounded-xl transform -rotate-3 transition-transform duration-300 group-hover:rotate-0"></div>
+                        <img src="profile.jpg" alt="Suraj N S" class="relative w-full object-cover rounded-xl shadow-2xl z-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-105">
                     </div>
                 </div>
                 <div class="md:col-span-3">
@@ -244,8 +254,8 @@
                     <div id="erp-job" class="timeline-item">
                         <div class="md:flex md:justify-between md:items-center w-full">
                             <div class="md:w-5/12"></div>
-                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0"></div>
-                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
+                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 timeline-node"></div>
+                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/20">
                                 <p class="text-sm text-cyan-400 font-mono">Apr 2024 - Current</p>
                                 <h3 class="text-xl font-bold text-white mt-1">ERP & IT Assistant</h3>
                                 <p class="text-gray-400">Seth MR Jaipuria Schools</p>
@@ -257,8 +267,8 @@
                     <div id="cs-intern-job" class="timeline-item">
                         <div class="md:flex md:justify-between md:items-center w-full md:flex-row-reverse">
                             <div class="md:w-5/12"></div>
-                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0"></div>
-                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
+                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 timeline-node"></div>
+                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/20">
                                 <p class="text-sm text-cyan-400 font-mono">Aug 2023 - Nov 2023</p>
                                 <h3 class="text-xl font-bold text-white mt-1">Cyber Security Intern</h3>
                                 <p class="text-gray-400">Cyber Secured India</p>
@@ -270,8 +280,8 @@
                     <div id="tcs-intern-job" class="timeline-item">
                         <div class="md:flex md:justify-between md:items-center w-full">
                             <div class="md:w-5/12"></div>
-                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0"></div>
-                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
+                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 timeline-node"></div>
+                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/20">
                                 <p class="text-sm text-cyan-400 font-mono">Apr 2023 - May 2023</p>
                                 <h3 class="text-xl font-bold text-white mt-1">Cyber Security Analyst Intern</h3>
                                 <p class="text-gray-400">TCS iON (Remote)</p>
@@ -283,8 +293,8 @@
                     <div id="aadhaar-job" class="timeline-item">
                         <div class="md:flex md:justify-between md:items-center w-full md:flex-row-reverse">
                             <div class="md:w-5/12"></div>
-                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0"></div>
-                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
+                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 timeline-node"></div>
+                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/20">
                                 <p class="text-sm text-cyan-400 font-mono">Oct 2018 - Apr 2023</p>
                                 <h3 class="text-xl font-bold text-white mt-1">Aadhaar Enrolment Supervisor</h3>
                                 <p class="text-gray-400">SNR E DATA'S PVT LTD</p>
@@ -296,8 +306,8 @@
                     <div id="freelancer-job" class="timeline-item">
                         <div class="md:flex md:justify-between md:items-center w-full">
                             <div class="md:w-5/12"></div>
-                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0"></div>
-                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-transform hover:scale-105">
+                            <div class="z-10 bg-cyan-400 w-4 h-4 rounded-full shadow-xl absolute left-2 -translate-x-1/2 md:relative md:left-0 md:translate-x-0 timeline-node"></div>
+                            <div class="w-full ml-8 md:ml-0 md:w-5/12 bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer transition-all duration-300 hover:scale-105 hover:shadow-cyan-500/20">
                                 <p class="text-sm text-cyan-400 font-mono">Oct 2012 - Oct 2013</p>
                                 <h3 class="text-xl font-bold text-white mt-1">Computer Hardware Engineer</h3>
                                 <p class="text-gray-400">Freelancer</p>
@@ -317,19 +327,19 @@
             </div>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Education Card 1 -->
-                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-gray-700 hover:-translate-y-2">
                     <p class="font-mono text-cyan-400">2024 - 2025</p>
                     <h3 class="text-xl font-bold text-white mt-2">Bachelor of Library and Information Science (BLIS)</h3>
                     <p class="text-gray-400 mt-1">Indira Gandhi National Open University</p>
                 </div>
                 <!-- Education Card 2 -->
-                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-gray-700 hover:-translate-y-2">
                     <p class="font-mono text-cyan-400">2013 - 2017</p>
                     <h3 class="text-xl font-bold text-white mt-2">Master of Computer Applications (MCA)</h3>
                     <p class="text-gray-400 mt-1">Rajiv Gandhi Institute of Technology, Kottayam, Kerala</p>
                 </div>
                 <!-- Education Card 3 -->
-                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-gray-700 hover:-translate-y-2">
                     <p class="font-mono text-cyan-400">2008 - 2011</p>
                     <h3 class="text-xl font-bold text-white mt-2">Bachelor of Science (BSc), Electronics</h3>
                     <p class="text-gray-400 mt-1">School Of Technology And Applied Sciences, Edappally, Kerala</p>
@@ -345,7 +355,7 @@
             </div>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <!-- Skill Card 1: Offensive Security -->
-                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
+                <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)] hover:-translate-y-2">
                     <h3 class="text-xl font-bold text-white font-mono">Offensive Security</h3>
                     <p class="text-gray-500 mt-2">Penetration testing and vulnerability assessment.</p>
                     <div class="mt-6 flex flex-wrap gap-3">
@@ -356,7 +366,7 @@
                     </div>
                 </div>
                 <!-- Skill Card 2: IT & Systems -->
-                 <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
+                 <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)] hover:-translate-y-2">
                     <h3 class="text-xl font-bold text-white font-mono">IT & Systems Admin</h3>
                     <p class="text-gray-500 mt-2">Infrastructure management and support.</p>
                     <div class="mt-6 flex flex-wrap gap-3">
@@ -367,7 +377,7 @@
                     </div>
                 </div>
                 <!-- Skill Card 3: Professional -->
-                 <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
+                 <div class="bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)] hover:-translate-y-2">
                     <h3 class="text-xl font-bold text-white font-mono">Professional Skills</h3>
                     <p class="text-gray-500 mt-2">Client-facing and operational expertise.</p>
                     <div class="mt-6 flex flex-wrap gap-3">
@@ -392,7 +402,7 @@
                     <li class="cert-item">Artificial Intelligence & Cybersecurity Fundamentals - <span class="font-bold text-white">IBM</span></li>
                 </ul>
                 <style>
-                    .cert-item { @apply bg-gray-800/50 border border-gray-700 p-4 rounded-lg text-gray-400; }
+                    .cert-item { @apply bg-gray-800/50 border border-gray-700 p-4 rounded-lg text-gray-400 transition-all duration-300 hover:border-cyan-400 hover:bg-gray-800; }
                 </style>
             </div>
         </section>
