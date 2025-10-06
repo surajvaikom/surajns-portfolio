@@ -132,9 +132,10 @@
             .glitch-text { font-size: 3rem !important; }
         }
 
+        /* Replaced @apply rules with plain CSS */
         .skill-tag {
-            background-color: rgba(31, 41, 55, 1);
-            color: #9ca3af;
+            background-color: rgba(31, 41, 55, 1); /* gray-800 */
+            color: #9ca3af; /* text-gray-400 */
             padding: 5px 10px;
             border-radius: 8px;
             font-size: 0.85rem;
@@ -168,7 +169,7 @@
 
     <!-- Header -->
     <header id="header" class="header-glass fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
             <a href="#" class="group" aria-label="Home">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-300 group-hover:drop-shadow-[0_0_5px_var(--accent-glow)]">
                     <path d="M12 2L4 6V12C4 16.97 7.58 21.5 12 22.5C16.42 21.5 20 16.97 20 12V6L12 2Z" class="stroke-cyan-400" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -186,7 +187,7 @@
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-black/50 px-6 pb-4">
+        <div id="mobile-menu" class="hidden md:hidden bg-black/50 px-4 sm:px-6 pb-4">
             <a href="#about" class="block py-2 text-gray-300 hover:text-cyan-400">/about</a>
             <a href="#experience" class="block py-2 text-gray-300 hover:text-cyan-400">/experience</a>
             <a href="#education" class="block py-2 text-gray-300 hover:text-cyan-400">/education</a>
@@ -195,14 +196,14 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-6 pt-28 relative z-10">
+    <main class="container mx-auto px-4 sm:px-6 pt-28 relative z-10">
 
         <section id="hero" class="min-h-[80vh] flex items-center fade-in-section">
             <div class="w-full">
                 <p id="connection-status" class="font-mono text-cyan-400">Establishing secure connection...</p>
-                <h1 class="text-5xl md:text-8xl font-bold mt-4 glitch-text" data-text="Suraj N S">Suraj N S</h1>
-                <h2 id="animated-subtitle" class="text-2xl md:text-4xl font-bold text-gray-400 mt-4 h-14 md:h-16"></h2>
-                <p class="mt-8 text-gray-400 max-w-2xl text-lg">A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses.</p>
+                <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mt-4 glitch-text" data-text="Suraj N S">Suraj N S</h1>
+                <h2 id="animated-subtitle" class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-400 mt-4 h-12 sm:h-16"></h2>
+                <p class="mt-6 text-gray-400 max-w-2xl text-base sm:text-lg">A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses.</p>
                 <div class="mt-10 flex flex-wrap gap-4">
                     <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="bg-cyan-500 text-black font-bold py-3 px-8 rounded-md hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20 transform hover:scale-105">Send Secure Message</a>
                     <button id="download-cv-btn" class="bg-gray-800 text-cyan-400 font-bold py-3 px-8 rounded-md border border-cyan-800 hover:bg-gray-700 transition-all transform hover:scale-105">Download CV</button>
@@ -617,6 +618,46 @@
 
                     const pdf = new jsPDF('p', 'pt', 'a4');
 
+                     // --- Convert Profile Image to Base64 ---
+                    const profileImgElement = document.getElementById('profile-image');
+                    let profileImgData = null;
+
+                    const getImageDataUrl = (img) => {
+                        return new Promise((resolve, reject) => {
+                            const newImg = new Image();
+                            newImg.crossOrigin = "Anonymous"; // Handle CORS for images from other domains
+                            newImg.onload = () => {
+                                const canvas = document.createElement('canvas');
+                                canvas.width = newImg.naturalWidth;
+                                canvas.height = newImg.naturalHeight;
+                                const ctx = canvas.getContext('2d');
+                                ctx.drawImage(newImg, 0, 0);
+                                resolve(canvas.toDataURL('image/jpeg'));
+                            };
+                            newImg.onerror = (e) => {
+                                // Try fetching as blob to bypass some CORS issues
+                                fetch(img.src)
+                                    .then(response => response.blob())
+                                    .then(blob => {
+                                        const reader = new FileReader();
+                                        reader.onloadend = () => resolve(reader.result);
+                                        reader.onerror = reject;
+                                        reader.readAsDataURL(blob);
+                                    })
+                                    .catch(reject);
+                            };
+                             newImg.src = img.src;
+                        });
+                    };
+
+                    try {
+                        profileImgData = await getImageDataUrl(profileImgElement);
+                    } catch (error) {
+                        console.warn("Could not load profile image for PDF, continuing without it.", error);
+                        profileImgData = null; // Ensure it's null if it fails
+                    }
+
+
                     // --- NEW TWO-COLUMN STYLE CONSTANTS ---
                     const MARGIN = 40;
                     const PAGE_WIDTH = pdf.internal.pageSize.getWidth();
@@ -663,7 +704,24 @@
                     pdf.text('Cybersecurity Analyst & IT Specialist', MARGIN, left_y + 22);
                     left_y += 60;
 
-                    // --- RIGHT COLUMN - CONTACT & SKILLS ---
+                    // --- RIGHT COLUMN ---
+
+                    // Add Profile Image if available
+                    if (profileImgData) {
+                        const imgSize = 70;
+                        const imgX = RIGHT_COL_X + (RIGHT_COL_WIDTH - imgSize) / 2; // Center in right column
+                        const imgY = right_y;
+                        
+                        pdf.saveGraphicsState();
+                        pdf.circle(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2);
+                        pdf.clip();
+                        pdf.addImage(profileImgData, 'JPEG', imgX, imgY, imgSize, imgSize);
+                        pdf.restoreGraphicsState();
+                        
+                        right_y += imgSize + 20;
+                    }
+
+
                     pdf.setFont('helvetica', 'bold');
                     pdf.setFontSize(FONT_SIZES.H3);
                     pdf.setTextColor(ACCENT_COLOR);
