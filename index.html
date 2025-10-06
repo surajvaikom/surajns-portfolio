@@ -169,7 +169,7 @@
 
     <!-- Header -->
     <header id="header" class="header-glass fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-        <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
+        <div class="container mx-auto px-4 md:px-6 py-4 flex justify-between items-center">
             <a href="#" class="group" aria-label="Home">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-300 group-hover:drop-shadow-[0_0_5px_var(--accent-glow)]">
                     <path d="M12 2L4 6V12C4 16.97 7.58 21.5 12 22.5C16.42 21.5 20 16.97 20 12V6L12 2Z" class="stroke-cyan-400" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -187,7 +187,7 @@
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <div id="mobile-menu" class="hidden md:hidden bg-black/50 px-4 sm:px-6 pb-4">
+        <div id="mobile-menu" class="hidden md:hidden bg-black/50 px-4 md:px-6 pb-4">
             <a href="#about" class="block py-2 text-gray-300 hover:text-cyan-400">/about</a>
             <a href="#experience" class="block py-2 text-gray-300 hover:text-cyan-400">/experience</a>
             <a href="#education" class="block py-2 text-gray-300 hover:text-cyan-400">/education</a>
@@ -196,13 +196,13 @@
         </div>
     </header>
 
-    <main class="container mx-auto px-4 sm:px-6 pt-28 relative z-10">
+    <main class="container mx-auto px-4 md:px-6 pt-28 relative z-10">
 
         <section id="hero" class="min-h-[80vh] flex items-center fade-in-section">
             <div class="w-full">
                 <p id="connection-status" class="font-mono text-cyan-400">Establishing secure connection...</p>
                 <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mt-4 glitch-text" data-text="Suraj N S">Suraj N S</h1>
-                <h2 id="animated-subtitle" class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-400 mt-4 h-12 sm:h-16"></h2>
+                <h2 id="animated-subtitle" class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-400 mt-4 min-h-[3rem] sm:min-h-[4rem]"></h2>
                 <p class="mt-6 text-gray-400 max-w-2xl text-base sm:text-lg">A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses.</p>
                 <div class="mt-10 flex flex-wrap gap-4">
                     <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="bg-cyan-500 text-black font-bold py-3 px-8 rounded-md hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20 transform hover:scale-105">Send Secure Message</a>
@@ -617,268 +617,178 @@
                     }
 
                     const pdf = new jsPDF('p', 'pt', 'a4');
+                    let y = 0;
+                    const pageHeight = pdf.internal.pageSize.getHeight();
+                    const pageWidth = pdf.internal.pageSize.getWidth();
+                    const margin = 40;
+                    const contentWidth = pageWidth - margin * 2;
+                    const lineHeight = 1.2;
 
-                     // --- Convert Profile Image to Base64 ---
-                    const profileImgElement = document.getElementById('profile-image');
-                    let profileImgData = null;
-
-                    const getImageDataUrl = (img) => {
-                        return new Promise((resolve, reject) => {
-                            const newImg = new Image();
-                            newImg.crossOrigin = "Anonymous"; // Handle CORS for images from other domains
-                            newImg.onload = () => {
-                                const canvas = document.createElement('canvas');
-                                canvas.width = newImg.naturalWidth;
-                                canvas.height = newImg.naturalHeight;
-                                const ctx = canvas.getContext('2d');
-                                ctx.drawImage(newImg, 0, 0);
-                                resolve(canvas.toDataURL('image/jpeg'));
-                            };
-                            newImg.onerror = (e) => {
-                                // Try fetching as blob to bypass some CORS issues
-                                fetch(img.src)
-                                    .then(response => response.blob())
-                                    .then(blob => {
-                                        const reader = new FileReader();
-                                        reader.onloadend = () => resolve(reader.result);
-                                        reader.onerror = reject;
-                                        reader.readAsDataURL(blob);
-                                    })
-                                    .catch(reject);
-                            };
-                             newImg.src = img.src;
-                        });
-                    };
-
-                    try {
-                        profileImgData = await getImageDataUrl(profileImgElement);
-                    } catch (error) {
-                        console.warn("Could not load profile image for PDF, continuing without it.", error);
-                        profileImgData = null; // Ensure it's null if it fails
-                    }
-
-
-                    // --- NEW TWO-COLUMN STYLE CONSTANTS ---
-                    const MARGIN = 40;
-                    const PAGE_WIDTH = pdf.internal.pageSize.getWidth();
-                    const PAGE_HEIGHT = pdf.internal.pageSize.getHeight();
-                    
-                    const LEFT_COL_WIDTH = PAGE_WIDTH * 0.6;
-                    const RIGHT_COL_X = MARGIN + LEFT_COL_WIDTH + 20;
-                    const RIGHT_COL_WIDTH = PAGE_WIDTH - RIGHT_COL_X - MARGIN;
-
-                    const FONT_SIZES = { H1: 24, H2: 14, H3: 11, BODY: 9, SMALL: 8 };
-                    const LINE_HEIGHT = 1.4;
-                    const ACCENT_COLOR = '#4A90E2'; // A professional blue
-                    const TEXT_COLOR = '#333333';
-                    const SECONDARY_TEXT_COLOR = '#666666';
-                    
-                    let left_y = MARGIN;
-                    let right_y = MARGIN;
-
-                    // Helper to reset and add a new page
-                    const addPageAndReset = () => {
-                        pdf.addPage();
-                        left_y = MARGIN;
-                        right_y = MARGIN;
-                    };
-
-                    // Helper to check if a new page is needed, comparing both columns
-                    const checkPageBreak = (heightNeeded) => {
-                        if (left_y + heightNeeded > PAGE_HEIGHT - MARGIN || right_y + heightNeeded > PAGE_HEIGHT - MARGIN) {
-                            addPageAndReset();
-                            return true; // Page was added
+                    // --- HELPER FUNCTIONS ---
+                    const checkPageBreak = (neededHeight) => {
+                        if (y + neededHeight > pageHeight - margin) {
+                            pdf.addPage();
+                            y = margin;
                         }
-                        return false;
+                    };
+
+                    const addSectionTitle = (title) => {
+                        checkPageBreak(40);
+                        y += 20;
+                        pdf.setFont('helvetica', 'bold');
+                        pdf.setFontSize(14);
+                        pdf.setTextColor('#2d3748'); // Dark Gray
+                        pdf.text(title.toUpperCase(), margin, y);
+                        y += 10;
+                        pdf.setDrawColor('#cbd5e0'); // Light Gray
+                        pdf.setLineWidth(1);
+                        pdf.line(margin, y, pageWidth - margin, y);
+                        y += 20;
                     };
 
                     // --- HEADER ---
+                    y = margin;
                     pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H1);
-                    pdf.setTextColor(TEXT_COLOR);
-                    pdf.text('Suraj N S', MARGIN, left_y);
+                    pdf.setFontSize(26);
+                    pdf.setTextColor('#1a202c'); // Almost Black
+                    pdf.text('Suraj N S', margin, y);
+                    y += 20;
 
                     pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(FONT_SIZES.H2);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('Cybersecurity Analyst & IT Specialist', MARGIN, left_y + 22);
-                    left_y += 60;
-
-                    // --- RIGHT COLUMN ---
-
-                    // Add Profile Image if available
-                    if (profileImgData) {
-                        const imgSize = 70;
-                        const imgX = RIGHT_COL_X + (RIGHT_COL_WIDTH - imgSize) / 2; // Center in right column
-                        const imgY = right_y;
-                        
-                        pdf.saveGraphicsState();
-                        pdf.circle(imgX + imgSize / 2, imgY + imgSize / 2, imgSize / 2);
-                        pdf.clip();
-                        pdf.addImage(profileImgData, 'JPEG', imgX, imgY, imgSize, imgSize);
-                        pdf.restoreGraphicsState();
-                        
-                        right_y += imgSize + 20;
-                    }
-
-
-                    pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H3);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('CONTACT', RIGHT_COL_X, right_y);
-                    right_y += 18;
-
-                    pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(FONT_SIZES.BODY);
-                    pdf.setTextColor(TEXT_COLOR);
-                    const contactDetails = [
+                    pdf.setFontSize(11);
+                    pdf.setTextColor('#4a5568'); // Medium Gray
+                    pdf.text('Cybersecurity Analyst & IT Specialist', margin, y);
+                    
+                    const contactInfo = [
                         '+91 8129331770',
                         'surajvaikom@gmail.com',
                         'Kottayam, Kerala',
                         'linkedin.com/in/surajvaikom',
                         'github.com/surajvaikom'
-                    ];
-                    contactDetails.forEach(detail => {
-                        pdf.text(detail, RIGHT_COL_X, right_y);
-                        right_y += FONT_SIZES.BODY * LINE_HEIGHT;
-                    });
-                    right_y += 20;
-
-                    pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H3);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('SKILLS', RIGHT_COL_X, right_y);
-                    right_y += 18;
+                    ].join('  |  ');
                     
+                    y += 20;
+                    pdf.setFontSize(9);
+                    pdf.setTextColor('#2d3748');
+                    pdf.text(contactInfo, margin, y);
+                    y += 20;
+
+                    // --- SUMMARY SECTION ---
+                    addSectionTitle('Professional Summary');
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.setFontSize(10);
+                    pdf.setTextColor('#4a5568');
+                    const summary = "A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses. I thrive on the challenge of protecting digital infrastructures from ever-evolving threats, leveraging hands-on experience with tools like Burp Suite, Nmap, and Metasploit to proactively identify and mitigate threats before exploitation.";
+                    const summaryLines = pdf.splitTextToSize(summary, contentWidth);
+                    checkPageBreak(summaryLines.length * 10 * lineHeight);
+                    pdf.text(summaryLines, margin, y);
+                    y += summaryLines.length * 10 * lineHeight;
+
+                    // --- SKILLS SECTION ---
+                    addSectionTitle('Core Skills');
                     const skills = {
-                        'Offensive Security': ['Ethical Hacking', 'Burp Suite', 'Nmap', 'Metasploit'],
-                        'IT & Systems Admin': ['ERP Management', 'Hardware Support', 'System Config', 'IT Support'],
-                        'Professional': ['Staff Training', 'Customer Service', 'Digital Marketing']
+                        'Offensive Security': 'Ethical Hacking, Burp Suite, Nmap, Metasploit, Nessus, Wireshark, OWASP Top 10',
+                        'IT & Systems Admin': 'ERP Management, Hardware Support, System Configuration, IT Support, Linux/Windows Administration',
+                        'Professional': 'Staff Training, Customer Service, Digital Marketing, Social Media Management, Reporting'
                     };
-
+                    
                     for (const [category, skillList] of Object.entries(skills)) {
+                        checkPageBreak(30);
                         pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(FONT_SIZES.BODY);
-                        pdf.setTextColor(TEXT_COLOR);
-                        pdf.text(category, RIGHT_COL_X, right_y);
-                        right_y += FONT_SIZES.BODY * LINE_HEIGHT;
-                        
+                        pdf.setFontSize(10);
+                        pdf.setTextColor('#2d3748');
+                        pdf.text(category, margin, y);
+                        y += 12;
+
                         pdf.setFont('helvetica', 'normal');
-                        pdf.setFontSize(FONT_SIZES.SMALL);
-                        pdf.setTextColor(SECONDARY_TEXT_COLOR);
-                        const skillStr = skillList.join(' • ');
-                        const skillLines = pdf.splitTextToSize(skillStr, RIGHT_COL_WIDTH);
-                        pdf.text(skillLines, RIGHT_COL_X, right_y);
-                        right_y += skillLines.length * FONT_SIZES.SMALL * LINE_HEIGHT + 5;
+                        pdf.setFontSize(9);
+                        pdf.setTextColor('#4a5568');
+                        const skillLines = pdf.splitTextToSize(skillList, contentWidth);
+                        checkPageBreak(skillLines.length * 9 * lineHeight);
+                        pdf.text(skillLines, margin, y);
+                        y += skillLines.length * 9 * lineHeight + 5;
                     }
-                    right_y += 10;
-                    
-                    pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H3);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('CERTIFICATIONS', RIGHT_COL_X, right_y);
-                    right_y += 18;
-
-                    pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(FONT_SIZES.BODY);
-                    pdf.setTextColor(TEXT_COLOR);
-                    const certifications = [ 'Google Cybersecurity', 'Certified Cyber Security Analyst', 'Practical Ethical Hacking', 'Jr Penetration Tester', 'Threat Intelligence Analyst', 'AI & Cybersecurity Fundamentals' ];
-                    certifications.forEach(cert => {
-                         const certLines = pdf.splitTextToSize(`• ${cert}`, RIGHT_COL_WIDTH);
-                         if (right_y + (certLines.length * FONT_SIZES.BODY * LINE_HEIGHT) > PAGE_HEIGHT - MARGIN) {
-                             addPageAndReset();
-                             // Redraw headers on new page if needed
-                         }
-                         pdf.text(certLines, RIGHT_COL_X, right_y);
-                         right_y += certLines.length * FONT_SIZES.BODY * LINE_HEIGHT;
-                    });
 
 
-                    // --- LEFT COLUMN - SUMMARY, EXPERIENCE, EDUCATION ---
-                    
-                    pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H2);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('PROFESSIONAL SUMMARY', MARGIN, left_y);
-                    pdf.setDrawColor(ACCENT_COLOR);
-                    pdf.line(MARGIN, left_y + 4, MARGIN + LEFT_COL_WIDTH, left_y + 4);
-                    left_y += 25;
-
-                    const summary = "Certified Cybersecurity Analyst with hands-on experience in penetration testing, vulnerability assessment, and IT systems administration. Passionate about hardening digital defenses and leveraging tools like Burp Suite, Nmap, and Metasploit to proactively identify and mitigate threats before exploitation.";
-                    pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(FONT_SIZES.BODY);
-                    pdf.setTextColor(TEXT_COLOR);
-                    const summaryLines = pdf.splitTextToSize(summary, LEFT_COL_WIDTH);
-                    pdf.text(summaryLines, MARGIN, left_y);
-                    left_y += summaryLines.length * FONT_SIZES.BODY * LINE_HEIGHT + 20;
-
-                    pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H2);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('PROFESSIONAL EXPERIENCE', MARGIN, left_y);
-                    pdf.line(MARGIN, left_y + 4, MARGIN + LEFT_COL_WIDTH, left_y + 4);
-                    left_y += 25;
-
+                    // --- EXPERIENCE SECTION ---
+                    addSectionTitle('Professional Experience');
                     Object.values(jobDetails).forEach(job => {
-                        const detailsLines = job.details.map(d => pdf.splitTextToSize(`• ${d}`, LEFT_COL_WIDTH - 15)).flat();
-                        const jobHeight = 30 + (detailsLines.length * FONT_SIZES.BODY * LINE_HEIGHT);
-                        if(checkPageBreak(jobHeight)) {
-                             pdf.setFont('helvetica', 'bold');
-                             pdf.setFontSize(FONT_SIZES.H2);
-                             pdf.setTextColor(ACCENT_COLOR);
-                             pdf.text('PROFESSIONAL EXPERIENCE (CONTINUED)', MARGIN, left_y);
-                             pdf.line(MARGIN, left_y + 4, MARGIN + LEFT_COL_WIDTH, left_y + 4);
-                             left_y += 25;
-                        }
+                        const detailsLines = job.details.map(d => pdf.splitTextToSize(`•  ${d}`, contentWidth - 15)).flat();
+                        const jobHeight = 40 + (detailsLines.length * 9 * lineHeight);
+                        checkPageBreak(jobHeight);
 
                         pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(FONT_SIZES.H3);
-                        pdf.setTextColor(TEXT_COLOR);
-                        pdf.text(job.title, MARGIN, left_y);
-                        pdf.setFont('helvetica', 'normal');
-                        pdf.text(job.date, MARGIN + LEFT_COL_WIDTH, left_y, { align: 'right' });
-                        left_y += FONT_SIZES.H3 * LINE_HEIGHT;
-
-                        pdf.setFont('helvetica', 'italic');
-                        pdf.setTextColor(SECONDARY_TEXT_COLOR);
-                        pdf.text(job.company, MARGIN, left_y);
-                        left_y += FONT_SIZES.H3 * LINE_HEIGHT;
+                        pdf.setFontSize(11);
+                        pdf.setTextColor('#1a202c');
+                        pdf.text(job.title, margin, y);
                         
                         pdf.setFont('helvetica', 'normal');
-                        pdf.setFontSize(FONT_SIZES.BODY);
-                        pdf.setTextColor(TEXT_COLOR);
-                        pdf.text(detailsLines, MARGIN + 15, left_y);
-                        left_y += detailsLines.length * FONT_SIZES.BODY * LINE_HEIGHT + 15;
+                        const dateWidth = pdf.getStringUnitWidth(job.date) * 11 / pdf.internal.scaleFactor;
+                        pdf.text(job.date, pageWidth - margin - dateWidth, y);
+                        y += 14;
+                        
+                        pdf.setFont('helvetica', 'italic');
+                        pdf.setFontSize(10);
+                        pdf.setTextColor('#4a5568');
+                        pdf.text(job.company, margin, y);
+                        y += 20;
+
+                        pdf.setFont('helvetica', 'normal');
+                        pdf.setFontSize(9);
+                        pdf.setTextColor('#4a5568');
+                        pdf.text(detailsLines, margin + 15, y);
+                        y += detailsLines.length * 9 * lineHeight + 10;
                     });
 
-                     pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(FONT_SIZES.H2);
-                    pdf.setTextColor(ACCENT_COLOR);
-                    pdf.text('EDUCATION', MARGIN, left_y);
-                    pdf.line(MARGIN, left_y + 4, MARGIN + LEFT_COL_WIDTH, left_y + 4);
-                    left_y += 25;
-
-                    const education = [ { years: '2024 - 2025', degree: 'Bachelor of Library and Information Science (BLIS)', school: 'Indira Gandhi National Open University' }, { years: '2013 - 2017', degree: 'Master of Computer Applications (MCA)', school: 'Rajiv Gandhi Institute of Technology, Kottayam' }, { years: '2008 - 2011', degree: 'Bachelor of Science (BSc), Electronics', school: 'School Of Technology And Applied Sciences, Edappally' } ];
-                     education.forEach(edu => {
-                         if(checkPageBreak(40)) {
-                              // Add education continued header if needed
-                         }
+                    // --- EDUCATION SECTION ---
+                    addSectionTitle('Education');
+                    const education = [
+                        { years: '2024 - 2025', degree: 'Bachelor of Library and Information Science (BLIS)', school: 'Indira Gandhi National Open University' },
+                        { years: '2013 - 2017', degree: 'Master of Computer Applications (MCA)', school: 'Rajiv Gandhi Institute of Technology, Kottayam' },
+                        { years: '2008 - 2011', degree: 'Bachelor of Science (BSc), Electronics', school: 'School Of Technology And Applied Sciences, Edappally' }
+                    ];
+                    education.forEach(edu => {
+                        checkPageBreak(40);
                         pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(FONT_SIZES.H3);
-                        pdf.setTextColor(TEXT_COLOR);
-                        pdf.text(edu.degree, MARGIN, left_y);
-                         pdf.setFont('helvetica', 'normal');
-                        pdf.text(edu.years, MARGIN + LEFT_COL_WIDTH, left_y, { align: 'right' });
-                        left_y += FONT_SIZES.H3 * LINE_HEIGHT;
+                        pdf.setFontSize(11);
+                        pdf.setTextColor('#1a202c');
+                        pdf.text(edu.degree, margin, y);
+
+                        pdf.setFont('helvetica', 'normal');
+                        const dateWidth = pdf.getStringUnitWidth(edu.years) * 11 / pdf.internal.scaleFactor;
+                        pdf.text(edu.years, pageWidth - margin - dateWidth, y);
+                        y += 14;
 
                         pdf.setFont('helvetica', 'italic');
-                        pdf.setTextColor(SECONDARY_TEXT_COLOR);
-                        pdf.text(edu.school, MARGIN, left_y);
-                        left_y += FONT_SIZES.H3 * LINE_HEIGHT + 10;
+                        pdf.setFontSize(10);
+                        pdf.setTextColor('#4a5568');
+                        pdf.text(edu.school, margin, y);
+                        y += 25;
                     });
                     
-                    // --- Save ---
-                    pdf.save('Suraj_N_S_Resume_V2.pdf');
+                    // --- CERTIFICATIONS SECTION ---
+                    addSectionTitle('Certifications');
+                    const certifications = [
+                        'Google Cybersecurity Specialization - Google',
+                        'Certified Cyber Security Analyst - ICT Academy of Kerala',
+                        'Practical Ethical Hacking - TCM Security',
+                        'Jr Penetration Tester - TryHackMe',
+                        'Foundation Level Threat Intelligence Analyst - arcX',
+                        'Artificial Intelligence & Cybersecurity Fundamentals - IBM'
+                    ];
+                     pdf.setFont('helvetica', 'normal');
+                     pdf.setFontSize(10);
+                     pdf.setTextColor('#4a5568');
+                     let certY = y;
+                     certifications.forEach(cert => {
+                         checkPageBreak(15);
+                         pdf.text(`•  ${cert}`, margin, y);
+                         y += 15;
+                     });
+
+
+                    // --- SAVE THE PDF ---
+                    pdf.save('Suraj_N_S_Resume_ATS.pdf');
 
                 } catch (err) {
                     console.error('Error generating CV:', err);
