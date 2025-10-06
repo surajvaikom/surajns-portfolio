@@ -2,25 +2,21 @@
 <html lang="en" class="scroll-smooth">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Suraj N S | Cybersecurity Professional</title>
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📟</text></svg>">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-    
-    <!-- PDF Generation Libraries with SRI for Security -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" xintegrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6BTzYlAWg4eFblMA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" xintegrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKDDGv5vUbByeFGOgnOAqoAyYK11A/prOuLdMPw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    <!-- Custom CSS for the cybersecurity theme -->
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <!-- jsPDF (html2canvas is no longer needed for the PDF) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <style>
         :root {
             --primary-bg: #0d1117;
@@ -36,100 +32,63 @@
             font-family: 'Poppins', sans-serif;
             background-color: var(--primary-bg);
             color: var(--text-primary);
-            overflow-x: hidden; /* Prevent horizontal scroll */
+            overflow-x: hidden;
         }
 
-        /* Matrix background */
-        #matrix-bg {
+        #plexus-bg {
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            width: 100vw;
+            height: 100vh;
             z-index: -1;
+            pointer-events: none;
         }
-        
-        /* Custom Header Style */
+
         .header-glass {
             background: rgba(13, 17, 23, 0.8);
             backdrop-filter: blur(12px);
             border-bottom: 1px solid var(--border-color);
         }
-        
-        /* Custom Font for Headings */
+
         .font-mono {
             font-family: 'Roboto Mono', monospace;
         }
 
-        /* Glitch Effect for Hero Title */
-        .glitch-text {
-            position: relative;
-            color: white;
-            animation: glitch-skew 1s infinite linear alternate-reverse;
-        }
-        .glitch-text::before,
-        .glitch-text::after {
-            content: attr(data-text);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: var(--primary-bg);
-            overflow: hidden;
-        }
-        .glitch-text::before {
-            left: 2px;
-            text-shadow: -2px 0 #ff00c1;
-            animation: glitch-anim-1 2s infinite linear alternate-reverse;
-        }
-        .glitch-text::after {
-            left: -2px;
-            text-shadow: -2px 0 var(--accent-cyan);
-            animation: glitch-anim-2 2s infinite linear alternate-reverse;
-        }
-
-        @keyframes glitch-skew { 1% { transform: skewX(10deg); } 2% { transform: skewX(0deg); } }
-        @keyframes glitch-anim-1 { 0% { clip-path: inset(15% 0 86% 0); } 100% { clip-path: inset(80% 0 3% 0); } }
-        @keyframes glitch-anim-2 { 0% { clip-path: inset(5% 0 91% 0); } 100% { clip-path: inset(92% 0 5% 0); } }
-
-        /* Section fade-in animation */
         .fade-in-section {
             opacity: 0;
             transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
+
         .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
-        
-        /* Custom Scrollbar */
+
         ::-webkit-scrollbar { width: 10px; }
         ::-webkit-scrollbar-track { background: var(--primary-bg); }
         ::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 10px; border: 2px solid var(--primary-bg); }
         ::-webkit-scrollbar-thumb:hover { background: white; }
 
-        /* Modal Animation */
         #experience-modal.show #modal-content {
             transform: scale(1) translateY(0);
             opacity: 1;
         }
 
-        /* PDF Loader Spinner animation */
         .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.3);
+            border: 4px solid rgba(255, 255, 255, 0.12);
             border-radius: 50%;
             border-top-color: var(--accent-cyan);
             width: 50px;
             height: 50px;
             animation: spin 1s linear infinite;
         }
+
         @keyframes spin {
             to { transform: rotate(360deg); }
         }
 
-        /* Typing cursor for animated subtitle */
         .typing-cursor {
             display: inline-block;
             width: 3px;
@@ -138,25 +97,68 @@
             margin-left: 5px;
             animation: blink 0.7s infinite;
         }
+
         @keyframes blink {
             50% { opacity: 0; }
         }
 
-        /* Pulse animation for timeline nodes */
-        .timeline-node {
-            animation: pulse 2s infinite;
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
         }
-        @keyframes pulse {
-            0% { box-shadow: 0 0 0 0 rgba(57, 211, 211, 0.7); }
-            70% { box-shadow: 0 0 0 10px rgba(57, 211, 211, 0); }
-            100% { box-shadow: 0 0 0 0 rgba(57, 211, 211, 0); }
+
+        .glitch-text {
+            position: relative;
+            color: white;
+            line-height: 0.9;
+        }
+
+        .glitch-text::after, .glitch-text::before {
+            content: attr(data-text);
+            position: absolute;
+            left: 0; top: 0;
+            width: 100%;
+            overflow: hidden;
+            clip: rect(0, 9999px, 0, 0);
+            transform: translate3d(0,0,0);
+        }
+
+        .glitch-text::before { left: 2px; text-shadow: -2px 0 var(--accent-cyan); opacity: 0.6; }
+        .glitch-text::after { left: -2px; text-shadow: -2px 0 #ff7b7b; opacity: 0.4; }
+
+        #modal-content { transition: transform 0.28s cubic-bezier(.2,.9,.2,1), opacity 0.2s; }
+
+        @media (max-width: 768px) {
+            .glitch-text { font-size: 3rem !important; }
+        }
+
+        .skill-tag {
+            background-color: rgba(31, 41, 55, 1);
+            color: #9ca3af;
+            padding: 5px 10px;
+            border-radius: 8px;
+            font-size: 0.85rem;
+            font-family: 'Roboto Mono', monospace;
+        }
+
+        .cert-item {
+            background-color: rgba(31, 41, 55, 0.5);
+            border: 1px solid #111827;
+            padding: 12px;
+            border-radius: 10px;
+            color: #9ca3af;
+            transition: all 0.25s ease;
+        }
+        .cert-item:hover {
+            border-color: var(--accent-cyan);
+            background-color: rgba(31, 41, 55, 1);
         }
     </style>
 </head>
 
 <body class="antialiased">
-    <!-- Matrix background canvas -->
-    <canvas id="matrix-bg"></canvas>
+    <!-- Plexus background canvas -->
+    <canvas id="plexus-bg"></canvas>
 
     <!-- PDF Loader -->
     <div id="pdf-loader" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex flex-col justify-center items-center p-4 transition-opacity duration-300">
@@ -170,12 +172,10 @@
             <a href="#" class="group" aria-label="Home">
                 <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-300 group-hover:drop-shadow-[0_0_5px_var(--accent-glow)]">
                     <path d="M12 2L4 6V12C4 16.97 7.58 21.5 12 22.5C16.42 21.5 20 16.97 20 12V6L12 2Z" class="stroke-cyan-400" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="font-mono font-bold text-xs fill-current text-cyan-400 group-hover:text-white transition-colors">
-                        SNS
-                    </text>
+                    <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="font-mono font-bold text-xs fill-current text-cyan-400 group-hover:text-white transition-colors">SNS</text>
                 </svg>
             </a>
-            <nav class="hidden md:flex space-x-8 items-center font-mono">
+            <nav id="desktop-nav" class="hidden md:flex space-x-8 items-center font-mono">
                 <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/about</a>
                 <a href="#experience" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/experience</a>
                 <a href="#education" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/education</a>
@@ -186,7 +186,6 @@
                 <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
             </button>
         </div>
-        <!-- Mobile Menu -->
         <div id="mobile-menu" class="hidden md:hidden bg-black/50 px-6 pb-4">
             <a href="#about" class="block py-2 text-gray-300 hover:text-cyan-400">/about</a>
             <a href="#experience" class="block py-2 text-gray-300 hover:text-cyan-400">/experience</a>
@@ -198,33 +197,25 @@
 
     <main class="container mx-auto px-6 pt-28 relative z-10">
 
-        <!-- Hero Section -->
         <section id="hero" class="min-h-[80vh] flex items-center fade-in-section">
             <div class="w-full">
                 <p id="connection-status" class="font-mono text-cyan-400">Establishing secure connection...</p>
                 <h1 class="text-5xl md:text-8xl font-bold mt-4 glitch-text" data-text="Suraj N S">Suraj N S</h1>
                 <h2 id="animated-subtitle" class="text-2xl md:text-4xl font-bold text-gray-400 mt-4 h-14 md:h-16"></h2>
-                <p class="mt-8 text-gray-400 max-w-2xl text-lg">
-                    A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses.
-                </p>
+                <p class="mt-8 text-gray-400 max-w-2xl text-lg">A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses.</p>
                 <div class="mt-10 flex flex-wrap gap-4">
-                    <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="bg-cyan-500 text-black font-bold py-3 px-8 rounded-md hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20 transform hover:scale-105">
-                        Send Secure Message
-                    </a>
-                    <button id="download-cv-btn" class="bg-gray-800 text-cyan-400 font-bold py-3 px-8 rounded-md border border-cyan-800 hover:bg-gray-700 transition-all transform hover:scale-105">
-                        Download CV
-                    </button>
+                    <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="bg-cyan-500 text-black font-bold py-3 px-8 rounded-md hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20 transform hover:scale-105">Send Secure Message</a>
+                    <button id="download-cv-btn" class="bg-gray-800 text-cyan-400 font-bold py-3 px-8 rounded-md border border-cyan-800 hover:bg-gray-700 transition-all transform hover:scale-105">Download CV</button>
                 </div>
             </div>
         </section>
 
-        <!-- About Section -->
         <section id="about" class="py-24 fade-in-section">
             <div class="grid md:grid-cols-5 gap-12 items-center">
                 <div class="md:col-span-2">
                     <div class="relative w-full max-w-sm mx-auto group">
                         <div class="absolute inset-0 border-2 border-cyan-400 rounded-xl transform -rotate-3 transition-transform duration-300 group-hover:rotate-0"></div>
-                        <img src="profile.jpg" alt="Suraj N S" class="relative w-full object-cover rounded-xl shadow-2xl z-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-105">
+                        <img src="profile.jpg" alt="Suraj N S" class="relative w-full object-cover rounded-xl shadow-2xl z-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-105" id="profile-image">
                     </div>
                 </div>
                 <div class="md:col-span-3">
@@ -237,87 +228,25 @@
             </div>
         </section>
 
-        <!-- Experience Section -->
         <section id="experience" class="py-24 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold font-mono text-white">/Professional_Experience</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-gray-500">Executing roles across IT, security, and client management.</p>
             </div>
-            <!-- Responsive Timeline -->
-            <div class="mt-12 relative">
+            <div id="experience-timeline" class="mt-12 relative">
                 <div class="absolute w-0.5 h-full bg-gray-700 left-4 transform -translate-x-1/2 md:left-1/2"></div>
-                <div class="space-y-12">
-                    <!-- Timeline Items -->
-                    <div id="erp-job" class="timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0">
-                        <div></div>
-                        <div class="md:col-start-2">
-                            <div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>
-                            <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer">
-                                <p class="text-sm text-cyan-400 font-mono">Apr 2024 - Current</p>
-                                <h3 class="text-xl font-bold text-white mt-1">ERP & IT Assistant</h3>
-                                <p class="text-gray-400">Seth MR Jaipuria Schools</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="cs-intern-job" class="timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0">
-                        <div class="md:text-right md:col-start-1">
-                             <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer">
-                                <p class="text-sm text-cyan-400 font-mono">Aug 2023 - Nov 2023</p>
-                                <h3 class="text-xl font-bold text-white mt-1">Cyber Security Intern</h3>
-                                <p class="text-gray-400">Cyber Secured India</p>
-                            </div>
-                        </div>
-                        <div class="md:col-start-2">
-                            <div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>
-                        </div>
-                    </div>
-                    <div id="tcs-intern-job" class="timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0">
-                        <div></div>
-                        <div class="md:col-start-2">
-                            <div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>
-                            <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer">
-                                <p class="text-sm text-cyan-400 font-mono">Apr 2023 - May 2023</p>
-                                <h3 class="text-xl font-bold text-white mt-1">Cyber Security Analyst Intern</h3>
-                                <p class="text-gray-400">TCS iON (Remote)</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="aadhaar-job" class="timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0">
-                        <div class="md:text-right md:col-start-1">
-                             <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer">
-                                <p class="text-sm text-cyan-400 font-mono">Oct 2018 - Apr 2023</p>
-                                <h3 class="text-xl font-bold text-white mt-1">Aadhaar Enrolment Supervisor</h3>
-                                <p class="text-gray-400">SNR E DATA'S PVT LTD</p>
-                            </div>
-                        </div>
-                        <div class="md:col-start-2">
-                            <div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>
-                        </div>
-                    </div>
-                    <div id="freelancer-job" class="timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0">
-                        <div></div>
-                        <div class="md:col-start-2">
-                            <div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>
-                             <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer">
-                                <p class="text-sm text-cyan-400 font-mono">Oct 2012 - Oct 2013</p>
-                                <h3 class="text-xl font-bold text-white mt-1">Computer Hardware Engineer</h3>
-                                <p class="text-gray-400">Freelancer</p>
-                            </div>
-                        </div>
-                    </div>
+                <div id="timeline-items" class="space-y-12">
+                    <!-- Timeline Items will be populated here by JS -->
                 </div>
             </div>
         </section>
 
-
-        <!-- Education Section -->
         <section id="education" class="py-24 fade-in-section">
             <div class="text-center">
                 <h2 class="text-3xl font-bold font-mono text-white">/Education</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-gray-500">My academic background and qualifications.</p>
             </div>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Education Cards -->
                 <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
                     <p class="font-mono text-cyan-400">2024 - 2025</p>
                     <h3 class="text-xl font-bold text-white mt-2">Bachelor of Library and Information Science (BLIS)</h3>
@@ -336,14 +265,12 @@
             </div>
         </section>
 
-        <!-- Skills Section -->
         <section id="skills" class="py-24 fade-in-section">
-             <div class="text-center">
+            <div class="text-center">
                 <h2 class="text-3xl font-bold font-mono text-white">/Core_Skillset</h2>
                 <p class="mt-4 max-w-3xl mx-auto text-gray-500">My arsenal of technical tools and professional abilities.</p>
             </div>
             <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Skill Cards -->
                 <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
                     <h3 class="text-xl font-bold text-white font-mono">Offensive Security</h3>
                     <p class="text-gray-500 mt-2">Penetration testing and vulnerability assessment.</p>
@@ -366,10 +293,8 @@
                     </div>
                 </div>
             </div>
-            <style>.skill-tag { @apply bg-gray-800 text-gray-400 px-3 py-1 rounded-md text-sm font-mono; }</style>
-            
-            <!-- Certifications -->
-            <div class="mt-16">
+
+             <div class="mt-16">
                 <h3 class="text-center text-2xl font-bold font-mono text-white">/Certifications</h3>
                 <ul id="certifications-list" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
                     <li class="cert-item">Google Cybersecurity Specialization - <span class="font-bold text-white">Google</span></li>
@@ -379,21 +304,17 @@
                     <li class="cert-item">Foundation Level Threat Intelligence Analyst - <span class="font-bold text-white">arcX</span></li>
                     <li class="cert-item">Artificial Intelligence & Cybersecurity Fundamentals - <span class="font-bold text-white">IBM</span></li>
                 </ul>
-                <style>
-                    .cert-item { @apply bg-gray-800/50 border border-gray-700 p-4 rounded-lg text-gray-400 transition-all duration-300 hover:border-cyan-400 hover:bg-gray-800; }
-                </style>
             </div>
         </section>
 
-        <!-- Contact Section -->
         <section id="contact" class="py-24 text-center fade-in-section">
              <h2 class="text-3xl font-bold font-mono text-white">/Contact</h2>
              <p class="mt-4 max-w-xl mx-auto text-gray-500">Let's connect. My inbox is always open.</p>
-             <div class="mt-8">
-                 <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="text-2xl font-semibold font-mono text-cyan-400 hover:text-white transition-all hover:underline decoration-cyan-400 underline-offset-4">
-                     surajvaikom@gmail.com
-                 </a>
-             </div>
+             <div class="mt-8 space-y-2">
+                 <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="block text-2xl font-semibold font-mono text-cyan-400 hover:text-white transition-all hover:underline decoration-cyan-400 underline-offset-4">surajvaikom@gmail.com</a>
+                 <p class="text-lg font-mono text-gray-400">+91 8129331770</p>
+                 <p class="text-lg font-mono text-gray-400">Kottayam, Kerala</p>
+            </div>
              <div class="mt-10 flex justify-center space-x-8">
                 <a href="https://github.com/surajvaikom" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-cyan-400 transition-transform hover:scale-110" aria-label="GitHub Profile">
                     <span class="sr-only">GitHub</span>
@@ -405,77 +326,142 @@
                 </a>
             </div>
         </section>
+
     </main>
 
-    <!-- Footer -->
     <footer class="text-center py-8 text-gray-600 text-sm font-mono">
         <p>Designed & Built by Suraj N S // &copy; <span id="year"></span></p>
     </footer>
 
-    <!-- Experience Details Modal -->
     <div id="experience-modal" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex justify-center items-center p-4 transition-opacity duration-300">
-        <div id="modal-content" class="bg-gray-900 border border-cyan-400 p-8 rounded-lg shadow-2xl max-w-2xl w-full relative transform scale-95 opacity-0 transition-all duration-300 -translate-y-4">
+       <div id="modal-content" class="bg-gray-900 border border-cyan-400 p-8 rounded-lg shadow-2xl max-w-2xl w-full relative transform scale-95 opacity-0 transition-all duration-300 -translate-y-4">
             <button id="close-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-3xl font-bold" aria-label="Close modal">&times;</button>
             <h3 id="modal-title" class="text-2xl font-bold text-white font-mono"></h3>
             <p id="modal-company" class="text-gray-400 mt-1"></p>
             <p id="modal-date" class="text-sm text-cyan-400 font-mono mt-2"></p>
             <div class="border-t border-gray-700 my-4"></div>
-            <ul id="modal-details" class="mt-4 list-disc list-inside text-gray-400 space-y-2">
-                <!-- Details will be populated by JS -->
-            </ul>
+            <ul id="modal-details" class="mt-4 list-disc list-inside text-gray-400 space-y-2"></ul>
         </div>
     </div>
-    
-    <!-- JavaScript for Interactivity -->
+
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const { jsPDF } = window.jspdf;
+            // Expose jsPDF
+            const { jsPDF } = window.jspdf || {};
 
-            // --- Matrix Background Animation ---
-            const canvas = document.getElementById('matrix-bg');
+            // --- Digital Plexus Background Animation ---
+            const canvas = document.getElementById('plexus-bg');
             const ctx = canvas.getContext('2d');
+            let points = [];
+            let mouse = { x: null, y: null, radius: 150 };
 
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-
-            const binary = "01";
-            const fontSize = 16;
-            const columns = canvas.width / fontSize;
-            const drops = [];
-
-            for (let x = 0; x < columns; x++) {
-                drops[x] = 1;
-            }
-
-            function drawMatrix() {
-                ctx.fillStyle = "rgba(13, 17, 23, 0.1)"; // Adjusted opacity
-                ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-                ctx.fillStyle = "rgba(57, 211, 211, 0.4)"; // Dimmed text color
-                ctx.font = fontSize + "px monospace";
-
-                for (let i = 0; i < drops.length; i++) {
-                    const text = binary.charAt(Math.floor(Math.random() * binary.length));
-                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
-                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-                        drops[i] = 0;
-                    }
-                    drops[i]++;
-                }
-            }
-
-            setInterval(drawMatrix, 100); // Optimized interval
-            
-            window.addEventListener('resize', () => {
+            function setupCanvasSize() {
                 canvas.width = window.innerWidth;
                 canvas.height = window.innerHeight;
-                for (let x = 0; x < columns; x++) {
-                    drops[x] = 1;
-                }
+            }
+            setupCanvasSize();
+            window.addEventListener('mousemove', e => {
+                mouse.x = e.clientX;
+                mouse.y = e.clientY;
             });
 
-            // --- Animated Subtitle ---
+            class Point {
+                constructor(x, y, size, color) {
+                    this.x = x; this.y = y; this.size = size; this.color = color;
+                    this.baseX = this.x; this.baseY = this.y;
+                    this.density = (Math.random() * 30) + 1;
+                }
+                draw() {
+                    ctx.fillStyle = this.color;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.closePath();
+                    ctx.fill();
+                }
+                update() {
+                    let dx = (mouse.x || 0) - this.x;
+                    let dy = (mouse.y || 0) - this.y;
+                    let distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance === 0) distance = 1;
+
+                    let forceDirectionX = dx / distance;
+                    let forceDirectionY = dy / distance;
+                    let maxDistance = mouse.radius;
+                    let force = (maxDistance - distance) / maxDistance;
+                    if (force < 0) force = 0;
+                    let directionX = forceDirectionX * force * this.density;
+                    let directionY = forceDirectionY * force * this.density;
+
+                    if (distance < mouse.radius) {
+                        this.x -= directionX;
+                        this.y -= directionY;
+                    } else {
+                        if (Math.abs(this.x - this.baseX) > 0.1) { this.x -= (this.x - this.baseX) / 10; }
+                        if (Math.abs(this.y - this.baseY) > 0.1) { this.y -= (this.y - this.baseY) / 10; }
+                    }
+                }
+            }
+
+            function initPoints() {
+                points = [];
+                let numberOfPoints = Math.max(60, Math.floor((canvas.height * canvas.width) / 9000));
+                for (let i = 0; i < numberOfPoints; i++) {
+                    let size = Math.random() * 2 + 1;
+                    let x = Math.random() * canvas.width;
+                    let y = Math.random() * canvas.height;
+                    points.push(new Point(x, y, size, 'rgba(48, 54, 61, 0.5)'));
+                }
+            }
+
+            function connect() {
+                for (let a = 0; a < points.length; a++) {
+                    for (let b = a + 1; b < points.length; b++) {
+                        let dx = points[a].x - points[b].x;
+                        let dy = points[a].y - points[b].y;
+                        let distance = dx * dx + dy * dy;
+                        let threshold = (Math.min(canvas.width, 1200) / 6) * (Math.min(canvas.height, 800) / 6);
+                        if (distance < threshold) {
+                            let opacityValue = 1 - (distance / threshold);
+                            ctx.strokeStyle = `rgba(57, 211, 211, ${Math.max(0, opacityValue * 0.25)})`;
+                            ctx.lineWidth = 1;
+                            ctx.beginPath();
+                            ctx.moveTo(points[a].x, points[a].y);
+                            ctx.lineTo(points[b].x, points[b].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                requestAnimationFrame(animate);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                for (let i = 0; i < points.length; i++) {
+                    points[i].update();
+                    points[i].draw();
+                }
+                connect();
+            }
+
+            initPoints();
+            animate();
+
+            window.addEventListener('resize', () => {
+                setupCanvasSize();
+                initPoints();
+            });
+
+            // --- Connection Status Animation ---
+            const statusElement = document.getElementById('connection-status');
+            let dotCount = 0;
+            setInterval(() => {
+                dotCount = (dotCount + 1) % 4;
+                if (statusElement) {
+                    statusElement.textContent = "Establishing secure connection" + ".".repeat(dotCount);
+                }
+            }, 500);
+
+            // --- Animated Subtitle (typewriter) ---
             const subtitleElement = document.getElementById('animated-subtitle');
             const phrases = [
                 "I build things for security.",
@@ -485,91 +471,98 @@
             ];
             let phraseIndex = 0;
             let charIndex = 0;
-            let isDeleting = false;
+            let typingDelay = 80;
+            let deletingDelay = 40;
+            let pauseAfterTyping = 1400;
+            let pauseAfterDeleting = 400;
 
-            function type() {
-                const currentPhrase = phrases[phraseIndex];
-                let displayText = currentPhrase.substring(0, charIndex);
-
-                subtitleElement.innerHTML = `${displayText}<span class="typing-cursor"></span>`;
-
-                if (!isDeleting && charIndex < currentPhrase.length) {
+            function typewriter() {
+                const current = phrases[phraseIndex];
+                if (!subtitleElement) return;
+                if (charIndex <= current.length) {
+                    subtitleElement.innerHTML = current.substring(0, charIndex) + '<span class="typing-cursor"></span>';
                     charIndex++;
-                    setTimeout(type, 120);
-                } else if (isDeleting && charIndex > 0) {
-                    charIndex--;
-                    setTimeout(type, 60);
+                    setTimeout(typewriter, typingDelay);
                 } else {
-                    isDeleting = !isDeleting;
-                    if (!isDeleting) {
-                        phraseIndex = (phraseIndex + 1) % phrases.length;
-                    }
-                    setTimeout(type, isDeleting ? 2000 : 500);
+                    setTimeout(() => { deleteText(); }, pauseAfterTyping);
                 }
             }
-            type();
 
+            function deleteText() {
+                const current = phrases[phraseIndex];
+                if (!subtitleElement) return;
+                if (charIndex > 0) {
+                    subtitleElement.innerHTML = current.substring(0, charIndex) + '<span class="typing-cursor"></span>';
+                    charIndex--;
+                    setTimeout(deleteText, deletingDelay);
+                } else {
+                    phraseIndex = (phraseIndex + 1) % phrases.length;
+                    setTimeout(typewriter, pauseAfterDeleting);
+                }
+            }
+            typewriter();
 
             // --- Experience Modal Logic ---
             const experienceModal = document.getElementById('experience-modal');
             const closeModalBtn = document.getElementById('close-modal');
-            
+
             const jobDetails = {
                 'erp-job': {
                     title: 'ERP & IT Assistant',
                     company: 'Seth MR Jaipuria Schools',
                     date: 'Apr 2024 - Current',
-                    details: [
-                        'Assisted in the implementation and management of the school\'s ERP system.',
-                        'Conducted training sessions for staff on the effective use of the ERP system.',
-                        'Installed and configured computer hardware, operating systems and applications.',
-                        'Monitored and maintained performance of school computers and systems.',
-                        'Designed and edited visual content for school events, including posters and banners.'
-                    ]
+                    details: ['Assisted in the implementation and management of the school\'s ERP system.','Conducted training sessions for staff on the effective use of the ERP system.','Installed and configured computer hardware, operating systems and applications.','Monitored and maintained performance of school computers and systems.','Designed and edited visual content for school events, including posters and banners.']
                 },
                 'cs-intern-job': {
                     title: 'Cyber Security & Digital Forensics Intern',
                     company: 'Cyber Secured India (Remote)',
                     date: 'Aug 2023 - Nov 2023',
-                    details: [
-                        'Engaged in hands-on labs using Burp Suite, Nmap, Wireshark, Nessus, and Metasploit.',
-                        'Acquired practical knowledge of OWASP Top 10 vulnerabilities and mitigation techniques.',
-                        'Performed Android penetration testing and practiced Linux/Windows Privilege Escalation.'
-                    ]
+                    details: ['Engaged in hands-on labs using Burp Suite, Nmap, Wireshark, Nessus, and Metasploit.','Acquired practical knowledge of OWASP Top 10 vulnerabilities and mitigation techniques.','Performed Android penetration testing and practiced Linux/Windows Privilege Escalation.']
                 },
                 'tcs-intern-job': {
                     title: 'Cyber Security Analyst Intern',
                     company: 'TCS iON (Remote)',
                     date: 'Apr 2023 - May 2023',
-                    details: [
-                        'Completed a 125-hour internship focusing on CAPTCHA technologies.',
-                        'Researched and contributed to building a custom CAPTCHA service to enhance security against automated bots.'
-                    ]
+                    details: ['Completed a 125-hour internship focusing on CAPTCHA technologies.','Researched and contributed to building a custom CAPTCHA service to enhance security against automated bots.']
                 },
                 'aadhaar-job': {
                     title: 'Aadhaar Enrolment Supervisor',
                     company: 'SNR E DATA\'S PVT LTD HYDERABAD',
                     date: 'Oct 2018 - Apr 2023',
-                    details: [
-                        'Attentively addressed customer requests and resolved concerns to enhance satisfaction.',
-                        'Managed all paperwork and promptly addressed discrepancies for resolution.',
-                        'Prepared and submitted daily reports to the Head Office.',
-                        'Managed over 15-20 customer calls per day, providing clear information.'
-                    ]
+                    details: ['Attentively addressed customer requests and resolved concerns to enhance satisfaction.','Managed all paperwork and promptly addressed discrepancies for resolution.','Prepared and submitted daily reports to the Head Office.','Managed over 15-20 customer calls per day, providing clear information.']
                 },
                 'freelancer-job': {
                     title: 'Computer Hardware Engineer',
                     company: 'Freelancer (On-site)',
                     date: 'Oct 2012 - Oct 2013',
-                    details: [
-                        'Collaborated with customers to discern their needs and deliver excellent service.',
-                        'Provided timely on-site service to customer locations, including nights, weekends, and holidays.',
-                        'Diagnosed and resolved hardware failures and software issues for desktops and laptops.',
-                        'Performed system assembly, upgrades, and component replacements for clients.',
-                        'Managed data backup and recovery operations to prevent data loss.'
-                    ]
+                    details: ['Collaborated with customers to discern their needs and deliver excellent service.','Provided timely on-site service to customer locations, including nights, weekends, and holidays.','Diagnosed and resolved hardware failures and software issues for desktops and laptops.','Performed system assembly, upgrades, and component replacements for clients.','Managed data backup and recovery operations to prevent data loss.']
                 }
             };
+
+            const timelineContainer = document.getElementById('experience-timeline').querySelector('.space-y-12');
+            Object.keys(jobDetails).forEach((key, index) => {
+                const job = jobDetails[key];
+                const isReversed = index % 2 !== 0;
+
+                const timelineItem = document.createElement('div');
+                timelineItem.id = key;
+                timelineItem.className = 'timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0';
+
+                const cardHTML = `
+                    <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg cursor-pointer">
+                        <p class="text-sm text-cyan-400 font-mono">${job.date}</p>
+                        <h3 class="text-xl font-bold text-white mt-1">${job.title}</h3>
+                        <p class="text-gray-400">${job.company}</p>
+                    </div>
+                `;
+
+                if (isReversed) {
+                    timelineItem.innerHTML = `<div class="md:text-right md:col-start-1">${cardHTML}</div><div class="md:col-start-2"><div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div></div>`;
+                } else {
+                    timelineItem.innerHTML = `<div></div><div class="md:col-start-2"><div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>${cardHTML}</div>`;
+                }
+                timelineContainer.appendChild(timelineItem);
+            });
 
             document.querySelectorAll('.timeline-item').forEach(item => {
                 item.addEventListener('click', () => {
@@ -599,135 +592,192 @@
 
             closeModalBtn.addEventListener('click', closeModal);
             experienceModal.addEventListener('click', (e) => {
-                if (e.target === experienceModal) {
-                    closeModal();
-                }
+                if (e.target === experienceModal) { closeModal(); }
             });
-            // Close modal with Escape key
             window.addEventListener('keydown', (e) => {
-                if (e.key === 'Escape' && !experienceModal.classList.contains('hidden')) {
-                    closeModal();
-                }
+                if (e.key === 'Escape' && !experienceModal.classList.contains('hidden')) { closeModal(); }
             });
 
-            // --- Modern CV Generation ---
+            // --- NATIVE PDF CV Generation Logic ---
             const downloadBtn = document.getElementById('download-cv-btn');
             const loader = document.getElementById('pdf-loader');
 
-            const generateModernCV = () => {
-                loader.classList.remove('hidden');
-                setTimeout(() => {
-                    const doc = new jsPDF('p', 'mm', 'a4');
-                    const pageW = doc.internal.pageSize.getWidth();
-                    const margin = 15;
-                    let y = 20;
+            function showLoader() { loader.classList.remove('hidden'); }
+            function hideLoader() { loader.classList.add('hidden'); }
 
-                    // --- PDF Header ---
-                    doc.setFont('helvetica', 'bold');
-                    doc.setFontSize(26);
-                    doc.setTextColor(13, 71, 161); // Dark Blue
-                    doc.text('Suraj N S', margin, y);
-                    
-                    doc.setFont('helvetica', 'normal');
-                    doc.setFontSize(11);
-                    doc.setTextColor(33, 33, 33); // Dark Gray
-                    doc.text('Cybersecurity Analyst & IT Specialist', margin, y + 8);
-                    
-                    doc.setFontSize(9);
-                    doc.setTextColor(117, 117, 117); // Medium Gray
-                    const contactInfo = 'surajvaikom@gmail.com • linkedin.com/in/surajvaikom • github.com/surajvaikom';
-                    doc.text(contactInfo, margin, y + 13);
-                    
+            async function generateModernCV() {
+                try {
+                    showLoader();
+
+                    if (!jsPDF) {
+                        console.error('jsPDF library not loaded.');
+                        hideLoader();
+                        return;
+                    }
+
+                    const pdf = new jsPDF('p', 'pt', 'a4');
+
+                    // --- Document Constants ---
+                    const MARGIN = 40;
+                    const PAGE_WIDTH = pdf.internal.pageSize.getWidth();
+                    const CONTENT_WIDTH = PAGE_WIDTH - MARGIN * 2;
+                    const FONT_SIZES = { H1: 22, H2: 12, H3: 11, BODY: 10, SMALL: 9 };
+                    const LINE_HEIGHT = 1.4;
+                    const ACCENT_COLOR = '#39d3d3';
+                    const TEXT_COLOR = '#c9d1d9';
+                    const SECONDARY_TEXT_COLOR = '#8b949e';
+                    const BG_COLOR = '#0d1117';
+
+                    let y = MARGIN;
+
+                    // Helper for checking page breaks
+                    const checkPageBreak = (heightNeeded) => {
+                        if (y + heightNeeded > pdf.internal.pageSize.getHeight() - MARGIN) {
+                            pdf.addPage();
+                             // Set background for new page
+                            pdf.setFillColor(13, 17, 23);
+                            pdf.rect(0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight(), 'F');
+                            y = MARGIN;
+                        }
+                    };
+
+                    // Set background color for the first page
+                    pdf.setFillColor(13, 17, 23); // --primary-bg
+                    pdf.rect(0, 0, pdf.internal.pageSize.getWidth(), pdf.internal.pageSize.getHeight(), 'F');
+
+                    // --- Header ---
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(FONT_SIZES.H1);
+                    pdf.setTextColor(255, 255, 255);
+                    pdf.text('Suraj N S', PAGE_WIDTH / 2, y, { align: 'center' });
+                    y += FONT_SIZES.H1 * 1.2;
+
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.setFontSize(FONT_SIZES.BODY);
+                    pdf.setTextColor(SECONDARY_TEXT_COLOR);
+                    const contactInfo = `+91 8129331770  |  surajvaikom@gmail.com  |  Kottayam, Kerala`;
+                    const socialLinks = `linkedin.com/in/surajvaikom  |  github.com/surajvaikom`;
+                    pdf.text(contactInfo, PAGE_WIDTH / 2, y, { align: 'center' });
+                    y += FONT_SIZES.BODY * 1.2;
+                    pdf.text(socialLinks, PAGE_WIDTH / 2, y, { align: 'center' });
+                    y += FONT_SIZES.BODY * LINE_HEIGHT;
+
+                    pdf.setDrawColor(48, 54, 61); // --border-color
+                    pdf.line(MARGIN, y, PAGE_WIDTH - MARGIN, y);
                     y += 20;
-                    doc.setDrawColor(224, 224, 224); // Light Gray
-                    doc.setLineWidth(0.5);
-                    doc.line(margin, y, pageW - margin, y);
+
+                    // --- Professional Summary ---
+                    const summary = "A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses. I thrive on the challenge of protecting digital infrastructures from ever-evolving threats. My Master's degree provides a strong foundation, but my true passion lies in the practical application of security: finding vulnerabilities and fixing them before they're exploited.";
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(FONT_SIZES.H2);
+                    pdf.setTextColor(ACCENT_COLOR);
+                    pdf.text('PROFESSIONAL SUMMARY', MARGIN, y);
+                    y += FONT_SIZES.H2 * LINE_HEIGHT;
+
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.setFontSize(FONT_SIZES.BODY);
+                    pdf.setTextColor(TEXT_COLOR);
+                    const summaryLines = pdf.splitTextToSize(summary, CONTENT_WIDTH);
+                    checkPageBreak(summaryLines.length * FONT_SIZES.BODY * 0.8 * LINE_HEIGHT);
+                    pdf.text(summaryLines, MARGIN, y);
+                    y += summaryLines.length * (FONT_SIZES.BODY * 0.8) * LINE_HEIGHT;
+
+                    // --- Experience ---
+                    checkPageBreak(FONT_SIZES.H2 + 20);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(FONT_SIZES.H2);
+                    pdf.setTextColor(ACCENT_COLOR);
+                    pdf.text('PROFESSIONAL EXPERIENCE', MARGIN, y);
+                    y += FONT_SIZES.H2 * LINE_HEIGHT;
+
+                    Object.values(jobDetails).forEach(job => {
+                        const detailsLines = job.details.map(d => pdf.splitTextToSize(`- ${d}`, CONTENT_WIDTH - 15)).flat();
+                        const jobHeight = (FONT_SIZES.H3 * 2) + (detailsLines.length * FONT_SIZES.BODY * 0.8 * LINE_HEIGHT) + 20;
+                        checkPageBreak(jobHeight);
+
+                        pdf.setFont('helvetica', 'bold');
+                        pdf.setFontSize(FONT_SIZES.H3);
+                        pdf.setTextColor(TEXT_COLOR);
+                        pdf.text(`${job.title} | ${job.company}`, MARGIN, y);
+                        pdf.setFont('helvetica', 'normal');
+                        pdf.setTextColor(SECONDARY_TEXT_COLOR);
+                        pdf.text(job.date, PAGE_WIDTH - MARGIN, y, { align: 'right' });
+                        y += FONT_SIZES.H3 * LINE_HEIGHT;
+
+                        pdf.setFontSize(FONT_SIZES.BODY);
+                        pdf.setTextColor(TEXT_COLOR);
+                        pdf.text(detailsLines, MARGIN + 15, y);
+                        y += detailsLines.length * FONT_SIZES.BODY * 0.8 * LINE_HEIGHT + 10;
+                    });
+
+                    // --- Skills ---
+                    const skills = { 'Offensive Security': 'Ethical Hacking, Burp Suite, Nmap, Metasploit', 'IT & Systems Admin': 'ERP Management, Hardware Support, System Config, IT Support', 'Professional Skills': 'Staff Training, Customer Service, Digital Marketing' };
+                    checkPageBreak(FONT_SIZES.H2 + Object.keys(skills).length * FONT_SIZES.BODY * LINE_HEIGHT + 20);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(FONT_SIZES.H2);
+                    pdf.setTextColor(ACCENT_COLOR);
+                    pdf.text('CORE SKILLS', MARGIN, y);
+                    y += FONT_SIZES.H2 * LINE_HEIGHT;
+
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.setFontSize(FONT_SIZES.BODY);
+                    for (const [category, skillList] of Object.entries(skills)) {
+                        checkPageBreak(FONT_SIZES.BODY * LINE_HEIGHT);
+                        pdf.setTextColor(TEXT_COLOR);
+                        pdf.text(`${category}: `, MARGIN, y, { renderingMode: 'fillThenStroke' });
+                        const catWidth = pdf.getStringUnitWidth(category + ': ') * FONT_SIZES.BODY / pdf.internal.scaleFactor;
+                        pdf.setTextColor(SECONDARY_TEXT_COLOR);
+                        pdf.text(skillList, MARGIN + catWidth, y);
+                        y += FONT_SIZES.BODY * LINE_HEIGHT;
+                    }
                     y += 10;
-                    
-                    // --- PDF Section Helpers ---
-                    const addSection = (title, content) => {
-                        if (y > 260) { doc.addPage(); y = 20; }
-                        doc.setFont('helvetica', 'bold');
-                        doc.setFontSize(14);
-                        doc.setTextColor(13, 71, 161);
-                        doc.text(title.toUpperCase(), margin, y);
-                        y += 8;
-                        
-                        doc.setFont('helvetica', 'normal');
-                        doc.setFontSize(10);
-                        doc.setTextColor(33, 33, 33);
-                        content.forEach(item => {
-                             if (y > 270) { doc.addPage(); y = 20; }
-                             const lines = doc.splitTextToSize(item, pageW - margin * 2 - 2);
-                             doc.text(lines, margin + 2, y);
-                             y += (lines.length * 5);
-                        });
-                        y += 6;
-                    };
 
-                    const addExperienceEntry = (job) => {
-                        if (y > 250) { doc.addPage(); y = 20; }
-                        doc.setFont('helvetica', 'bold');
-                        doc.setFontSize(11);
-                        doc.setTextColor(33, 33, 33);
-                        doc.text(job.title, margin, y);
+                    // --- Education ---
+                    const education = [ { years: '2024 - 2025', degree: 'Bachelor of Library and Information Science (BLIS)', school: 'Indira Gandhi National Open University' }, { years: '2013 - 2017', degree: 'Master of Computer Applications (MCA)', school: 'Rajiv Gandhi Institute of Technology, Kottayam' }, { years: '2008 - 2011', degree: 'Bachelor of Science (BSc), Electronics', school: 'School Of Technology And Applied Sciences, Edappally' } ];
+                    checkPageBreak(FONT_SIZES.H2 + education.length * FONT_SIZES.H3 * LINE_HEIGHT + 20);
+                    pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(FONT_SIZES.H2);
+                    pdf.setTextColor(ACCENT_COLOR);
+                    pdf.text('EDUCATION', MARGIN, y);
+                    y += FONT_SIZES.H2 * LINE_HEIGHT;
 
-                        doc.setFont('helvetica', 'normal');
-                        doc.setTextColor(117, 117, 117);
-                        doc.text(job.date, pageW - margin, y, { align: 'right' });
-                        y += 5;
-
-                        doc.setFont('helvetica', 'italic');
-                        doc.setFontSize(10);
-                        doc.text(job.company, margin, y);
-                        y += 6;
-
-                        doc.setFont('helvetica', 'normal');
-                        job.details.forEach(detail => {
-                            if (y > 270) { doc.addPage(); y = 20; }
-                            const detailLines = doc.splitTextToSize(`- ${detail}`, pageW - (margin * 2) - 5);
-                            doc.text(detailLines, margin + 5, y);
-                            y += (detailLines.length * 4.5);
-                        });
-                        y += 4;
-                    };
-                    
-                    // --- Content Extraction & Generation ---
-                    const aboutText = Array.from(document.querySelectorAll('#about .text-gray-400 p')).map(p => p.innerText).join(' ');
-                    addSection('About Me', [aboutText]);
-                    
-                    if (y > 260) { doc.addPage(); y = 20; }
-                    doc.setFont('helvetica', 'bold');
-                    doc.setFontSize(14);
-                    doc.setTextColor(13, 71, 161);
-                    doc.text('PROFESSIONAL EXPERIENCE', margin, y);
-                    y += 8;
-                    Object.values(jobDetails).forEach(job => addExperienceEntry(job));
-
-                    const educationContent = Array.from(document.querySelectorAll('#education .bg-gray-900\\/50')).map(item => {
-                        const date = item.querySelector('p').innerText;
-                        const degree = item.querySelector('h3').innerText;
-                        const school = item.querySelector('p:last-child').innerText;
-                        return `${degree} (${date})\n  ${school}`;
+                    education.forEach(edu => {
+                        checkPageBreak(FONT_SIZES.H3 * LINE_HEIGHT);
+                        pdf.setFont('helvetica', 'bold');
+                        pdf.setFontSize(FONT_SIZES.H3);
+                        pdf.setTextColor(TEXT_COLOR);
+                        pdf.text(`${edu.degree} - ${edu.school}`, MARGIN, y);
+                         pdf.setFont('helvetica', 'normal');
+                        pdf.setTextColor(SECONDARY_TEXT_COLOR);
+                        pdf.text(edu.years, PAGE_WIDTH - MARGIN, y, { align: 'right' });
+                        y += FONT_SIZES.H3 * LINE_HEIGHT;
                     });
-                    addSection('Education', educationContent);
+                     y += 10;
 
-                    const skillsContent = Array.from(document.querySelectorAll('#skills .bg-gray-900\\/50')).map(item => {
-                         const title = item.querySelector('h3').innerText;
-                         const skills = Array.from(item.querySelectorAll('.skill-tag')).map(s => s.innerText).join(', ');
-                         return `${title}:\n${skills}`;
-                    });
-                    addSection('Skills', skillsContent);
+                    // --- Certifications ---
+                     const certifications = [ 'Google Cybersecurity Specialization - Google', 'Certified Cyber Security Analyst - ICT Academy of Kerala', 'Practical Ethical Hacking - TCM Security', 'Jr Penetration Tester - TryHackMe', 'Foundation Level Threat Intelligence Analyst - arcX', 'Artificial Intelligence & Cybersecurity Fundamentals - IBM' ];
+                    const certLines = pdf.splitTextToSize(certifications.join(' | '), CONTENT_WIDTH);
+                    checkPageBreak(FONT_SIZES.H2 + certLines.length * FONT_SIZES.BODY * LINE_HEIGHT + 20);
+                     pdf.setFont('helvetica', 'bold');
+                    pdf.setFontSize(FONT_SIZES.H2);
+                    pdf.setTextColor(ACCENT_COLOR);
+                    pdf.text('CERTIFICATIONS', MARGIN, y);
+                    y += FONT_SIZES.H2 * LINE_HEIGHT;
 
-                    const certificationsContent = Array.from(document.querySelectorAll('#certifications-list .cert-item')).map(item => {
-                        return `- ${item.innerText.replace(' - ', ' - ')}`;
-                    });
-                    addSection('Certifications', certificationsContent);
+                    pdf.setFont('helvetica', 'normal');
+                    pdf.setFontSize(FONT_SIZES.BODY);
+                    pdf.setTextColor(TEXT_COLOR);
+                    pdf.text(certLines, MARGIN, y);
 
-                    doc.save('Suraj_N_S_CV.pdf');
-                    loader.classList.add('hidden');
-                }, 50);
-            };
+                    // --- Save ---
+                    pdf.save('Suraj_N_S_Resume.pdf');
+
+                } catch (err) {
+                    console.error('Error generating CV:', err);
+                } finally {
+                    hideLoader();
+                }
+            }
 
             downloadBtn.addEventListener('click', generateModernCV);
 
