@@ -1,176 +1,282 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Suraj N S portfolio website for cybersecurity, penetration testing, digital defense, and IT support roles.">
-  <title>Suraj N S | Cybersecurity Professional</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta
+    name="description"
+    content="Suraj N S | Aspiring Security Analyst, SOC Enthusiast, and IT Support Professional portfolio."
+>
+<title>Suraj N S | Security Portfolio</title>
+<link
+    rel="icon"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 48 48'%3E%3Cpath d='M24 4L10 10V22C10 31 15.8 39.2 24 42C32.2 39.2 38 31 38 22V10L24 4Z' fill='%2306111d' stroke='%2387edff' stroke-width='3'/%3E%3Cpath d='M18 22L22 26L30 18' fill='none' stroke='%2387edff' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E"
+>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <canvas id="network-canvas" aria-hidden="true"></canvas>
+<canvas id="network-canvas" aria-hidden="true"></canvas>
 
-  <header class="site-header" id="header">
-    <div class="container header-inner">
-      <a href="#home" class="brand" aria-label="Suraj N S home">
-        <span class="brand-icon" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 2 5 5.25V11c0 4.36 2.78 8.45 7 9.75 4.22-1.3 7-5.39 7-9.75V5.25L12 2Z"></path>
-            <path d="M12 8.1c-1.72 0-3.1 1.38-3.1 3.08v1.06H8v4.2h8v-4.2h-.9v-1.06c0-1.7-1.38-3.08-3.1-3.08Zm0 1.7c.77 0 1.39.62 1.39 1.38v1.06h-2.78v-1.06c0-.76.62-1.38 1.39-1.38Z"></path>
-          </svg>
-        </span>
-        <span>Suraj N S</span>
-      </a>
+<div class="page-shell">
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="#home" aria-label="Suraj N S home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+                        <path d="M24 4L10 10V22C10 31 15.8 39.2 24 42C32.2 39.2 38 31 38 22V10L24 4Z"></path>
+                        <path d="M18 22L22 26L30 18"></path>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>Suraj N S</strong>
+                    <span>Security + IT Portfolio</span>
+                </span>
+            </a>
 
-      <button class="menu-toggle" id="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-      </button>
+            <button
+                class="menu-toggle"
+                id="menu-toggle"
+                type="button"
+                aria-expanded="false"
+                aria-controls="site-nav"
+                aria-label="Toggle navigation"
+            >
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
 
-      <nav class="site-nav" id="site-nav">
-        <a href="#home" class="nav-active">Home</a>
-        <a href="#about">About</a>
-        <a href="#experience">Experience</a>
-        <a href="#education">Education</a>
-        <a href="#skills">Skills</a>
-        <a href="#certifications">Certifications</a>
-        <a href="#contact">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main id="home">
-    <section class="hero-section section">
-      <div class="container hero-grid">
-        <div class="hero-copy">
-          <p class="status-line" id="connection-status">Establishing secure connection...</p>
-          <h1>Suraj N S</h1>
-          <p class="hero-role" id="hero-role">Cybersecurity Professional</p>
-          <p class="hero-summary">
-            A certified Cybersecurity Analyst and IT Specialist with a passion for defending systems,
-            hunting threats, and building resilient security posture.
-          </p>
-          <div class="hero-actions">
-            <button class="button button-primary" id="download-resume" type="button">Download Resume</button>
-            <a class="button button-secondary" href="#contact">Get In Touch</a>
-          </div>
-          <div class="hero-highlights" id="hero-highlights"></div>
+            <nav class="site-nav" id="site-nav">
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#projects">Projects</a>
+                <a href="#skills">Skills</a>
+                <a href="#certifications">Certifications</a>
+                <a href="#contact">Contact</a>
+            </nav>
         </div>
+    </header>
 
-        <div class="hero-visual">
-          <div class="shield-panel">
-            <svg viewBox="0 0 460 460" class="hero-shield" aria-hidden="true">
-              <defs>
-                <radialGradient id="shieldGlow" cx="50%" cy="88%" r="42%">
-                  <stop offset="0%" stop-color="rgba(83,225,255,1)"></stop>
-                  <stop offset="100%" stop-color="rgba(83,225,255,0)"></stop>
-                </radialGradient>
-                <linearGradient id="shieldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
-                  <stop offset="0%" stop-color="#8cf0ff"></stop>
-                  <stop offset="100%" stop-color="#1eb6eb"></stop>
-                </linearGradient>
-              </defs>
-              <ellipse cx="230" cy="372" rx="132" ry="34" fill="url(#shieldGlow)"></ellipse>
-              <ellipse cx="230" cy="374" rx="164" ry="54" class="ring"></ellipse>
-              <ellipse cx="230" cy="374" rx="118" ry="38" class="ring"></ellipse>
-              <path class="shield-outline" d="M230 58 136 97v80c0 72 41 139 94 171 53-32 94-99 94-171V97l-94-39Z"></path>
-              <path class="shield-inner" d="M230 83 159 113v61c0 55 31 107 71 133 40-26 71-78 71-133v-61l-71-30Z"></path>
-              <path class="lock-shape" d="M230 156c-28 0-50 22-50 50v22h-18v96h136v-96h-18v-22c0-28-22-50-50-50Zm0 28c12 0 22 10 22 22v22h-44v-22c0-12 10-22 22-22Z"></path>
-            </svg>
-            <div class="shield-meta">
-              <p>Availability</p>
-              <strong>Open to remote and hybrid roles</strong>
-              <p>Base</p>
-              <strong>Kottayam, Kerala</strong>
-              <p>Focus</p>
-              <strong>Security operations and offensive testing</strong>
+    <main>
+        <section class="hero section" id="home">
+            <div class="container hero-grid">
+                <div class="hero-copy" data-reveal>
+                    <p class="status-line" id="status-line">Recruiter-ready profile syncing...</p>
+                    <h1 class="hero-name" data-text="Suraj N S">Suraj N S</h1>
+                    <p class="hero-role" id="hero-role">Aspiring Security Analyst</p>
+                    <div class="hero-tags" aria-label="Key role focus">
+                        <span>SOC Enthusiast</span>
+                        <span>Threat Detection</span>
+                        <span>Incident Response</span>
+                    </div>
+                    <p class="hero-summary">
+                        Detail-oriented cybersecurity professional with hands-on experience in
+                        IT support, vulnerability assessment, penetration testing, ERP support,
+                        and secure systems operations across Windows and Linux environments.
+                    </p>
+                    <div class="hero-actions">
+                        <button class="button button-primary" id="download-resume" type="button">
+                            Download ATS Resume
+                        </button>
+                        <a class="button button-secondary" href="#experience">View Experience</a>
+                    </div>
+                    <div class="hero-links">
+                        <a href="mailto:surajvaikom@gmail.com">surajvaikom@gmail.com</a>
+                        <a href="https://www.linkedin.com/in/surajvaikom/" target="_blank" rel="noreferrer">LinkedIn</a>
+                        <a href="https://github.com/surajvaikom" target="_blank" rel="noreferrer">GitHub</a>
+                        <span>Vaikom, Kottayam, Kerala</span>
+                    </div>
+                </div>
+
+                <div class="hero-visual" data-reveal>
+                    <div class="visual-ring ring-a"></div>
+                    <div class="visual-ring ring-b"></div>
+                    <div class="visual-grid"></div>
+                    <svg class="shield-art" viewBox="0 0 360 400" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="shieldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#7fe9ff"></stop>
+                                <stop offset="100%" stop-color="#17a3ff"></stop>
+                            </linearGradient>
+                        </defs>
+                        <path
+                            class="shield-outline"
+                            d="M180 20L82 62V158C82 225 123 292 180 324C237 292 278 225 278 158V62L180 20Z"
+                        ></path>
+                        <path
+                            class="shield-core"
+                            d="M180 64L118 91V150C118 194 143 236 180 259C217 236 242 194 242 150V91L180 64Z"
+                        ></path>
+                        <path class="shield-line" d="M180 64V259"></path>
+                        <path class="shield-line" d="M118 91L242 150"></path>
+                        <path class="shield-line" d="M242 91L118 150"></path>
+                        <circle class="shield-node" cx="180" cy="64" r="6"></circle>
+                        <circle class="shield-node" cx="118" cy="91" r="5"></circle>
+                        <circle class="shield-node" cx="242" cy="91" r="5"></circle>
+                        <circle class="shield-node" cx="118" cy="150" r="5"></circle>
+                        <circle class="shield-node" cx="242" cy="150" r="5"></circle>
+                        <circle class="shield-node" cx="180" cy="259" r="6"></circle>
+                        <path class="lock-shape" d="M163 182V169C163 157 171 149 180 149C189 149 197 157 197 169V182"></path>
+                        <rect class="lock-body" x="154" y="182" width="52" height="52" rx="12"></rect>
+                    </svg>
+                    <div class="signal-card card-top-left">
+                        <span class="signal-label">Security Focus</span>
+                        <strong>OWASP Top 10</strong>
+                        <small>Testing + Reporting</small>
+                    </div>
+                    <div class="signal-card card-bottom-left">
+                        <span class="signal-label">Operations</span>
+                        <strong>ERP + IT Support</strong>
+                        <small>Windows / Linux systems</small>
+                    </div>
+                    <div class="signal-card card-bottom-right">
+                        <span class="signal-label">Learning Path</span>
+                        <strong>TryHackMe + Labs</strong>
+                        <small>SOC and VAPT growth</small>
+                    </div>
+                </div>
             </div>
-          </div>
+        </section>
+
+        <section class="section strength-band" id="about">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <h2>About</h2>
+                    <p>
+                        A profile shaped by both hands-on infrastructure support and practical
+                        cybersecurity work, with an emphasis on real troubleshooting, secure
+                        operations, and clear reporting.
+                    </p>
+                </div>
+
+                <div class="about-grid">
+                    <article class="glass-panel about-story" data-reveal>
+                        <h3>Professional Summary</h3>
+                        <p>
+                            I enjoy finding vulnerabilities, analyzing suspicious behavior,
+                            improving operational resilience, and turning technical issues into
+                            clear action. My background spans technical support, ERP operations,
+                            penetration testing, digital forensics exposure, and secure system
+                            administration.
+                        </p>
+                        <p>
+                            I am currently targeting roles in Security Operations, VAPT, IT
+                            Support, System Administration, and entry-level SOC environments.
+                        </p>
+                    </article>
+
+                    <div class="strength-grid">
+                        <article class="strength-card" data-reveal>
+                            <h3>Threat Visibility</h3>
+                            <p>Log analysis, alert interpretation, reconnaissance, and attack surface review.</p>
+                        </article>
+                        <article class="strength-card" data-reveal>
+                            <h3>Security Testing</h3>
+                            <p>Hands-on work with Burp Suite, Nmap, Wireshark, Nessus, OpenVAS, and Metasploit.</p>
+                        </article>
+                        <article class="strength-card" data-reveal>
+                            <h3>Systems Support</h3>
+                            <p>Windows and Linux installation, troubleshooting, ERP assistance, and end-user support.</p>
+                        </article>
+                        <article class="strength-card" data-reveal>
+                            <h3>Clear Delivery</h3>
+                            <p>Documentation, incident notes, operational reporting, and user-facing technical communication.</p>
+                        </article>
+                    </div>
+                </div>
+
+                <div class="focus-row" data-reveal id="focus-row"></div>
+            </div>
+        </section>
+
+        <section class="section" id="experience">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <h2>Experience</h2>
+                    <p>
+                        Experience across cybersecurity internships, IT infrastructure support,
+                        ERP operations, and secure data handling.
+                    </p>
+                </div>
+                <div class="timeline" id="experience-list"></div>
+            </div>
+        </section>
+
+        <section class="section" id="projects">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <h2>Projects</h2>
+                    <p>
+                        Lab-driven work that demonstrates practical security analysis, testing,
+                        and reporting ability.
+                    </p>
+                </div>
+                <div class="projects-grid" id="projects-list"></div>
+            </div>
+        </section>
+
+        <section class="section" id="skills">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <h2>Skills</h2>
+                    <p>
+                        A balanced stack across threat detection, network security, operating
+                        systems, tooling, and recruiter-relevant support capabilities.
+                    </p>
+                </div>
+                <div class="skill-clusters" id="skills-list"></div>
+            </div>
+        </section>
+
+        <section class="section" id="certifications">
+            <div class="container">
+                <div class="section-heading" data-reveal>
+                    <h2>Certifications</h2>
+                    <p>
+                        Ongoing learning across cybersecurity operations, threat intelligence,
+                        ethical hacking, and applied fundamentals.
+                    </p>
+                </div>
+
+                <div class="credentials-grid">
+                    <div class="credentials-card glass-panel" data-reveal>
+                        <h3>Certifications</h3>
+                        <div class="certification-list" id="certifications-list"></div>
+                    </div>
+
+                    <div class="credentials-card glass-panel" data-reveal>
+                        <h3>Education</h3>
+                        <div class="education-list" id="education-list"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section contact-section" id="contact">
+            <div class="container">
+                <div class="contact-panel glass-panel" data-reveal>
+                    <div class="contact-copy">
+                        <h2>Contact</h2>
+                        <p>
+                            Open to Security Operations, VAPT, IT Support, and system-focused roles.
+                            If you want someone who can troubleshoot clearly and keep learning fast,
+                            let&apos;s connect.
+                        </p>
+                    </div>
+                    <div class="contact-grid" id="contact-list"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> Suraj N S. Built for recruiter-friendly clarity and ATS-ready downloads.</p>
+            <a href="#home">Back to top</a>
         </div>
-      </div>
-    </section>
+    </footer>
+</div>
 
-    <section class="section" id="about">
-      <div class="container two-column">
-        <div class="about-left">
-          <p class="section-label">About Me</p>
-          <h2>Analytical. Curious. Security-first.</h2>
-          <p class="lead-copy">
-            I'm a cybersecurity professional focused on monitoring, detecting, and responding to threats across
-            modern IT environments. I combine hands-on experience with a strong foundation in security principles
-            to help organizations stay secure and resilient.
-          </p>
-          <div class="about-facts" id="about-facts"></div>
-        </div>
-
-        <div class="about-right">
-          <article class="what-card">
-            <h3>What I Do</h3>
-            <div class="what-list" id="what-list"></div>
-          </article>
-        </div>
-      </div>
-    </section>
-
-    <section class="section" id="experience">
-      <div class="container">
-        <p class="section-label">Experience</p>
-        <h2 class="section-heading">Professional work across security, IT, and support operations.</h2>
-        <div class="experience-list" id="experience-list"></div>
-      </div>
-    </section>
-
-    <section class="section" id="education">
-      <div class="container">
-        <p class="section-label">Education</p>
-        <h2 class="section-heading">Academic foundations that support practical security work.</h2>
-        <div class="education-grid" id="education-grid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="skills">
-      <div class="container">
-        <p class="section-label">Skills</p>
-        <h2 class="section-heading">Technical range from security analysis to infrastructure support.</h2>
-        <div class="skills-grid" id="skills-grid"></div>
-      </div>
-    </section>
-
-    <section class="section" id="certifications">
-      <div class="container">
-        <p class="section-label">Certifications</p>
-        <div class="certifications-grid" id="certifications-grid"></div>
-      </div>
-    </section>
-
-    <section class="section contact-section" id="contact">
-      <div class="container contact-strip">
-        <div class="contact-intro">
-          <p class="section-label">Let's Connect</p>
-          <p>
-            Have a project in mind or want to collaborate? Feel free to reach out.
-          </p>
-        </div>
-        <div class="contact-details" id="contact-details"></div>
-      </div>
-    </section>
-  </main>
-
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <div class="footer-brand">
-        <span class="brand-icon small" aria-hidden="true">
-          <svg viewBox="0 0 24 24">
-            <path d="M12 2 5 5.25V11c0 4.36 2.78 8.45 7 9.75 4.22-1.3 7-5.39 7-9.75V5.25L12 2Z"></path>
-            <path d="M12 8.1c-1.72 0-3.1 1.38-3.1 3.08v1.06H8v4.2h8v-4.2h-.9v-1.06c0-1.7-1.38-3.08-3.1-3.08Zm0 1.7c.77 0 1.39.62 1.39 1.38v1.06h-2.78v-1.06c0-.76.62-1.38 1.39-1.38Z"></path>
-          </svg>
-        </span>
-        <span>Suraj N S</span>
-      </div>
-      <p id="footer-copy"></p>
-    </div>
-  </footer>
-
-  <script src="script.js"></script>
+<script src="script.js"></script>
 </body>
 </html>
