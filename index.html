@@ -1,795 +1,176 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
-
+<html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Suraj N S | Cybersecurity Professional</title>
-    <!-- Favicon -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📟</text></svg>">
-
-    <!-- Tailwind CDN -->
-    <script src="https://cdn.tailwindcss.com"></script>
-
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-
-    <!-- jsPDF (html2canvas is no longer needed for the PDF) -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-
-    <style>
-        :root {
-            --primary-bg: #0d1117;
-            --secondary-bg: #161b22;
-            --border-color: #30363d;
-            --text-primary: #c9d1d9;
-            --text-secondary: #8b949e;
-            --accent-cyan: #39d3d3;
-            --accent-glow: rgba(57, 211, 211, 0.5);
-        }
-
-        html, body {
-            width: 100%;
-            overflow-x: hidden;
-        }
-
-        body {
-            font-family: 'Poppins', sans-serif;
-            background-color: var(--primary-bg);
-            color: var(--text-primary);
-        }
-
-        #plexus-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            z-index: -1;
-            pointer-events: none;
-        }
-
-        .header-glass {
-            background: rgba(13, 17, 23, 0.8);
-            backdrop-filter: blur(12px);
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .font-mono {
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        .fade-in-section {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-        }
-
-        .fade-in-section.is-visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        ::-webkit-scrollbar { width: 10px; }
-        ::-webkit-scrollbar-track { background: var(--primary-bg); }
-        ::-webkit-scrollbar-thumb { background: var(--accent-cyan); border-radius: 10px; border: 2px solid var(--primary-bg); }
-        ::-webkit-scrollbar-thumb:hover { background: white; }
-
-        .spinner {
-            border: 4px solid rgba(255, 255, 255, 0.12);
-            border-radius: 50%;
-            border-top-color: var(--accent-cyan);
-            width: 50px;
-            height: 50px;
-            animation: spin 1s linear infinite;
-        }
-
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .typing-cursor {
-            display: inline-block;
-            width: 3px;
-            height: 1em;
-            background-color: var(--accent-cyan);
-            margin-left: 5px;
-            animation: blink 0.7s infinite;
-        }
-
-        @keyframes blink {
-            50% { opacity: 0; }
-        }
-
-        .card-3d {
-            transform-style: preserve-3d;
-            transition: transform 0.4s ease-out, box-shadow 0.4s ease-out;
-        }
-
-        .glitch-text {
-            position: relative;
-            color: white;
-            line-height: 0.9;
-        }
-
-        .glitch-text::after, .glitch-text::before {
-            content: attr(data-text);
-            position: absolute;
-            left: 0; top: 0;
-            width: 100%;
-            overflow: hidden;
-            clip: rect(0, 9999px, 0, 0);
-            transform: translate3d(0,0,0);
-        }
-
-        .glitch-text::before { left: 2px; text-shadow: -2px 0 var(--accent-cyan); opacity: 0.6; }
-        .glitch-text::after { left: -2px; text-shadow: -2px 0 #ff7b7b; opacity: 0.4; }
-
-        @media (max-width: 768px) {
-            .glitch-text { font-size: 3rem !important; }
-        }
-
-        /* Replaced @apply rules with plain CSS */
-        .skill-tag {
-            background-color: rgba(31, 41, 55, 1); /* gray-800 */
-            color: #9ca3af; /* text-gray-400 */
-            padding: 5px 10px;
-            border-radius: 8px;
-            font-size: 0.85rem;
-            font-family: 'Roboto Mono', monospace;
-        }
-
-        .cert-item {
-            background-color: rgba(31, 41, 55, 0.5);
-            border: 1px solid #111827;
-            padding: 12px;
-            border-radius: 10px;
-            color: #9ca3af;
-            transition: all 0.25s ease;
-        }
-        .cert-item:hover {
-            border-color: var(--accent-cyan);
-            background-color: rgba(31, 41, 55, 1);
-        }
-
-        .experience-details {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s cubic-bezier(0.25, 0.1, 0.25, 1), opacity 0.3s ease-in-out, margin-top 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
-            opacity: 0;
-            margin-top: 0;
-        }
-
-        .timeline-item .card-3d:hover .experience-details {
-            max-height: 400px; /* Adjust if content overflows */
-            opacity: 1;
-            margin-top: 1rem; /* Equivalent to mt-4 */
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Suraj N S portfolio website for cybersecurity, penetration testing, digital defense, and IT support roles.">
+  <title>Suraj N S | Cybersecurity Professional</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
+<body>
+  <canvas id="network-canvas" aria-hidden="true"></canvas>
 
-<body class="antialiased">
-    <div id="page-wrapper" class="w-full overflow-x-hidden">
-        <!-- Plexus background canvas -->
-        <canvas id="plexus-bg"></canvas>
+  <header class="site-header" id="header">
+    <div class="container header-inner">
+      <a href="#home" class="brand" aria-label="Suraj N S home">
+        <span class="brand-icon" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2 5 5.25V11c0 4.36 2.78 8.45 7 9.75 4.22-1.3 7-5.39 7-9.75V5.25L12 2Z"></path>
+            <path d="M12 8.1c-1.72 0-3.1 1.38-3.1 3.08v1.06H8v4.2h8v-4.2h-.9v-1.06c0-1.7-1.38-3.08-3.1-3.08Zm0 1.7c.77 0 1.39.62 1.39 1.38v1.06h-2.78v-1.06c0-.76.62-1.38 1.39-1.38Z"></path>
+          </svg>
+        </span>
+        <span>Suraj N S</span>
+      </a>
 
-        <!-- PDF Loader -->
-        <div id="pdf-loader" class="hidden fixed inset-0 bg-black bg-opacity-80 z-[100] flex flex-col justify-center items-center p-4 transition-opacity duration-300">
-            <div class="spinner"></div>
-            <p class="mt-4 text-lg font-mono text-white">Generating Secure Document...</p>
+      <button class="menu-toggle" id="menu-toggle" aria-controls="site-nav" aria-expanded="false" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav">
+        <a href="#home" class="nav-active">Home</a>
+        <a href="#about">About</a>
+        <a href="#experience">Experience</a>
+        <a href="#education">Education</a>
+        <a href="#skills">Skills</a>
+        <a href="#certifications">Certifications</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="home">
+    <section class="hero-section section">
+      <div class="container hero-grid">
+        <div class="hero-copy">
+          <p class="status-line" id="connection-status">Establishing secure connection...</p>
+          <h1>Suraj N S</h1>
+          <p class="hero-role" id="hero-role">Cybersecurity Professional</p>
+          <p class="hero-summary">
+            A certified Cybersecurity Analyst and IT Specialist with a passion for defending systems,
+            hunting threats, and building resilient security posture.
+          </p>
+          <div class="hero-actions">
+            <button class="button button-primary" id="download-resume" type="button">Download Resume</button>
+            <a class="button button-secondary" href="#contact">Get In Touch</a>
+          </div>
+          <div class="hero-highlights" id="hero-highlights"></div>
         </div>
 
-        <!-- Header -->
-        <header id="header" class="header-glass fixed top-0 left-0 right-0 z-50 transition-all duration-300">
-            <div class="container mx-auto px-4 sm:px-6 py-4 flex justify-between items-center">
-                <a href="#" class="group" aria-label="Home">
-                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="transition-all duration-300 group-hover:drop-shadow-[0_0_5px_var(--accent-glow)]">
-                        <path d="M12 2L4 6V12C4 16.97 7.58 21.5 12 22.5C16.42 21.5 20 16.97 20 12V6L12 2Z" class="stroke-cyan-400" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <text x="50%" y="55%" dominant-baseline="middle" text-anchor="middle" class="font-mono font-bold text-xs fill-current text-cyan-400 group-hover:text-white transition-colors">SNS</text>
-                    </svg>
-                </a>
-                <nav id="desktop-nav" class="hidden md:flex space-x-8 items-center font-mono">
-                    <a href="#about" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/about</a>
-                    <a href="#experience" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/experience</a>
-                    <a href="#education" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/education</a>
-                    <a href="#skills" class="text-gray-400 hover:text-cyan-400 transition-all duration-300 transform hover:-translate-y-0.5">/skills</a>
-                    <a href="#contact" class="bg-cyan-500/10 text-cyan-400 border border-cyan-400 px-5 py-2 rounded-md hover:bg-cyan-500/20 transition-all shadow-[0_0_15px_rgba(57,211,211,0.4)] transform hover:scale-105">contact()</a>
-                </nav>
-                <button id="mobile-menu-button" class="md:hidden text-gray-300" aria-label="Open menu">
-                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
+        <div class="hero-visual">
+          <div class="shield-panel">
+            <svg viewBox="0 0 460 460" class="hero-shield" aria-hidden="true">
+              <defs>
+                <radialGradient id="shieldGlow" cx="50%" cy="88%" r="42%">
+                  <stop offset="0%" stop-color="rgba(83,225,255,1)"></stop>
+                  <stop offset="100%" stop-color="rgba(83,225,255,0)"></stop>
+                </radialGradient>
+                <linearGradient id="shieldStroke" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#8cf0ff"></stop>
+                  <stop offset="100%" stop-color="#1eb6eb"></stop>
+                </linearGradient>
+              </defs>
+              <ellipse cx="230" cy="372" rx="132" ry="34" fill="url(#shieldGlow)"></ellipse>
+              <ellipse cx="230" cy="374" rx="164" ry="54" class="ring"></ellipse>
+              <ellipse cx="230" cy="374" rx="118" ry="38" class="ring"></ellipse>
+              <path class="shield-outline" d="M230 58 136 97v80c0 72 41 139 94 171 53-32 94-99 94-171V97l-94-39Z"></path>
+              <path class="shield-inner" d="M230 83 159 113v61c0 55 31 107 71 133 40-26 71-78 71-133v-61l-71-30Z"></path>
+              <path class="lock-shape" d="M230 156c-28 0-50 22-50 50v22h-18v96h136v-96h-18v-22c0-28-22-50-50-50Zm0 28c12 0 22 10 22 22v22h-44v-22c0-12 10-22 22-22Z"></path>
+            </svg>
+            <div class="shield-meta">
+              <p>Availability</p>
+              <strong>Open to remote and hybrid roles</strong>
+              <p>Base</p>
+              <strong>Kottayam, Kerala</strong>
+              <p>Focus</p>
+              <strong>Security operations and offensive testing</strong>
             </div>
-            <div id="mobile-menu" class="hidden md:hidden bg-black/50 px-4 sm:px-6 pb-4">
-                <a href="#about" class="block py-2 text-gray-300 hover:text-cyan-400">/about</a>
-                <a href="#experience" class="block py-2 text-gray-300 hover:text-cyan-400">/experience</a>
-                <a href="#education" class="block py-2 text-gray-300 hover:text-cyan-400">/education</a>
-                <a href="#skills" class="block py-2 text-gray-300 hover:text-cyan-400">/skills</a>
-                <a href="#contact" class="block mt-2 text-center bg-cyan-500/10 text-cyan-400 border border-cyan-400 px-4 py-2 rounded-md">contact()</a>
-            </div>
-        </header>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        <main class="container mx-auto px-4 sm:px-6 pt-28 relative z-10">
+    <section class="section" id="about">
+      <div class="container two-column">
+        <div class="about-left">
+          <p class="section-label">About Me</p>
+          <h2>Analytical. Curious. Security-first.</h2>
+          <p class="lead-copy">
+            I'm a cybersecurity professional focused on monitoring, detecting, and responding to threats across
+            modern IT environments. I combine hands-on experience with a strong foundation in security principles
+            to help organizations stay secure and resilient.
+          </p>
+          <div class="about-facts" id="about-facts"></div>
+        </div>
 
-            <section id="hero" class="min-h-[80vh] flex items-center fade-in-section">
-                <div class="w-full">
-                    <p id="connection-status" class="font-mono text-cyan-400">Establishing secure connection...</p>
-                    <h1 class="text-4xl sm:text-6xl md:text-8xl font-bold mt-4 glitch-text" data-text="Suraj N S">Suraj N S</h1>
-                    <h2 id="animated-subtitle" class="text-xl sm:text-3xl md:text-4xl font-bold text-gray-400 mt-4 min-h-[3rem] sm:min-h-[4rem]"></h2>
-                    <p class="mt-6 text-gray-400 max-w-2xl text-base sm:text-lg">A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses.</p>
-                    <div class="mt-10 flex flex-wrap gap-4">
-                        <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="bg-cyan-500 text-black font-bold py-3 px-8 rounded-md hover:bg-cyan-400 transition-all shadow-lg shadow-cyan-500/20 transform hover:scale-105">Send Secure Message</a>
-                        <button id="download-cv-btn" class="bg-gray-800 text-cyan-400 font-bold py-3 px-8 rounded-md border border-cyan-800 hover:bg-gray-700 transition-all transform hover:scale-105">Download CV</button>
-                    </div>
-                </div>
-            </section>
+        <div class="about-right">
+          <article class="what-card">
+            <h3>What I Do</h3>
+            <div class="what-list" id="what-list"></div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <section id="about" class="py-24 fade-in-section">
-                <div class="grid md:grid-cols-5 gap-12 items-center">
-                    <div class="md:col-span-2">
-                        <div class="relative w-full max-w-sm mx-auto group">
-                            <div class="absolute inset-0 border-2 border-cyan-400 rounded-xl transform -rotate-3 transition-transform duration-300 group-hover:rotate-0"></div>
-                            <img src="profile.jpg" alt="Suraj N S" class="relative w-full object-cover rounded-xl shadow-2xl z-10 filter grayscale group-hover:grayscale-0 transition-all duration-300 transform group-hover:scale-105" id="profile-image">
-                        </div>
-                    </div>
-                    <div class="md:col-span-3">
-                        <h2 class="text-3xl font-bold font-mono text-white">/About_Me</h2>
-                        <div class="mt-6 space-y-4 text-gray-400 text-lg border-l-2 border-gray-700 pl-6">
-                            <p>I thrive on the challenge of protecting digital infrastructures from ever-evolving threats. My Master's degree provides a strong foundation, but my true passion lies in the practical application of security: finding vulnerabilities and fixing them before they're exploited.</p>
-                            <p>With hands-on experience using tools like <b class="text-cyan-300">Burp Suite, Nmap, and Metasploit,</b> I have a ground-level understanding of the systems I work to secure, allowing me to build more resilient defenses.</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
+    <section class="section" id="experience">
+      <div class="container">
+        <p class="section-label">Experience</p>
+        <h2 class="section-heading">Professional work across security, IT, and support operations.</h2>
+        <div class="experience-list" id="experience-list"></div>
+      </div>
+    </section>
 
-            <section id="experience" class="py-24 fade-in-section">
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold font-mono text-white">/Professional_Experience</h2>
-                    <p class="mt-4 max-w-3xl mx-auto text-gray-500">Executing roles across IT, security, and client management.</p>
-                </div>
-                <div id="experience-timeline" class="mt-12 relative">
-                    <div class="absolute w-0.5 h-full bg-gray-700 left-4 transform -translate-x-1/2 md:left-1/2"></div>
-                    <div id="timeline-items" class="space-y-12">
-                        <!-- Timeline Items will be populated here by JS -->
-                    </div>
-                </div>
-            </section>
+    <section class="section" id="education">
+      <div class="container">
+        <p class="section-label">Education</p>
+        <h2 class="section-heading">Academic foundations that support practical security work.</h2>
+        <div class="education-grid" id="education-grid"></div>
+      </div>
+    </section>
 
-            <section id="education" class="py-24 fade-in-section">
-                <div class="text-center">
-                    <h2 class="text-3xl font-bold font-mono text-white">/Education</h2>
-                    <p class="mt-4 max-w-3xl mx-auto text-gray-500">My academic background and qualifications.</p>
-                </div>
-                <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
-                        <p class="font-mono text-cyan-400">2024 - 2025</p>
-                        <h3 class="text-xl font-bold text-white mt-2">Bachelor of Library and Information Science (BLIS)</h3>
-                        <p class="text-gray-400 mt-1">Indira Gandhi National Open University</p>
-                    </div>
-                    <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
-                        <p class="font-mono text-cyan-400">2013 - 2017</p>
-                        <h3 class="text-xl font-bold text-white mt-2">Master of Computer Applications (MCA)</h3>
-                        <p class="text-gray-400 mt-1">Rajiv Gandhi Institute of Technology, Kottayam, Kerala</p>
-                    </div>
-                    <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg">
-                        <p class="font-mono text-cyan-400">2008 - 2011</p>
-                        <h3 class="text-xl font-bold text-white mt-2">Bachelor of Science (BSc), Electronics</h3>
-                        <p class="text-gray-400 mt-1">School Of Technology And Applied Sciences, Edappally, Kerala</p>
-                    </div>
-                </div>
-            </section>
+    <section class="section" id="skills">
+      <div class="container">
+        <p class="section-label">Skills</p>
+        <h2 class="section-heading">Technical range from security analysis to infrastructure support.</h2>
+        <div class="skills-grid" id="skills-grid"></div>
+      </div>
+    </section>
 
-            <section id="skills" class="py-24 fade-in-section">
-            <div class="text-center">
-                <h2 class="text-3xl font-bold font-mono text-white">/Core_Skillset</h2>
-                <p class="mt-4 max-w-3xl mx-auto text-gray-500">My arsenal of technical tools and professional abilities.</p>
-            </div>
-            <div class="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
-                    <h3 class="text-xl font-bold text-white font-mono">Cybersecurity</h3>
-                    <p class="text-gray-500 mt-2">Offensive security, analysis, and threat management.</p>
-                    <div class="mt-6 flex flex-wrap gap-3">
-                         <span class="skill-tag">Penetration Testing</span><span class="skill-tag">Vulnerability Management</span><span class="skill-tag">SIEM</span><span class="skill-tag">Incident Response</span><span class="skill-tag">Network Security</span><span class="skill-tag">OWASP Top 10</span><span class="skill-tag">SOC</span>
-                    </div>
-                </div>
-                <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
-                    <h3 class="text-xl font-bold text-white font-mono">IT & Technical Skills</h3>
-                    <p class="text-gray-500 mt-2">ERP, support, and scripting.</p>
-                    <div class="mt-6 flex flex-wrap gap-3">
-                         <span class="skill-tag">ERP Management</span><span class="skill-tag">Technical Support</span><span class="skill-tag">Python</span><span class="skill-tag">System Config</span><span class="skill-tag">Remote Troubleshooting</span><span class="skill-tag">Protocols (TCP/IP)</span>
-                    </div>
-                </div>
-                <div class="card-3d bg-gray-900/50 border border-gray-800 p-8 rounded-lg transition-all duration-300 hover:border-cyan-400 hover:shadow-[0_0_20px_var(--accent-glow)]">
-                    <h3 class="text-xl font-bold text-white font-mono">Professional & Compliance</h3>
-                    <p class="text-gray-500 mt-2">GRC, reporting, and client-facing skills.</p>
-                    <div class="mt-6 flex flex-wrap gap-3">
-                         <span class="skill-tag">Regulatory Compliance</span><span class="skill-tag">Report Writing</span><span class="skill-tag">Staff Training</span><span class="skill-tag">Customer Service</span><span class="skill-tag">Digital Marketing</span>
-                    </div>
-                </div>
-            </div>
+    <section class="section" id="certifications">
+      <div class="container">
+        <p class="section-label">Certifications</p>
+        <div class="certifications-grid" id="certifications-grid"></div>
+      </div>
+    </section>
 
-             <div class="mt-16">
-                <h3 class="text-center text-2xl font-bold font-mono text-white">/Certifications</h3>
-                    <ul id="certifications-list" class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-4xl mx-auto">
-                        <li class="cert-item">Google Cybersecurity Specialization - <span class="font-bold text-white">Google</span></li>
-                        <li class="cert-item">Certified Cyber Security Analyst - <span class="font-bold text-white">ICT Academy of Kerala</span></li>
-                        <li class="cert-item">Practical Ethical Hacking - <span class="font-bold text-white">TCM Security</span></li>
-                        <li class="cert-item">Jr Penetration Tester - <span class="font-bold text-white">TryHackMe</span></li>
-                        <li class="cert-item">Foundation Level Threat Intelligence Analyst - <span class="font-bold text-white">arcX</span></li>
-                        <li class="cert-item">Artificial Intelligence & Cybersecurity Fundamentals - <span class="font-bold text-white">IBM</span></li>
-                    </ul>
-                </div>
-            </section>
+    <section class="section contact-section" id="contact">
+      <div class="container contact-strip">
+        <div class="contact-intro">
+          <p class="section-label">Let's Connect</p>
+          <p>
+            Have a project in mind or want to collaborate? Feel free to reach out.
+          </p>
+        </div>
+        <div class="contact-details" id="contact-details"></div>
+      </div>
+    </section>
+  </main>
 
-            <section id="contact" class="py-24 text-center fade-in-section">
-                 <h2 class="text-3xl font-bold font-mono text-white">/Contact</h2>
-                 <p class="mt-4 max-w-xl mx-auto text-gray-500">Let's connect. My inbox is always open.</p>
-                 <div class="mt-8 space-y-2">
-                     <a href="mailto:surajvaikom@gmail.com" rel="noopener noreferrer" class="block text-2xl font-semibold font-mono text-cyan-400 hover:text-white transition-all hover:underline decoration-cyan-400 underline-offset-4">surajvaikom@gmail.com</a>
-                     <p class="text-lg font-mono text-gray-400">+91 8129331770</p>
-                     <p class="text-lg font-mono text-gray-400">Kottayam, Kerala</p>
-                </div>
-                 <div class="mt-10 flex justify-center space-x-8">
-                    <a href="https://github.com/surajvaikom" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-cyan-400 transition-transform hover:scale-110" aria-label="GitHub Profile">
-                        <span class="sr-only">GitHub</span>
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12.014c0 4.438 2.865 8.225 6.839 9.504.5.092.682-.217.682-.483 0-.237-.009-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.031-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.203 2.398.1 2.651.64.7 1.03 1.595 1.03 2.688 0 3.848-2.338 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.001 10.001 0 0022 12.014C22 6.477 17.523 2 12 2z" clip-rule="evenodd" /></svg>
-                    </a>
-                    <a href="https://www.linkedin.com/in/surajvaikom/" target="_blank" rel="noopener noreferrer" class="text-gray-500 hover:text-cyan-400 transition-transform hover:scale-110" aria-label="LinkedIn Profile">
-                        <span class="sr-only">LinkedIn</span>
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
-                    </a>
-                </div>
-            </section>
-
-        </main>
-
-        <footer class="text-center py-8 text-gray-600 text-sm font-mono">
-            <p>Designed & Built by Suraj N S // &copy; <span id="year"></span></p>
-        </footer>
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="brand-icon small" aria-hidden="true">
+          <svg viewBox="0 0 24 24">
+            <path d="M12 2 5 5.25V11c0 4.36 2.78 8.45 7 9.75 4.22-1.3 7-5.39 7-9.75V5.25L12 2Z"></path>
+            <path d="M12 8.1c-1.72 0-3.1 1.38-3.1 3.08v1.06H8v4.2h8v-4.2h-.9v-1.06c0-1.7-1.38-3.08-3.1-3.08Zm0 1.7c.77 0 1.39.62 1.39 1.38v1.06h-2.78v-1.06c0-.76.62-1.38 1.39-1.38Z"></path>
+          </svg>
+        </span>
+        <span>Suraj N S</span>
+      </div>
+      <p id="footer-copy"></p>
     </div>
+  </footer>
 
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Expose jsPDF
-            const { jsPDF } = window.jspdf || {};
-
-            // --- Digital Plexus Background Animation ---
-            const canvas = document.getElementById('plexus-bg');
-            const ctx = canvas.getContext('2d');
-            let points = [];
-            let mouse = { x: null, y: null, radius: 150 };
-
-            function setupCanvasSize() {
-                canvas.width = window.innerWidth;
-                canvas.height = window.innerHeight;
-            }
-            setupCanvasSize();
-            window.addEventListener('mousemove', e => {
-                mouse.x = e.clientX;
-                mouse.y = e.clientY;
-            });
-
-            class Point {
-                constructor(x, y, size, color) {
-                    this.x = x; this.y = y; this.size = size; this.color = color;
-                    this.baseX = this.x; this.baseY = this.y;
-                    this.density = (Math.random() * 30) + 1;
-                }
-                draw() {
-                    ctx.fillStyle = this.color;
-                    ctx.beginPath();
-                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                    ctx.closePath();
-                    ctx.fill();
-                }
-                update() {
-                    let dx = (mouse.x || 0) - this.x;
-                    let dy = (mouse.y || 0) - this.y;
-                    let distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance === 0) distance = 1;
-
-                    let forceDirectionX = dx / distance;
-                    let forceDirectionY = dy / distance;
-                    let maxDistance = mouse.radius;
-                    let force = (maxDistance - distance) / maxDistance;
-                    if (force < 0) force = 0;
-                    let directionX = forceDirectionX * force * this.density;
-                    let directionY = forceDirectionY * force * this.density;
-
-                    if (distance < mouse.radius) {
-                        this.x -= directionX;
-                        this.y -= directionY;
-                    } else {
-                        if (Math.abs(this.x - this.baseX) > 0.1) { this.x -= (this.x - this.baseX) / 10; }
-                        if (Math.abs(this.y - this.baseY) > 0.1) { this.y -= (this.y - this.baseY) / 10; }
-                    }
-                }
-            }
-
-            function initPoints() {
-                points = [];
-                let numberOfPoints = Math.max(60, Math.floor((canvas.height * canvas.width) / 9000));
-                for (let i = 0; i < numberOfPoints; i++) {
-                    let size = Math.random() * 2 + 1;
-                    let x = Math.random() * canvas.width;
-                    let y = Math.random() * canvas.height;
-                    points.push(new Point(x, y, size, 'rgba(48, 54, 61, 0.5)'));
-                }
-            }
-
-            function connect() {
-                for (let a = 0; a < points.length; a++) {
-                    for (let b = a + 1; b < points.length; b++) {
-                        let dx = points[a].x - points[b].x;
-                        let dy = points[a].y - points[b].y;
-                        let distance = dx * dx + dy * dy;
-                        let threshold = (Math.min(canvas.width, 1200) / 6) * (Math.min(canvas.height, 800) / 6);
-                        if (distance < threshold) {
-                            let opacityValue = 1 - (distance / threshold);
-                            ctx.strokeStyle = `rgba(57, 211, 211, ${Math.max(0, opacityValue * 0.25)})`;
-                            ctx.lineWidth = 1;
-                            ctx.beginPath();
-                            ctx.moveTo(points[a].x, points[a].y);
-                            ctx.lineTo(points[b].x, points[b].y);
-                            ctx.stroke();
-                        }
-                    }
-                }
-            }
-
-            function animate() {
-                requestAnimationFrame(animate);
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-                for (let i = 0; i < points.length; i++) {
-                    points[i].update();
-                    points[i].draw();
-                }
-                connect();
-            }
-
-            initPoints();
-            animate();
-
-            window.addEventListener('resize', () => {
-                setupCanvasSize();
-                initPoints();
-            });
-
-            // --- Connection Status Animation ---
-            const statusElement = document.getElementById('connection-status');
-            let dotCount = 0;
-            setInterval(() => {
-                dotCount = (dotCount + 1) % 4;
-                if (statusElement) {
-                    statusElement.textContent = "Establishing secure connection" + ".".repeat(dotCount);
-                }
-            }, 500);
-
-            // --- Animated Subtitle (typewriter) ---
-            const subtitleElement = document.getElementById('animated-subtitle');
-            const phrases = [
-                "I build things for security.",
-                "I am a Penetration Tester.",
-                "I secure digital infrastructure.",
-                "I harden network defenses."
-            ];
-            let phraseIndex = 0;
-            let charIndex = 0;
-            let typingDelay = 80;
-            let deletingDelay = 40;
-            let pauseAfterTyping = 1400;
-            let pauseAfterDeleting = 400;
-
-            function typewriter() {
-                const current = phrases[phraseIndex];
-                if (!subtitleElement) return;
-                if (charIndex <= current.length) {
-                    subtitleElement.innerHTML = current.substring(0, charIndex) + '<span class="typing-cursor"></span>';
-                    charIndex++;
-                    setTimeout(typewriter, typingDelay);
-                } else {
-                    setTimeout(() => { deleteText(); }, pauseAfterTyping);
-                }
-            }
-
-            function deleteText() {
-                const current = phrases[phraseIndex];
-                if (!subtitleElement) return;
-                if (charIndex > 0) {
-                    subtitleElement.innerHTML = current.substring(0, charIndex) + '<span class="typing-cursor"></span>';
-                    charIndex--;
-                    setTimeout(deleteText, deletingDelay);
-                } else {
-                    phraseIndex = (phraseIndex + 1) % phrases.length;
-                    setTimeout(typewriter, pauseAfterDeleting);
-                }
-            }
-            typewriter();
-
-            // --- Experience Hover Logic ---
-            const jobDetails = {
-                'erp-job': {
-                    title: 'ERP & IT Assistant',
-                    company: 'Seth MR Jaipuria Schools',
-                    date: 'Apr 2024 - Current',
-                    details: ['Assisted in the implementation and management of the school\'s ERP system.','Conducted training sessions for staff on the effective use of the ERP system.','Installed and configured computer hardware, operating systems and applications.','Monitored and maintained performance of school computers and systems.','Designed and edited visual content for school events, including posters and banners.']
-                },
-                'cs-intern-job': {
-                    title: 'Cyber Security & Digital Forensics Intern',
-                    company: 'Cyber Secured India (Remote)',
-                    date: 'Aug 2023 - Nov 2023',
-                    details: ['Engaged in hands-on labs using Burp Suite, Nmap, Wireshark, Nessus, and Metasploit.','Acquired practical knowledge of OWASP Top 10 vulnerabilities and mitigation techniques.','Performed Android penetration testing and practiced Linux/Windows Privilege Escalation.']
-                },
-                'tcs-intern-job': {
-                    title: 'Cyber Security Analyst Intern',
-                    company: 'TCS iON (Remote)',
-                    date: 'Apr 2023 - May 2023',
-                    details: ['Completed a 125-hour internship focusing on CAPTCHA technologies.','Researched and contributed to building a custom CAPTCHA service to enhance security against automated bots.']
-                },
-                'aadhaar-job': {
-                    title: 'Aadhaar Enrolment Supervisor',
-                    company: 'SNR E DATA\'S PVT LTD HYDERABAD',
-                    date: 'Oct 2018 - Apr 2023',
-                    details: ['Attentively addressed customer requests and resolved concerns to enhance satisfaction.','Managed all paperwork and promptly addressed discrepancies for resolution.','Prepared and submitted daily reports to the Head Office.','Managed over 15-20 customer calls per day, providing clear information.']
-                },
-                'freelancer-job': {
-                    title: 'Computer Hardware Engineer',
-                    company: 'Freelancer (On-site)',
-                    date: 'Oct 2012 - Oct 2013',
-                    details: ['Collaborated with customers to discern their needs and deliver excellent service.','Provided timely on-site service to customer locations, including nights, weekends, and holidays.','Diagnosed and resolved hardware failures and software issues for desktops and laptops.','Performed system assembly, upgrades, and component replacements for clients.','Managed data backup and recovery operations to prevent data loss.']
-                }
-            };
-
-            const timelineContainer = document.getElementById('experience-timeline').querySelector('.space-y-12');
-            Object.keys(jobDetails).forEach((key, index) => {
-                const job = jobDetails[key];
-                const isReversed = index % 2 !== 0;
-
-                const timelineItem = document.createElement('div');
-                timelineItem.id = key;
-                timelineItem.className = 'timeline-item relative pl-10 md:grid md:grid-cols-2 md:gap-8 md:pl-0';
-
-                const detailsHTML = job.details.map(detail => `<li>${detail}</li>`).join('');
-
-                const cardHTML = `
-                    <div class="card-3d bg-gray-800/50 border border-gray-700 p-6 rounded-lg shadow-lg">
-                        <p class="text-sm text-cyan-400 font-mono">${job.date}</p>
-                        <h3 class="text-xl font-bold text-white mt-1">${job.title}</h3>
-                        <p class="text-gray-400">${job.company}</p>
-                        <div class="experience-details">
-                            <ul class="list-disc list-inside text-gray-400 space-y-2 text-sm">
-                                ${detailsHTML}
-                            </ul>
-                        </div>
-                    </div>
-                `;
-
-                if (isReversed) {
-                    timelineItem.innerHTML = `<div class="md:text-right md:col-start-1">${cardHTML}</div><div class="md:col-start-2"><div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div></div>`;
-                } else {
-                    timelineItem.innerHTML = `<div></div><div class="md:col-start-2"><div class="absolute w-4 h-4 bg-cyan-400 rounded-full mt-1.5 -left-1.5 border-4 border-gray-900 md:left-1/2 md:-translate-x-1/2"></div>${cardHTML}</div>`;
-                }
-                timelineContainer.appendChild(timelineItem);
-            });
-
-            // --- NATIVE PDF CV Generation Logic ---
-            const downloadBtn = document.getElementById('download-cv-btn');
-            const loader = document.getElementById('pdf-loader');
-
-            function showLoader() { loader.classList.remove('hidden'); }
-            function hideLoader() { loader.classList.add('hidden'); }
-
-            async function generateModernCV() {
-                try {
-                    showLoader();
-
-                    if (!jsPDF) {
-                        console.error('jsPDF library not loaded.');
-                        hideLoader();
-                        return;
-                    }
-
-                    const pdf = new jsPDF('p', 'pt', 'a4');
-                    let y = 0;
-                    const pageHeight = pdf.internal.pageSize.getHeight();
-                    const pageWidth = pdf.internal.pageSize.getWidth();
-                    const margin = 40;
-                    const contentWidth = pageWidth - margin * 2;
-                    const lineHeight = 1.2;
-
-                    // --- HELPER FUNCTIONS ---
-                    const checkPageBreak = (neededHeight) => {
-                        if (y + neededHeight > pageHeight - margin) {
-                            pdf.addPage();
-                            y = margin;
-                        }
-                    };
-
-                    const addSectionTitle = (title) => {
-                        checkPageBreak(40);
-                        y += 20;
-                        pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(14);
-                        pdf.setTextColor('#2d3748'); // Dark Gray
-                        pdf.text(title.toUpperCase(), margin, y);
-                        y += 10;
-                        pdf.setDrawColor('#cbd5e0'); // Light Gray
-                        pdf.setLineWidth(1);
-                        pdf.line(margin, y, pageWidth - margin, y);
-                        y += 20;
-                    };
-
-                    // --- HEADER ---
-                    y = margin;
-                    pdf.setFont('helvetica', 'bold');
-                    pdf.setFontSize(26);
-                    pdf.setTextColor('#1a202c'); // Almost Black
-                    pdf.text('Suraj N S', margin, y);
-                    y += 20;
-
-                    pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(11);
-                    pdf.setTextColor('#4a5568'); // Medium Gray
-                    pdf.text('Cybersecurity Analyst & IT Specialist', margin, y);
-
-                    const contactInfo = [
-                        '+91 8129331770',
-                        'surajvaikom@gmail.com',
-                        'Kottayam, Kerala',
-                        'linkedin.com/in/surajvaikom',
-                        'github.com/surajvaikom'
-                    ].join('  |  ');
-
-                    y += 20;
-                    pdf.setFontSize(9);
-                    pdf.setTextColor('#2d3748');
-                    pdf.text(contactInfo, margin, y);
-                    y += 20;
-
-                    // --- SUMMARY SECTION ---
-                    addSectionTitle('Professional Summary');
-                    pdf.setFont('helvetica', 'normal');
-                    pdf.setFontSize(10);
-                    pdf.setTextColor('#4a5568');
-                    const summary = "A certified Cybersecurity Analyst & IT Specialist with a passion for penetration testing, vulnerability assessment, and hardening digital defenses. I thrive on the challenge of protecting digital infrastructures from ever-evolving threats, leveraging hands-on experience with tools like Burp Suite, Nmap, and Metasploit to proactively identify and mitigate threats before exploitation.";
-                    const summaryLines = pdf.splitTextToSize(summary, contentWidth);
-                    checkPageBreak(summaryLines.length * 10 * lineHeight);
-                    pdf.text(summaryLines, margin, y);
-                    y += summaryLines.length * 10 * lineHeight;
-
-                    // --- SKILLS SECTION ---
-                    addSectionTitle('Core Skills');
-                    const skills = {
-                        'Cybersecurity': 'Penetration Testing, Vulnerability Management, Vulnerability Assessment, SIEM & SOC Operations, Incident Response, OWASP Top 10, Network Security (Firewalls, IDS/IPS, VPNs), Cryptography, Wireless Security',
-                        'IT & Technical Skills': 'ERP Management, Technical Support, Remote Troubleshooting, System Configuration, Protocols (TCP/IP, DNS, DHCP), Python',
-                        'Professional & Compliance': 'Regulatory Compliance (GDPR, HIPAA, PCI DSS), Report Writing, Staff Training, Customer Service, Digital Marketing'
-                    };
-
-                    for (const [category, skillList] of Object.entries(skills)) {
-                        checkPageBreak(30);
-                        pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(10);
-                        pdf.setTextColor('#2d3748');
-                        pdf.text(category, margin, y);
-                        y += 12;
-
-                        pdf.setFont('helvetica', 'normal');
-                        pdf.setFontSize(9);
-                        pdf.setTextColor('#4a5568');
-                        const skillLines = pdf.splitTextToSize(skillList, contentWidth);
-                        checkPageBreak(skillLines.length * 9 * lineHeight);
-                        pdf.text(skillLines, margin, y);
-                        y += skillLines.length * 9 * lineHeight + 5;
-                    }
-
-
-                    // --- EXPERIENCE SECTION ---
-                    addSectionTitle('Professional Experience');
-                    Object.values(jobDetails).forEach(job => {
-                        const detailsLines = job.details.map(d => pdf.splitTextToSize(`•  ${d}`, contentWidth - 15)).flat();
-                        const jobHeight = 40 + (detailsLines.length * 9 * lineHeight);
-                        checkPageBreak(jobHeight);
-
-                        pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(11);
-                        pdf.setTextColor('#1a202c');
-                        pdf.text(job.title, margin, y);
-
-                        pdf.setFont('helvetica', 'normal');
-                        const dateWidth = pdf.getStringUnitWidth(job.date) * 11 / pdf.internal.scaleFactor;
-                        pdf.text(job.date, pageWidth - margin - dateWidth, y);
-                        y += 14;
-
-                        pdf.setFont('helvetica', 'italic');
-                        pdf.setFontSize(10);
-                        pdf.setTextColor('#4a5568');
-                        pdf.text(job.company, margin, y);
-                        y += 20;
-
-                        pdf.setFont('helvetica', 'normal');
-                        pdf.setFontSize(9);
-                        pdf.setTextColor('#4a5568');
-                        pdf.text(detailsLines, margin + 15, y);
-                        y += detailsLines.length * 9 * lineHeight + 10;
-                    });
-
-                    // --- EDUCATION SECTION ---
-                    addSectionTitle('Education');
-                    const education = [
-                        { years: '2024 - 2025', degree: 'Bachelor of Library and Information Science (BLIS)', school: 'Indira Gandhi National Open University' },
-                        { years: '2013 - 2017', degree: 'Master of Computer Applications (MCA)', school: 'Rajiv Gandhi Institute of Technology, Kottayam' },
-                        { years: '2008 - 2011', degree: 'Bachelor of Science (BSc), Electronics', school: 'School Of Technology And Applied Sciences, Edappally' }
-                    ];
-                    education.forEach(edu => {
-                        checkPageBreak(40);
-                        pdf.setFont('helvetica', 'bold');
-                        pdf.setFontSize(11);
-                        pdf.setTextColor('#1a202c');
-                        pdf.text(edu.degree, margin, y);
-
-                        pdf.setFont('helvetica', 'normal');
-                        const dateWidth = pdf.getStringUnitWidth(edu.years) * 11 / pdf.internal.scaleFactor;
-                        pdf.text(edu.years, pageWidth - margin - dateWidth, y);
-                        y += 14;
-
-                        pdf.setFont('helvetica', 'italic');
-                        pdf.setFontSize(10);
-                        pdf.setTextColor('#4a5568');
-                        pdf.text(edu.school, margin, y);
-                        y += 25;
-                    });
-
-                    // --- CERTIFICATIONS SECTION ---
-                    addSectionTitle('Certifications');
-                    const certifications = [
-                        'Google Cybersecurity Specialization - Google',
-                        'Certified Cyber Security Analyst - ICT Academy of Kerala',
-                        'Practical Ethical Hacking - TCM Security',
-                        'Jr Penetration Tester - TryHackMe',
-                        'Foundation Level Threat Intelligence Analyst - arcX',
-                        'Artificial Intelligence & Cybersecurity Fundamentals - IBM'
-                    ];
-                     pdf.setFont('helvetica', 'normal');
-                     pdf.setFontSize(10);
-                     pdf.setTextColor('#4a5568');
-                     let certY = y;
-                     certifications.forEach(cert => {
-                         checkPageBreak(15);
-                         pdf.text(`•  ${cert}`, margin, y);
-                         y += 15;
-                     });
-
-
-                    // --- SAVE THE PDF ---
-                    pdf.save('Suraj_N_S_Resume_ATS.pdf');
-
-                } catch (err) {
-                    console.error('Error generating CV:', err);
-                } finally {
-                    hideLoader();
-                }
-            }
-
-
-            downloadBtn.addEventListener('click', generateModernCV);
-
-            // --- Mobile Menu & Other UI ---
-            const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const mobileMenu = document.getElementById('mobile-menu');
-            mobileMenuButton.addEventListener('click', () => mobileMenu.classList.toggle('hidden'));
-            mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => mobileMenu.classList.add('hidden')));
-
-            window.addEventListener('scroll', () => document.getElementById('header').classList.toggle('shadow-lg', window.scrollY > 10));
-            document.getElementById('year').textContent = new Date().getFullYear();
-
-            const sections = document.querySelectorAll('.fade-in-section');
-            const observer = new IntersectionObserver(entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) entry.target.classList.add('is-visible');
-                });
-            }, { threshold: 0.15 });
-            sections.forEach(section => observer.observe(section));
-        });
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>
-
