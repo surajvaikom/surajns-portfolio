@@ -1279,6 +1279,214 @@ body.theme-light .company-logo .crest-letter {
     gap: 10px;
 }
 
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 20px;
+    align-items: start;
+}
+
+.challenge-card {
+    padding: 26px;
+    border-radius: 28px;
+    display: grid;
+    gap: 18px;
+}
+
+.challenge-intro {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.challenge-card code {
+    font-family: var(--mono);
+    color: var(--accent);
+    font-size: 0.9em;
+}
+
+.ctf-hints {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 12px;
+}
+
+.ctf-hints li {
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+    padding: 12px 14px;
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.02);
+    color: var(--text-muted);
+    transition: border-color var(--transition), background-color var(--transition);
+}
+
+.ctf-hints li.is-found {
+    border-color: var(--line-strong);
+    background: rgba(98, 255, 129, 0.06);
+    color: var(--text);
+}
+
+.ctf-status {
+    font-family: var(--mono);
+    color: var(--accent);
+    font-weight: 700;
+}
+
+.ctf-form {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.ctf-form input,
+.ctf-form button {
+    min-height: 48px;
+}
+
+.ctf-form input {
+    flex: 1 1 200px;
+    padding: 0 16px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--line-strong);
+    background: var(--bg-surface-strong);
+    color: var(--text);
+    font-family: var(--mono);
+}
+
+.ctf-form input:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}
+
+.ctf-feedback,
+.triage-feedback {
+    margin: 0;
+    min-height: 1.2em;
+    color: var(--text-muted);
+    font-family: var(--mono);
+    font-size: 0.92rem;
+}
+
+.ctf-feedback.is-success,
+.triage-feedback.is-success {
+    color: var(--accent);
+}
+
+.ctf-feedback.is-error,
+.triage-feedback.is-error {
+    color: var(--danger);
+}
+
+.ctf-progress {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.ctf-progress-track {
+    flex: 1;
+    height: 8px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.06);
+    overflow: hidden;
+}
+
+.ctf-progress-track span {
+    display: block;
+    height: 100%;
+    width: 0;
+    border-radius: 999px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-deep));
+    transition: width 320ms ease;
+}
+
+.ctf-progress-label {
+    font-family: var(--mono);
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    white-space: nowrap;
+}
+
+.triage-log {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    gap: 10px;
+}
+
+.triage-entry {
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    background: rgba(255, 255, 255, 0.02);
+    overflow: hidden;
+    transition: border-color var(--transition);
+}
+
+.triage-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    cursor: pointer;
+}
+
+.triage-row code {
+    font-family: var(--mono);
+    font-size: 0.84rem;
+    color: var(--text);
+    word-break: break-word;
+}
+
+.triage-row input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--accent);
+    flex-shrink: 0;
+}
+
+.triage-entry.is-correct {
+    border-color: var(--line-strong);
+    background: rgba(98, 255, 129, 0.07);
+}
+
+.triage-entry.is-wrong {
+    border-color: rgba(255, 90, 116, 0.4);
+    background: rgba(255, 90, 116, 0.07);
+}
+
+.triage-reason {
+    margin: 0;
+    padding: 0 14px;
+    max-height: 0;
+    overflow: hidden;
+    color: var(--text-muted);
+    font-size: 0.86rem;
+    line-height: 1.6;
+    transition: max-height 240ms ease, padding 240ms ease;
+}
+
+.triage-entry.is-correct .triage-reason,
+.triage-entry.is-wrong .triage-reason {
+    max-height: 160px;
+    padding: 0 14px 12px;
+}
+
+.triage-actions {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.triage-actions .button {
+    min-height: 46px;
+}
+
 .credentials-layout {
     display: grid;
     grid-template-columns: minmax(0, 1fr) minmax(0, 0.86fr);
@@ -1658,6 +1866,10 @@ body.theme-light .resume-preview-role {
     .hero-visual-shell {
         min-height: 560px;
     }
+
+    .challenges-grid {
+        grid-template-columns: 1fr;
+    }
 }
 
 @media (max-width: 720px) {
@@ -1665,6 +1877,7 @@ body.theme-light .resume-preview-role {
     .projects-grid,
     .skills-grid,
     .about-card-grid,
+    .challenges-grid,
     .contact-grid {
         grid-template-columns: 1fr;
     }

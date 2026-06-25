@@ -638,8 +638,14 @@ function setupTerminal() {
             "projects",
             "resume",
             "contact",
+            "flag",
             "clear",
             "sudo hire suraj"
+        ],
+        flag: [
+            "Terminal access verified. Capture this flag:",
+            "FLAG{terminal_access_granted}",
+            "Submit it in the Security Challenges section below."
         ],
         about: [
             "Hands-on experience across secure IT support, vulnerability assessment, lab practice, and practical documentation.",
@@ -1160,6 +1166,183 @@ function buildResumePdf() {
     return new Blob([pdf], { type: "application/pdf" });
 }
 
+const CTF_FLAGS = [
+    "FLAG{view_source_recon}",
+    "FLAG{console_log_intel}",
+    "FLAG{terminal_access_granted}"
+];
+
+function setupConsoleFlag() {
+    const banner = [
+        "%cSuraj N S — Security Console",
+        "color:#62ff81;font-weight:bold;font-size:14px"
+    ];
+    // eslint-disable-next-line no-console
+    console.log(...banner);
+    // eslint-disable-next-line no-console
+    console.log(
+        "%cNice recon. Capture this flag: FLAG{console_log_intel}",
+        "color:#9cb1c7;font-size:12px"
+    );
+}
+
+function setupCtf() {
+    const form = document.getElementById("ctf-form");
+    const input = document.getElementById("ctf-input");
+    const feedback = document.getElementById("ctf-feedback");
+    const hints = document.getElementById("ctf-hints");
+    const fill = document.getElementById("ctf-progress-fill");
+    const label = document.getElementById("ctf-progress-label");
+
+    if (!form) {
+        return;
+    }
+
+    const found = [false, false, false];
+
+    function updateProgress() {
+        const total = found.filter(Boolean).length;
+        fill.style.width = `${(total / CTF_FLAGS.length) * 100}%`;
+        label.textContent = `${total} / ${CTF_FLAGS.length} flags`;
+
+        Array.from(hints.querySelectorAll("li")).forEach((item) => {
+            const index = Number(item.getAttribute("data-flag"));
+            const status = item.querySelector(".ctf-status");
+            if (found[index]) {
+                item.classList.add("is-found");
+                status.textContent = "[x]";
+            }
+        });
+
+        if (total === CTF_FLAGS.length) {
+            feedback.textContent = "All flags captured. Solid recon — that's the analyst mindset.";
+            feedback.className = "ctf-feedback is-success";
+        }
+    }
+
+    form.addEventListener("submit", (event) => {
+        event.preventDefault();
+        const value = sanitizeText(input.value).trim();
+
+        if (!value) {
+            return;
+        }
+
+        const index = CTF_FLAGS.findIndex(
+            (flag) => flag.toLowerCase() === value.toLowerCase()
+        );
+
+        if (index === -1) {
+            feedback.textContent = "Invalid flag. Keep hunting — check the source, console, and terminal.";
+            feedback.className = "ctf-feedback is-error";
+        } else if (found[index]) {
+            feedback.textContent = "Already captured that one. Find the others.";
+            feedback.className = "ctf-feedback";
+        } else {
+            found[index] = true;
+            feedback.textContent = `Flag ${index + 1} captured.`;
+            feedback.className = "ctf-feedback is-success";
+            updateProgress();
+        }
+
+        input.value = "";
+    });
+
+    updateProgress();
+}
+
+const TRIAGE_ENTRIES = [
+    {
+        text: "08:14 AUTH user=jdoe src=10.0.4.12 result=SUCCESS mfa=yes",
+        suspicious: false,
+        reason: "Normal sign-in from an internal IP with MFA satisfied."
+    },
+    {
+        text: "08:21 AUTH user=admin src=185.220.101.7 result=FAIL x42 in 30s",
+        suspicious: true,
+        reason: "Rapid repeated failures against admin from a known Tor exit range — brute force."
+    },
+    {
+        text: "08:23 AUTH user=svc_backup src=10.0.4.30 result=SUCCESS time=scheduled",
+        suspicious: false,
+        reason: "Service account login matching its scheduled backup window."
+    },
+    {
+        text: "08:25 AUTH user=admin src=185.220.101.7 result=SUCCESS mfa=no",
+        suspicious: true,
+        reason: "Successful admin login from the same hostile IP with MFA bypassed — likely compromise."
+    },
+    {
+        text: "08:31 AUTH user=msmith src=10.0.4.51 result=SUCCESS geo=HQ",
+        suspicious: false,
+        reason: "Standard authenticated session from the corporate HQ network."
+    },
+    {
+        text: "08:33 AUTH user=jdoe src=203.0.113.9 result=SUCCESS geo=overseas time=03:33",
+        suspicious: true,
+        reason: "Impossible-travel login — same user authenticated overseas minutes later at an odd hour."
+    }
+];
+
+function setupTriage() {
+    const list = document.getElementById("triage-log");
+    const analyzeButton = document.getElementById("triage-analyze");
+    const resetButton = document.getElementById("triage-reset");
+    const feedback = document.getElementById("triage-feedback");
+
+    if (!list) {
+        return;
+    }
+
+    function render() {
+        list.innerHTML = TRIAGE_ENTRIES.map(
+            (entry, index) => `
+            <li class="triage-entry">
+                <label class="triage-row">
+                    <input type="checkbox" data-index="${index}">
+                    <code>${sanitizeText(entry.text)}</code>
+                </label>
+                <p class="triage-reason" id="triage-reason-${index}"></p>
+            </li>`
+        ).join("");
+        feedback.textContent = "";
+        feedback.className = "triage-feedback";
+    }
+
+    render();
+
+    analyzeButton.addEventListener("click", () => {
+        const checkboxes = Array.from(list.querySelectorAll("input[type=checkbox]"));
+        let correct = 0;
+
+        checkboxes.forEach((checkbox) => {
+            const index = Number(checkbox.getAttribute("data-index"));
+            const entry = TRIAGE_ENTRIES[index];
+            const reason = document.getElementById(`triage-reason-${index}`);
+            const li = checkbox.closest(".triage-entry");
+            const isCorrect = checkbox.checked === entry.suspicious;
+
+            if (isCorrect) {
+                correct += 1;
+            }
+
+            li.classList.remove("is-correct", "is-wrong");
+            li.classList.add(isCorrect ? "is-correct" : "is-wrong");
+            reason.textContent = `${entry.suspicious ? "Suspicious" : "Benign"} — ${entry.reason}`;
+        });
+
+        const total = TRIAGE_ENTRIES.length;
+        feedback.textContent = `Triage score: ${correct} / ${total}. ${
+            correct === total
+                ? "Clean triage — every entry classified correctly."
+                : "Review the explanations below each entry."
+        }`;
+        feedback.className = `triage-feedback ${correct === total ? "is-success" : "is-error"}`;
+    });
+
+    resetButton.addEventListener("click", render);
+}
+
 function init() {
     renderStats();
     renderFocusAreas();
@@ -1180,6 +1363,9 @@ function init() {
     setupCounters();
     setupProjectFilters();
     setupTerminal();
+    setupConsoleFlag();
+    setupCtf();
+    setupTriage();
     setupResumeModal();
     setupEasterEgg();
     setupPreloader();

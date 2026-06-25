@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Security Challenges | Suraj N S</title>
+
+<meta name="description" content="Interactive cybersecurity challenges by Suraj N S: a capture-the-flag hunt, a Caesar cipher decoder, SOC log triage, and a password strength analyzer. Hands-on demonstrations of practical security skills.">
+<meta name="keywords" content="cybersecurity challenges, capture the flag, CTF, SOC analyst, log triage, caesar cipher, password strength, security operations, Suraj N S">
+<meta name="author" content="Suraj N S">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Security Challenges | Suraj N S">
+<meta property="og:description" content="Hands-on cybersecurity challenges: capture-the-flag, cipher decoding, SOC log triage, and password analysis.">
+
+<meta name="theme-color" content="#07111b">
+<meta name="color-scheme" content="dark light">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2307111b'/%3E%3Cpath d='M32 8L17 15V29c0 13 8.2 22 15 26 6.8-4 15-13 15-26V15L32 8Z' fill='none' stroke='%2385ff8f' stroke-width='4'/%3E%3Cpath d='M25 31l5 5 10-12' fill='none' stroke='%2385ff8f' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark">
+
+<!-- Recon tip: real analysts always read the source. FLAG{view_source_recon} -->
+
+<div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="page-shell">
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Back to portfolio home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+                        <path d="M24 4L10 10V22C10 31 15.8 39.2 24 42C32.2 39.2 38 31 38 22V10L24 4Z"></path>
+                        <path d="M18 22L22 26L30 18"></path>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>Suraj N S</strong>
+                    <span>IT Support &bull; Cybersecurity &bull; Security Operations</span>
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <nav class="site-nav" id="site-nav" aria-label="Primary">
+                    <a href="index.html#about">About</a>
+                    <a href="index.html#experience">Experience</a>
+                    <a href="index.html#projects">Projects</a>
+                    <a href="challenges.html" aria-current="page" class="is-active">Challenges</a>
+                    <a href="index.html#skills">Skills</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark and light mode">
+                    <span class="theme-toggle-track">
+                        <span class="theme-toggle-thumb"></span>
+                    </span>
+                    <span class="theme-toggle-label">Theme</span>
+                </button>
+
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Open navigation menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html#about">About</a>
+            <a href="index.html#experience">Experience</a>
+            <a href="index.html#projects">Projects</a>
+            <a href="challenges.html">Challenges</a>
+            <a href="index.html#skills">Skills</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </header>
+
+    <main id="main-content">
+        <section class="section challenges-hero">
+            <div class="container">
+                <a class="challenges-back" href="index.html">&larr; Back to portfolio</a>
+                <p class="section-kicker">Interactive Lab</p>
+                <h1>Security Challenges</h1>
+                <p class="challenges-lead">
+                    A hands-on lab that demonstrates practical security thinking beyond the
+                    r&eacute;sum&eacute;. Work through a capture-the-flag hunt, decode a classic
+                    cipher, triage a SOC authentication log, and analyze password strength. These
+                    are kept separate from the main portfolio so recruiters get a clean,
+                    ATS-friendly profile while technical reviewers can dig deeper here.
+                </p>
+                <dl class="challenges-stats" aria-label="Challenge overview">
+                    <div>
+                        <dt>Challenges</dt>
+                        <dd>4</dd>
+                    </div>
+                    <div>
+                        <dt>Hidden flags</dt>
+                        <dd>4</dd>
+                    </div>
+                    <div>
+                        <dt>Skills shown</dt>
+                        <dd>Recon &middot; Crypto &middot; Triage &middot; Hardening</dd>
+                    </div>
+                </dl>
+            </div>
+        </section>
+
+        <section class="section" id="challenges">
+            <div class="container">
+                <div class="challenges-grid">
+                    <article class="glass-panel challenge-card reveal" id="ctf-card">
+                        <div class="card-header">
+                            <span class="section-code">CTF</span>
+                            <h2>Capture The Flag</h2>
+                        </div>
+                        <p class="challenge-intro">
+                            Four flags are hidden on this page using common recon techniques.
+                            Each flag uses the format <code>FLAG{...}</code>. Find them all and
+                            submit each one below.
+                        </p>
+
+                        <ul class="ctf-hints" id="ctf-hints">
+                            <li data-flag="0">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 1 &mdash; View Source.</strong> Inspect this page&apos;s raw HTML.</span>
+                            </li>
+                            <li data-flag="1">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 2 &mdash; Console.</strong> Open the browser developer console and read the banner.</span>
+                            </li>
+                            <li data-flag="2">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 3 &mdash; Base64.</strong> Decode the encoded clue shown below.</span>
+                            </li>
+                            <li data-flag="3">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 4 &mdash; Cipher.</strong> Solve the Caesar cipher challenge to reveal it.</span>
+                            </li>
+                        </ul>
+
+                        <div class="ctf-clue">
+                            <span class="ctf-clue-label">Encoded clue (Base64)</span>
+                            <code id="ctf-base64-clue">RkxBR3tiYXNlNjRfZGVjb2RlZH0=</code>
+                        </div>
+
+                        <form class="ctf-form" id="ctf-form" autocomplete="off">
+                            <label class="sr-only" for="ctf-input">Submit a flag</label>
+                            <input
+                                id="ctf-input"
+                                name="ctf-input"
+                                type="text"
+                                placeholder="FLAG{...}"
+                                aria-describedby="ctf-feedback"
+                            >
+                            <button class="button button-primary" type="submit">Submit Flag</button>
+                        </form>
+                        <p class="ctf-feedback" id="ctf-feedback" aria-live="polite"></p>
+
+                        <div class="ctf-progress" aria-hidden="true">
+                            <div class="ctf-progress-track">
+                                <span id="ctf-progress-fill"></span>
+                            </div>
+                            <span class="ctf-progress-label" id="ctf-progress-label">0 / 4 flags</span>
+                        </div>
+                    </article>
+
+                    <article class="glass-panel challenge-card reveal" id="cipher-card">
+                        <div class="card-header">
+                            <span class="section-code">CRY</span>
+                            <h2>Caesar Cipher Decoder</h2>
+                        </div>
+                        <p class="challenge-intro">
+                            The message below is encrypted with a Caesar shift. Move the shift
+                            control until the plaintext becomes readable &mdash; it contains a
+                            hidden flag you can submit to the CTF.
+                        </p>
+
+                        <div class="cipher-text">
+                            <span class="cipher-label">Ciphertext</span>
+                            <code id="cipher-ciphertext"></code>
+                        </div>
+
+                        <label class="cipher-control" for="cipher-shift">
+                            <span>Shift: <strong id="cipher-shift-value">0</strong></span>
+                            <input id="cipher-shift" type="range" min="0" max="25" value="0" step="1">
+                        </label>
+
+                        <div class="cipher-text cipher-output">
+                            <span class="cipher-label">Decoded</span>
+                            <code id="cipher-plaintext"></code>
+                        </div>
+                        <p class="cipher-feedback" id="cipher-feedback" aria-live="polite"></p>
+                    </article>
+
+                    <article class="glass-panel challenge-card reveal" id="triage-card">
+                        <div class="card-header">
+                            <span class="section-code">SOC</span>
+                            <h2>Log Triage Exercise</h2>
+                        </div>
+                        <p class="challenge-intro">
+                            A SOC analyst&apos;s first task is separating noise from threats. Review
+                            the authentication log and select every entry you consider
+                            <strong>suspicious</strong>, then analyze your triage.
+                        </p>
+
+                        <ul class="triage-log" id="triage-log" role="group" aria-label="Authentication log entries"></ul>
+
+                        <div class="triage-actions">
+                            <button class="button button-primary" id="triage-analyze" type="button">Analyze Triage</button>
+                            <button class="button button-secondary" id="triage-reset" type="button">Reset</button>
+                        </div>
+                        <p class="triage-feedback" id="triage-feedback" aria-live="polite"></p>
+                    </article>
+
+                    <article class="glass-panel challenge-card reveal" id="password-card">
+                        <div class="card-header">
+                            <span class="section-code">PWD</span>
+                            <h2>Password Strength Analyzer</h2>
+                        </div>
+                        <p class="challenge-intro">
+                            Strong credentials are the front line of defense. Type a sample
+                            password to see a live strength assessment and the security checks it
+                            passes. Nothing is stored or transmitted &mdash; it runs entirely in
+                            your browser.
+                        </p>
+
+                        <label class="sr-only" for="pw-input">Sample password to analyze</label>
+                        <div class="pw-input-row">
+                            <input
+                                id="pw-input"
+                                type="password"
+                                placeholder="Type a sample password"
+                                autocomplete="off"
+                                aria-describedby="pw-verdict"
+                            >
+                            <button class="button button-secondary" id="pw-toggle" type="button" aria-pressed="false">Show</button>
+                        </div>
+
+                        <div class="pw-meter" aria-hidden="true">
+                            <span id="pw-meter-fill"></span>
+                        </div>
+                        <p class="pw-verdict" id="pw-verdict" aria-live="polite">Awaiting input</p>
+
+                        <ul class="pw-checks" id="pw-checks">
+                            <li data-check="length"><span class="pw-check-mark" aria-hidden="true">[ ]</span> At least 12 characters</li>
+                            <li data-check="upper"><span class="pw-check-mark" aria-hidden="true">[ ]</span> Uppercase letter</li>
+                            <li data-check="lower"><span class="pw-check-mark" aria-hidden="true">[ ]</span> Lowercase letter</li>
+                            <li data-check="digit"><span class="pw-check-mark" aria-hidden="true">[ ]</span> Number</li>
+                            <li data-check="symbol"><span class="pw-check-mark" aria-hidden="true">[ ]</span> Symbol</li>
+                            <li data-check="common"><span class="pw-check-mark" aria-hidden="true">[ ]</span> Not a common password</li>
+                        </ul>
+                    </article>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> Suraj N S. Interactive security lab &mdash; built with semantic, accessible HTML.</p>
+            <a href="index.html">Back to portfolio</a>
+        </div>
+    </footer>
+</div>
+
+<button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">&#8593;</button>
+
+<noscript>
+    <div class="noscript-banner">
+        These challenges require JavaScript for the interactive flag checking, cipher decoding, log triage, and password analysis.
+    </div>
+</noscript>
+
+<script src="challenges.js"></script>
+</body>
+</html>
