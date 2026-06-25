@@ -106,6 +106,7 @@
                     <a href="#about">About</a>
                     <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
+                    <a href="#challenges">Challenges</a>
                     <a href="#skills">Skills</a>
                     <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
@@ -137,6 +138,7 @@
             <a href="#about">About</a>
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
+            <a href="#challenges">Challenges</a>
             <a href="#skills">Skills</a>
             <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
@@ -332,6 +334,88 @@
 
                 <div class="filter-row reveal" id="project-filters" role="tablist" aria-label="Project filters"></div>
                 <div class="projects-grid" id="projects-list"></div>
+            </div>
+        </section>
+
+        <!-- Recon tip: real analysts read the source. FLAG{view_source_recon} -->
+        <section class="section" id="challenges">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <h2>Security Challenges</h2>
+                    <p>
+                        Interactive, hands-on activities that demonstrate practical security
+                        thinking. Try the capture-the-flag hunt and the SOC log triage exercise.
+                    </p>
+                </div>
+
+                <div class="challenges-grid">
+                    <article class="glass-panel challenge-card reveal" id="ctf-card">
+                        <div class="card-header">
+                            <span class="section-code">CTF</span>
+                            <h3>Capture The Flag</h3>
+                        </div>
+                        <p class="challenge-intro">
+                            Three flags are hidden across this portfolio using common recon
+                            techniques. Each flag follows the format
+                            <code>FLAG{...}</code>. Find them and submit below.
+                        </p>
+
+                        <ul class="ctf-hints" id="ctf-hints">
+                            <li data-flag="0">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 1 &mdash; View Source.</strong> Inspect the page HTML around this section.</span>
+                            </li>
+                            <li data-flag="1">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 2 &mdash; Console.</strong> Open your browser developer console and read the banner.</span>
+                            </li>
+                            <li data-flag="2">
+                                <span class="ctf-status" aria-hidden="true">[ ]</span>
+                                <span><strong>Flag 3 &mdash; Terminal.</strong> Use the security console above. Try <code>flag</code>.</span>
+                            </li>
+                        </ul>
+
+                        <form class="ctf-form" id="ctf-form" autocomplete="off">
+                            <label class="sr-only" for="ctf-input">Submit a flag</label>
+                            <input
+                                id="ctf-input"
+                                name="ctf-input"
+                                type="text"
+                                placeholder="FLAG{...}"
+                                aria-describedby="ctf-feedback"
+                            >
+                            <button class="button button-primary" type="submit">Submit Flag</button>
+                        </form>
+                        <p class="ctf-feedback" id="ctf-feedback" aria-live="polite"></p>
+
+                        <div class="ctf-progress" aria-hidden="true">
+                            <div class="ctf-progress-track">
+                                <span id="ctf-progress-fill"></span>
+                            </div>
+                            <span class="ctf-progress-label" id="ctf-progress-label">0 / 3 flags</span>
+                        </div>
+                    </article>
+
+                    <article class="glass-panel challenge-card reveal" id="triage-card">
+                        <div class="card-header">
+                            <span class="section-code">SOC</span>
+                            <h3>Log Triage Exercise</h3>
+                        </div>
+                        <p class="challenge-intro">
+                            A SOC analyst&apos;s first task is separating noise from threats. Review the
+                            authentication log below and select every entry you consider
+                            <strong>suspicious</strong>, then analyze your triage.
+                        </p>
+
+                        <ul class="triage-log" id="triage-log" role="group" aria-label="Authentication log entries"></ul>
+
+                        <div class="triage-actions">
+                            <button class="button button-primary" id="triage-analyze" type="button">Analyze Triage</button>
+                            <button class="button button-secondary" id="triage-reset" type="button">Reset</button>
+                        </div>
+                        <p class="triage-feedback" id="triage-feedback" aria-live="polite"></p>
+                    </article>
+                </div>
             </div>
         </section>
 
