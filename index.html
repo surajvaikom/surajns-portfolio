@@ -107,6 +107,7 @@
                     <a href="#experience">Experience</a>
                     <a href="#projects">Projects</a>
                     <a href="#skills">Skills</a>
+                    <a href="#cyber-lab">Cyber Lab</a>
                     <a href="#certifications">Certifications</a>
                     <a href="#contact">Contact</a>
                 </nav>
@@ -138,6 +139,7 @@
             <a href="#experience">Experience</a>
             <a href="#projects">Projects</a>
             <a href="#skills">Skills</a>
+            <a href="#cyber-lab">Cyber Lab</a>
             <a href="#certifications">Certifications</a>
             <a href="#contact">Contact</a>
         </div>
@@ -158,9 +160,7 @@
                     <h1 class="hero-title">Suraj N S</h1>
                     <p class="hero-subtitle" id="hero-subtitle">Aspiring Security Analyst</p>
                     <p class="hero-summary">
-                        Premium, ATS-focused portfolio for a professional working across IT support
-                        and cybersecurity with practical experience in secure systems, vulnerability
-                        analysis, lab-driven learning, and dependable technical operations.
+                        Skilled in IT support and cybersecurity, with practical expertise in secure systems, vulnerability management, and operational excellence, ensuring dependable and resilient technical environments.
                     </p>
 
                     <div class="hero-pill-row" aria-label="Primary specialties">
@@ -243,8 +243,8 @@
                 <div class="section-heading reveal">
                     <h2>About</h2>
                     <p>
-                        A recruiter-friendly overview of my strengths across infrastructure support,
-                        security operations readiness, and hands-on cybersecurity practice.
+                        A professional overview of my expertise in IT infrastructure, 
+                        security operations, and hands-on cybersecurity practices
                     </p>
                 </div>
 
@@ -294,14 +294,14 @@
                 <article class="glass-panel strengths-panel reveal">
                     <div class="card-header">
                         <span class="section-code">02</span>
-                        <h3>Why Recruiters Can Read This Fast</h3>
+                        <h3>Core Professional Strengths</h3>
                     </div>
                     <ul class="check-list">
-                        <li>Keyword-rich and ATS-optimized role summaries</li>
-                        <li>Semantic section hierarchy with clean HTML structure</li>
-                        <li>Clear separation of IT support, security operations, and hands-on lab work</li>
-                        <li>Downloadable and previewable text-based PDF resume</li>
-                        <li>Portfolio projects organized by category for faster scanning</li>
+                        <li>Strong foundation in IT infrastructure, technical support, and security operations</li>
+                        <li>Practical knowledge in vulnerability assessment, system hardening, and incident awareness</li>
+                        <li>Real-world exposure through lab-driven learning and project-based implementation</li>
+                        <li>Structured portfolio showcasing technical growth, adaptability, and problem-solving ability</li>
+                        <li>Focused on delivering secure, reliable, and efficient technology solutions</li>
                     </ul>
                 </article>
             </div>
@@ -345,6 +345,65 @@
                     </p>
                 </div>
                 <div class="skills-grid" id="skills-list"></div>
+            </div>
+        </section>
+
+        <section class="section cyber-lab-section" id="cyber-lab">
+            <div class="container">
+                <div class="section-heading reveal">
+                    <h2>Cyber Lab</h2>
+                    <p>
+                        A small interactive lab built into the portfolio with hacker-style puzzles
+                        inspired by log analysis, service recognition, and phishing detection.
+                    </p>
+                </div>
+
+                <div class="lab-layout">
+                    <article class="glass-panel lab-console reveal">
+                        <div class="terminal-header">
+                            <div class="terminal-dots" aria-hidden="true">
+                                <span></span>
+                                <span></span>
+                                <span></span>
+                            </div>
+                            <p>cyber-lab.exe</p>
+                        </div>
+                        <div class="lab-game-tabs" id="lab-game-tabs" role="tablist" aria-label="Cyber lab games"></div>
+                        <div class="lab-game-stage" id="lab-game-stage" aria-live="polite"></div>
+                    </article>
+
+                    <article class="glass-panel lab-sidebar reveal">
+                        <div class="card-header">
+                            <span class="section-code">03</span>
+                            <h3>Mission Metrics</h3>
+                        </div>
+                        <div class="lab-score-grid">
+                            <article class="lab-score-card">
+                                <span>Score</span>
+                                <strong id="lab-score">0</strong>
+                            </article>
+                            <article class="lab-score-card">
+                                <span>Challenges Solved</span>
+                                <strong id="lab-solved">0</strong>
+                            </article>
+                            <article class="lab-score-card">
+                                <span>Current Streak</span>
+                                <strong id="lab-streak">0</strong>
+                            </article>
+                            <article class="lab-score-card">
+                                <span>Games Cleared</span>
+                                <strong id="lab-cleared">0</strong>
+                            </article>
+                        </div>
+                        <ul class="check-list lab-tip-list">
+                            <li>`Log Decoder` trains attention to repeated failed activity and suspicious source IPs.</li>
+                            <li>`Port Match` checks whether you can quickly connect a common port with its service.</li>
+                            <li>`Phishing Check` sharpens judgment around sender trust, urgency, and link mismatch.</li>
+                        </ul>
+                        <button class="button button-secondary" id="lab-reset" type="button">Reset Lab Session</button>
+                        <p class="ping-result" id="lab-feedback" aria-live="polite"></p>
+                    </article>
+                </div>
             </div>
         </section>
 

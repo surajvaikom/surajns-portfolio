@@ -246,9 +246,95 @@ const portfolioData = {
     ]
 };
 
+const cyberLabData = {
+    decoder: {
+        label: "Log Decoder",
+        kicker: "Blue Team Warmup",
+        title: "Trace the noisiest suspicious IP",
+        description:
+            "Review the mini log stream and identify the address generating repeated failed SSH logins before a success event appears.",
+        badges: ["Logs", "SSH", "Detection"],
+        logs: [
+            "02:14:11 auth.warn sshd[2218]: Failed password for admin from 185.220.101.4 port 51231 ssh2",
+            "02:14:16 auth.warn sshd[2222]: Failed password for root from 185.220.101.4 port 51284 ssh2",
+            "02:14:31 auth.notice sudo: suraj : TTY=pts/1 ; COMMAND=/usr/bin/systemctl restart nginx",
+            "02:14:38 auth.warn sshd[2230]: Failed password for test from 103.77.241.9 port 41326 ssh2",
+            "02:14:49 auth.warn sshd[2237]: Failed password for guest from 185.220.101.4 port 51402 ssh2",
+            "02:15:03 auth.info sshd[2240]: Accepted password for deploy from 10.0.0.12 port 55217 ssh2"
+        ],
+        question: "Which IP should you investigate first for brute-force behavior?",
+        choices: ["10.0.0.12", "103.77.241.9", "185.220.101.4", "192.168.1.6"],
+        answer: "185.220.101.4",
+        success: "Correct. The same external IP triggered multiple failed SSH attempts and stands out as the most suspicious source.",
+        failure: "Not quite. Look for repeated failed password events from the same external IP rather than a successful internal login."
+    },
+    ports: {
+        label: "Port Match",
+        kicker: "Service Recognition",
+        title: "Map the port to the right service",
+        description: "Move through common ports that show up in support, hardening, and security triage.",
+        badges: ["Ports", "Services", "Triage"],
+        rounds: [
+            { port: "443", answer: "HTTPS", choices: ["SSH", "HTTPS", "DNS", "SMTP"] },
+            { port: "3389", answer: "RDP", choices: ["RDP", "MySQL", "FTP", "Telnet"] },
+            { port: "53", answer: "DNS", choices: ["DNS", "SNMP", "LDAP", "HTTPS"] }
+        ],
+        success: "Nice. Quick port recognition helps during both troubleshooting and reconnaissance.",
+        failure: "That one is off. Think about the common service usually exposed on that port."
+    },
+    phishing: {
+        label: "Phishing Check",
+        kicker: "Mail Inspection",
+        title: "Classify the inbox alert",
+        description: "Look for sender mismatch, urgency, and link behavior before trusting the message.",
+        badges: ["Email", "Awareness", "Analysis"],
+        rounds: [
+            {
+                sender: "security-team@micr0soft-verification.net",
+                subject: "Urgent: Office 365 password expires in 12 minutes",
+                body: "We detected an unusual login attempt. Verify your account immediately to avoid permanent suspension.",
+                clues: [
+                    "The sender domain imitates a trusted brand but is not the real domain.",
+                    "The message creates panic with a very short deadline.",
+                    "It pushes you to verify an account through an untrusted link."
+                ],
+                answer: "Suspicious"
+            },
+            {
+                sender: "it-support@jaipuria.example",
+                subject: "Planned VPN maintenance tonight at 11:30 PM",
+                body: "VPN access may be unavailable for 20 minutes during scheduled maintenance. No password action is required.",
+                clues: [
+                    "The message explains a planned maintenance window instead of demanding credentials.",
+                    "There is no urgency around clicking a link or confirming a password.",
+                    "The tone is informational and consistent with internal service notices."
+                ],
+                answer: "Likely Safe"
+            }
+        ],
+        success: "Good call. You checked the sender and the behavior instead of reacting only to the wording.",
+        failure: "Take another look at the sender, urgency, and whether the message is pressuring you into account action."
+    }
+};
+
 let currentProjectFilter = "all";
 let subtitleIndex = 0;
 let subtitleIntervalId = null;
+const cyberLabState = {
+    activeGame: "decoder",
+    score: 0,
+    solved: 0,
+    streak: 0,
+    clearedGames: new Set(),
+    decoderAnswered: false,
+    decoderLastChoice: "",
+    portRound: 0,
+    portLocked: false,
+    portLastChoice: "",
+    phishingRound: 0,
+    phishingLocked: false,
+    phishingLastChoice: ""
+};
 
 function sanitizeText(input) {
     return String(input).replace(/[<>]/g, "").trim();
@@ -458,6 +544,391 @@ function renderContact() {
         .join("");
 }
 
+function renderCyberLabTabs() {
+    const container = document.getElementById("lab-game-tabs");
+
+    if (!container) {
+        return;
+    }
+
+    container.innerHTML = Object.entries(cyberLabData)
+        .map(
+            ([key, game]) => `
+                <button
+                    class="lab-tab ${cyberLabState.activeGame === key ? "is-active" : ""}"
+                    type="button"
+                    role="tab"
+                    aria-selected="${cyberLabState.activeGame === key ? "true" : "false"}"
+                    data-lab-tab="${key}"
+                >
+                    ${game.label}
+                </button>
+            `
+        )
+        .join("");
+}
+
+function renderCyberLabMetrics() {
+    const score = document.getElementById("lab-score");
+    const solved = document.getElementById("lab-solved");
+    const streak = document.getElementById("lab-streak");
+    const cleared = document.getElementById("lab-cleared");
+
+    if (!score || !solved || !streak || !cleared) {
+        return;
+    }
+
+    score.textContent = String(cyberLabState.score);
+    solved.textContent = String(cyberLabState.solved);
+    streak.textContent = String(cyberLabState.streak);
+    cleared.textContent = String(cyberLabState.clearedGames.size);
+}
+
+function renderCyberLabGame() {
+    const container = document.getElementById("lab-game-stage");
+
+    if (!container) {
+        return;
+    }
+
+    if (cyberLabState.activeGame === "decoder") {
+        container.innerHTML = renderDecoderGame();
+    } else if (cyberLabState.activeGame === "ports") {
+        container.innerHTML = renderPortGame();
+    } else {
+        container.innerHTML = renderPhishingGame();
+    }
+}
+
+function renderDecoderGame() {
+    const game = cyberLabData.decoder;
+    const isAnswered = cyberLabState.decoderAnswered;
+
+    return `
+        <section class="lab-panel">
+            <div class="lab-header">
+                <span class="lab-kicker">${game.kicker}</span>
+                <h3>${game.title}</h3>
+                <p>${game.description}</p>
+                <div class="lab-badge-row">
+                    ${game.badges.map((badge) => `<span class="lab-badge">${badge}</span>`).join("")}
+                </div>
+            </div>
+            <div class="lab-stream">
+                <code>${game.logs.join("\n")}</code>
+            </div>
+            <div class="lab-question-card">
+                <h4>${game.question}</h4>
+                <div class="lab-answer-grid">
+                    ${game.choices
+                        .map((choice) => {
+                            let stateClass = "";
+                            if (isAnswered && choice === game.answer) {
+                                stateClass = "is-correct";
+                            } else if (isAnswered && choice === cyberLabState.decoderLastChoice && choice !== game.answer) {
+                                stateClass = "is-wrong";
+                            }
+                            return `
+                                <button class="lab-answer ${stateClass}" type="button" data-lab-action="decoder-answer" data-choice="${choice}">
+                                    ${choice}
+                                </button>
+                            `;
+                        })
+                        .join("")}
+                </div>
+            </div>
+            <div class="lab-terminal-note">
+                ${isAnswered ? (cyberLabState.decoderLastChoice === game.answer ? game.success : game.failure) : "Tip: repeated failed authentication from the same external address is usually your first clue."}
+            </div>
+        </section>
+    `;
+}
+
+function renderPortGame() {
+    const game = cyberLabData.ports;
+    const round = game.rounds[cyberLabState.portRound];
+    const isComplete = cyberLabState.portRound >= game.rounds.length;
+
+    if (isComplete) {
+        return `
+            <section class="lab-panel">
+                <div class="lab-header">
+                    <span class="lab-kicker">${game.kicker}</span>
+                    <h3>${game.title}</h3>
+                    <p>${game.success}</p>
+                </div>
+                <div class="lab-terminal-note">All port rounds cleared. Switch tabs or reset the lab session to play again.</div>
+            </section>
+        `;
+    }
+
+    return `
+        <section class="lab-panel">
+            <div class="lab-header">
+                <span class="lab-kicker">${game.kicker}</span>
+                <h3>${game.title}</h3>
+                <p>${game.description}</p>
+                <div class="lab-badge-row">
+                    ${game.badges.map((badge) => `<span class="lab-badge">${badge}</span>`).join("")}
+                    <span class="lab-badge">Round ${cyberLabState.portRound + 1}/${game.rounds.length}</span>
+                </div>
+            </div>
+            <div class="lab-question-card">
+                <h4>Port ${round.port}</h4>
+                <p>Choose the service most commonly associated with this port.</p>
+                <div class="lab-port-grid">
+                    ${round.choices
+                        .map((choice) => {
+                            let stateClass = "";
+                            if (cyberLabState.portLocked && choice === round.answer) {
+                                stateClass = "is-correct";
+                            } else if (cyberLabState.portLocked && choice === cyberLabState.portLastChoice && choice !== round.answer) {
+                                stateClass = "is-wrong";
+                            }
+                            return `
+                                <button class="lab-answer ${stateClass}" type="button" data-lab-action="port-answer" data-choice="${choice}">
+                                    ${choice}
+                                </button>
+                            `;
+                        })
+                        .join("")}
+                </div>
+            </div>
+            <div class="lab-terminal-note">
+                ${
+                    cyberLabState.portLocked
+                        ? cyberLabState.portLastChoice === round.answer
+                            ? `${game.success} Use Next Round to continue.`
+                            : `${game.failure} Use Next Round and keep going.`
+                        : "Tip: fast service recognition is useful during enumeration and IT troubleshooting."
+                }
+            </div>
+            <button class="button button-secondary" type="button" data-lab-action="next-port" ${cyberLabState.portLocked ? "" : "disabled"}>
+                Next Round
+            </button>
+        </section>
+    `;
+}
+
+function renderPhishingGame() {
+    const game = cyberLabData.phishing;
+    const round = game.rounds[cyberLabState.phishingRound];
+    const isComplete = cyberLabState.phishingRound >= game.rounds.length;
+
+    if (isComplete) {
+        return `
+            <section class="lab-panel">
+                <div class="lab-header">
+                    <span class="lab-kicker">${game.kicker}</span>
+                    <h3>${game.title}</h3>
+                    <p>${game.success}</p>
+                </div>
+                <div class="lab-terminal-note">Inbox analysis complete. Reset the lab session if you want a fresh attempt.</div>
+            </section>
+        `;
+    }
+
+    return `
+        <section class="lab-panel">
+            <div class="lab-header">
+                <span class="lab-kicker">${game.kicker}</span>
+                <h3>${game.title}</h3>
+                <p>${game.description}</p>
+                <div class="lab-badge-row">
+                    ${game.badges.map((badge) => `<span class="lab-badge">${badge}</span>`).join("")}
+                    <span class="lab-badge">Mail ${cyberLabState.phishingRound + 1}/${game.rounds.length}</span>
+                </div>
+            </div>
+            <div class="mail-preview">
+                <strong>From: ${round.sender}</strong>
+                <p><strong>Subject:</strong> ${round.subject}</p>
+                <p>${round.body}</p>
+                <ul>
+                    ${round.clues.map((clue) => `<li>${clue}</li>`).join("")}
+                </ul>
+            </div>
+            <div class="lab-answer-grid">
+                ${["Likely Safe", "Suspicious"]
+                    .map((choice) => {
+                        let stateClass = "";
+                        if (cyberLabState.phishingLocked && choice === round.answer) {
+                            stateClass = "is-correct";
+                        } else if (cyberLabState.phishingLocked && choice === cyberLabState.phishingLastChoice && choice !== round.answer) {
+                            stateClass = "is-wrong";
+                        }
+                        return `
+                            <button class="lab-answer ${stateClass}" type="button" data-lab-action="phishing-answer" data-choice="${choice}">
+                                ${choice}
+                            </button>
+                        `;
+                    })
+                    .join("")}
+            </div>
+            <div class="lab-terminal-note">
+                ${
+                    cyberLabState.phishingLocked
+                        ? cyberLabState.phishingLastChoice === round.answer
+                            ? `${game.success} Use Next Mail to continue.`
+                            : `${game.failure} Use Next Mail and keep checking the clues.`
+                        : "Tip: sender trust and requested action matter more than a polished visual style."
+                }
+            </div>
+            <button class="button button-secondary" type="button" data-lab-action="next-phishing" ${cyberLabState.phishingLocked ? "" : "disabled"}>
+                Next Mail
+            </button>
+        </section>
+    `;
+}
+
+function setLabFeedback(message) {
+    const feedback = document.getElementById("lab-feedback");
+    if (feedback) {
+        feedback.textContent = message;
+    }
+}
+
+function awardLabProgress(points, gameKey, wasCorrect) {
+    if (wasCorrect) {
+        cyberLabState.score += points;
+        cyberLabState.solved += 1;
+        cyberLabState.streak += 1;
+    } else {
+        cyberLabState.streak = 0;
+    }
+
+    if (!cyberLabState.clearedGames.has(gameKey) && didClearGame(gameKey)) {
+        cyberLabState.clearedGames.add(gameKey);
+        cyberLabState.score += 15;
+    }
+
+    renderCyberLabMetrics();
+}
+
+function didClearGame(gameKey) {
+    if (gameKey === "decoder") {
+        return cyberLabState.decoderAnswered && cyberLabState.decoderLastChoice === cyberLabData.decoder.answer;
+    }
+    if (gameKey === "ports") {
+        return cyberLabState.portRound >= cyberLabData.ports.rounds.length;
+    }
+    return cyberLabState.phishingRound >= cyberLabData.phishing.rounds.length;
+}
+
+function resetCyberLab() {
+    cyberLabState.activeGame = "decoder";
+    cyberLabState.score = 0;
+    cyberLabState.solved = 0;
+    cyberLabState.streak = 0;
+    cyberLabState.clearedGames = new Set();
+    cyberLabState.decoderAnswered = false;
+    cyberLabState.decoderLastChoice = "";
+    cyberLabState.portRound = 0;
+    cyberLabState.portLocked = false;
+    cyberLabState.portLastChoice = "";
+    cyberLabState.phishingRound = 0;
+    cyberLabState.phishingLocked = false;
+    cyberLabState.phishingLastChoice = "";
+    setLabFeedback("Cyber Lab reset. Ready for another run.");
+    renderCyberLabTabs();
+    renderCyberLabGame();
+    renderCyberLabMetrics();
+}
+
+function setupCyberLab() {
+    const tabs = document.getElementById("lab-game-tabs");
+    const stage = document.getElementById("lab-game-stage");
+    const resetButton = document.getElementById("lab-reset");
+
+    if (!tabs || !stage || !resetButton) {
+        return;
+    }
+
+    renderCyberLabTabs();
+    renderCyberLabGame();
+    renderCyberLabMetrics();
+    setLabFeedback("Live mini-games enabled. Start with Log Decoder.");
+
+    tabs.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-lab-tab]");
+        if (!button) {
+            return;
+        }
+
+        cyberLabState.activeGame = button.getAttribute("data-lab-tab") || "decoder";
+        renderCyberLabTabs();
+        renderCyberLabGame();
+    });
+
+    stage.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-lab-action]");
+        if (!button) {
+            return;
+        }
+
+        const action = button.getAttribute("data-lab-action");
+        const choice = button.getAttribute("data-choice") || "";
+
+        if (action === "decoder-answer" && !cyberLabState.decoderAnswered) {
+            cyberLabState.decoderAnswered = true;
+            cyberLabState.decoderLastChoice = choice;
+            const wasCorrect = choice === cyberLabData.decoder.answer;
+            awardLabProgress(10, "decoder", wasCorrect);
+            setLabFeedback(wasCorrect ? "Log Decoder cleared. Suspicious source identified." : "Decoder attempt logged. Review the repeated failures and try the next challenge.");
+            renderCyberLabGame();
+            return;
+        }
+
+        if (action === "port-answer" && !cyberLabState.portLocked) {
+            const round = cyberLabData.ports.rounds[cyberLabState.portRound];
+            cyberLabState.portLocked = true;
+            cyberLabState.portLastChoice = choice;
+            const wasCorrect = choice === round.answer;
+            awardLabProgress(8, "ports", wasCorrect);
+            setLabFeedback(wasCorrect ? `Correct. Port ${round.port} maps to ${round.answer}.` : `Port ${round.port} does not usually map to ${choice}.`);
+            renderCyberLabGame();
+            return;
+        }
+
+        if (action === "next-port" && cyberLabState.portLocked) {
+            cyberLabState.portRound += 1;
+            cyberLabState.portLocked = false;
+            cyberLabState.portLastChoice = "";
+            if (cyberLabState.portRound >= cyberLabData.ports.rounds.length) {
+                awardLabProgress(0, "ports", true);
+                setLabFeedback("Port Match completed. Nice service recognition.");
+            }
+            renderCyberLabGame();
+            renderCyberLabMetrics();
+            return;
+        }
+
+        if (action === "phishing-answer" && !cyberLabState.phishingLocked) {
+            const round = cyberLabData.phishing.rounds[cyberLabState.phishingRound];
+            cyberLabState.phishingLocked = true;
+            cyberLabState.phishingLastChoice = choice;
+            const wasCorrect = choice === round.answer;
+            awardLabProgress(8, "phishing", wasCorrect);
+            setLabFeedback(wasCorrect ? `Correct. This mail is ${round.answer.toLowerCase()}.` : "Classification mismatch. Re-check the sender and requested action.");
+            renderCyberLabGame();
+            return;
+        }
+
+        if (action === "next-phishing" && cyberLabState.phishingLocked) {
+            cyberLabState.phishingRound += 1;
+            cyberLabState.phishingLocked = false;
+            cyberLabState.phishingLastChoice = "";
+            if (cyberLabState.phishingRound >= cyberLabData.phishing.rounds.length) {
+                awardLabProgress(0, "phishing", true);
+                setLabFeedback("Phishing Check completed. Good analytical reading.");
+            }
+            renderCyberLabGame();
+            renderCyberLabMetrics();
+        }
+    });
+
+    resetButton.addEventListener("click", resetCyberLab);
+}
+
 function setupRevealAnimations() {
     const items = document.querySelectorAll(".reveal");
     const observer = new IntersectionObserver(
@@ -636,6 +1107,7 @@ function setupTerminal() {
             "about",
             "skills",
             "projects",
+            "lab",
             "resume",
             "contact",
             "clear",
@@ -650,6 +1122,7 @@ function setupTerminal() {
             "IT Support, Windows, Linux, Networking, SIEM concepts, OWASP Top 10, Vulnerability Assessment, Penetration Testing, Nmap, Burp Suite"
         ],
         projects: portfolioData.projects.map((project) => `- ${project.title}`),
+        lab: ["Open the Cyber Lab section for mini-games: Log Decoder, Port Match, and Phishing Check."],
         resume: ["Use the Download Resume or Preview Resume buttons above for the ATS-friendly resume."],
         contact: [
             `Email: ${portfolioData.basics.email}`,
@@ -1179,6 +1652,7 @@ function init() {
     setupStatusLine();
     setupCounters();
     setupProjectFilters();
+    setupCyberLab();
     setupTerminal();
     setupResumeModal();
     setupEasterEgg();

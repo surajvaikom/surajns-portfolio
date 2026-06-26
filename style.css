@@ -1264,6 +1264,253 @@ body.theme-light .company-logo .crest-letter {
     gap: 18px;
 }
 
+.cyber-lab-section {
+    position: relative;
+}
+
+.cyber-lab-section::before {
+    content: "";
+    position: absolute;
+    inset: 80px 0 auto;
+    height: 220px;
+    background: radial-gradient(circle at center, rgba(98, 255, 129, 0.08), transparent 62%);
+    pointer-events: none;
+}
+
+.lab-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.15fr) minmax(320px, 0.85fr);
+    gap: 22px;
+    align-items: start;
+}
+
+.lab-console,
+.lab-sidebar {
+    padding: 28px;
+    border-radius: 28px;
+}
+
+.lab-game-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.lab-tab {
+    min-height: 42px;
+    padding: 0 16px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+    color: var(--text-muted);
+    cursor: pointer;
+    transition: all var(--transition);
+}
+
+.lab-tab.is-active,
+.lab-tab:hover {
+    color: #04110a;
+    background: linear-gradient(135deg, var(--accent), var(--accent-strong));
+    border-color: transparent;
+}
+
+.lab-game-stage {
+    margin-top: 18px;
+    min-height: 470px;
+}
+
+.lab-panel {
+    display: grid;
+    gap: 18px;
+    min-height: 100%;
+}
+
+.lab-panel h3,
+.lab-panel h4,
+.lab-score-card strong {
+    margin: 0;
+}
+
+.lab-panel p,
+.lab-panel li,
+.mail-preview p {
+    color: var(--text-muted);
+    line-height: 1.74;
+}
+
+.lab-kicker,
+.lab-badge,
+.lab-stat-label {
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.lab-kicker {
+    display: inline-flex;
+}
+
+.lab-header {
+    display: grid;
+    gap: 10px;
+}
+
+.lab-header h3 {
+    font-size: 1.48rem;
+    letter-spacing: -0.03em;
+}
+
+.lab-badge-row,
+.lab-answer-grid,
+.lab-port-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.lab-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.04);
+}
+
+.lab-stream,
+.mail-preview {
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(98, 255, 129, 0.08);
+    background: rgba(4, 9, 14, 0.68);
+}
+
+.lab-stream code {
+    display: block;
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.88rem;
+    line-height: 1.8;
+    white-space: pre-wrap;
+}
+
+.lab-question-card {
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(98, 255, 129, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.lab-question-card h4 {
+    margin: 0 0 10px;
+    font-size: 1rem;
+}
+
+.lab-answer {
+    min-height: 48px;
+    padding: 0 16px;
+    border-radius: 16px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform var(--transition), border-color var(--transition), background-color var(--transition);
+}
+
+.lab-answer:hover {
+    transform: translateY(-2px);
+    border-color: var(--line-strong);
+}
+
+.lab-answer.is-correct {
+    background: linear-gradient(135deg, rgba(98, 255, 129, 0.2), rgba(26, 203, 66, 0.16));
+    border-color: rgba(128, 255, 151, 0.34);
+}
+
+.lab-answer.is-wrong {
+    background: linear-gradient(135deg, rgba(255, 90, 116, 0.16), rgba(255, 90, 116, 0.1));
+    border-color: rgba(255, 90, 116, 0.3);
+}
+
+.lab-score-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.lab-score-card {
+    padding: 18px;
+    border-radius: 20px;
+    border: 1px solid rgba(98, 255, 129, 0.08);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+.lab-score-card span {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--text-soft);
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
+.lab-score-card strong {
+    font-size: 2rem;
+    line-height: 1;
+}
+
+.lab-sidebar .button {
+    width: 100%;
+    margin-top: 12px;
+}
+
+.lab-tip-list {
+    margin-top: 20px;
+}
+
+.mail-preview strong {
+    display: block;
+    margin-bottom: 10px;
+    color: var(--text);
+}
+
+.mail-preview ul {
+    margin: 12px 0 0;
+    padding-left: 18px;
+    color: var(--text-muted);
+}
+
+.mail-preview li {
+    margin-bottom: 8px;
+}
+
+.lab-terminal-note {
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px dashed var(--line);
+    color: var(--text-soft);
+    font-family: var(--mono);
+    font-size: 0.86rem;
+}
+
+body.theme-light .lab-stream,
+body.theme-light .mail-preview,
+body.theme-light .lab-question-card,
+body.theme-light .lab-score-card {
+    background: rgba(255, 255, 255, 0.74);
+    border-color: rgba(15, 121, 114, 0.1);
+}
+
+body.theme-light .lab-tab.is-active,
+body.theme-light .lab-tab:hover {
+    color: #f5fffd;
+}
+
 .skill-card {
     padding: 24px;
     border-radius: 24px;
@@ -1609,6 +1856,7 @@ body.theme-light .resume-preview-role {
     .about-layout,
     .terminal-layout,
     .contact-layout,
+    .lab-layout,
     .credentials-layout,
     .timeline-card {
         grid-template-columns: 1fr;
@@ -1665,6 +1913,7 @@ body.theme-light .resume-preview-role {
     .projects-grid,
     .skills-grid,
     .about-card-grid,
+    .lab-score-grid,
     .contact-grid {
         grid-template-columns: 1fr;
     }
@@ -1734,6 +1983,18 @@ body.theme-light .resume-preview-role {
 
     .resume-preview-skill-grid {
         grid-template-columns: 1fr;
+    }
+
+    .lab-game-tabs,
+    .lab-answer-grid,
+    .lab-port-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+    }
+
+    .lab-answer,
+    .lab-tab {
+        width: 100%;
     }
 }
 
