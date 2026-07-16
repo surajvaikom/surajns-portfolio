@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Suraj N S IntelOps dashboard for source-led cybersecurity intelligence, CVE triage, CISA KEV prioritization, MITRE ATT&CK mapping, OWASP references, and SOC investigation workflow.">
+    <meta name="theme-color" content="#07111b">
+    <meta name="color-scheme" content="dark light">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta property="og:title" content="Suraj N S | IntelOps">
+    <meta property="og:description" content="A trusted-source cybersecurity intelligence dashboard inside Suraj N S portfolio.">
+    <title>Suraj N S | IntelOps</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark ops-page">
+<div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="page-shell">
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Go to portfolio home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+                        <path d="M24 4L10 10V22C10 31 15.8 39.2 24 42C32.2 39.2 38 31 38 22V10L24 4Z"></path>
+                        <path d="M18 22L22 26L30 18"></path>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>Suraj N S</strong>
+                    <span>IntelOps &bull; Threat Intelligence Dashboard</span>
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <nav class="site-nav" id="site-nav" aria-label="Primary">
+                    <a href="index.html">Portfolio</a>
+                    <a href="challenges.html">Challenges Lab</a>
+                    <a href="#intel-feed">Sources</a>
+                    <a href="#cves">CVEs</a>
+                    <a href="#iocs">IOCs</a>
+                    <a href="basics.html">Cyber Basics</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark and light mode">
+                    <span class="theme-toggle-track">
+                        <span class="theme-toggle-thumb"></span>
+                    </span>
+                    <span class="theme-toggle-label">Theme</span>
+                </button>
+
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Portfolio</a>
+            <a href="challenges.html">Challenges Lab</a>
+            <a href="#intel-feed">Sources</a>
+            <a href="#cves">CVEs</a>
+            <a href="#iocs">IOCs</a>
+            <a href="basics.html">Cyber Basics</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </header>
+
+    <aside class="floating-socials" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/surajvaikom/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/surajvaikom" target="_blank" rel="noreferrer" aria-label="GitHub">gh</a>
+        <a href="https://tryhackme.com/p/surajvaikom" target="_blank" rel="noreferrer" aria-label="TryHackMe">thm</a>
+        <a href="challenges.html" aria-label="Challenges Lab">lab</a>
+    </aside>
+
+    <main id="main-content">
+        <section class="section range-hero ops-hero" id="intel-dashboard">
+            <div class="container range-hero-grid">
+                <div class="range-hero-copy reveal">
+                    <p class="terminal-line">$ intelops.sources --verify cisa,nvd,mitre,owasp,first</p>
+                    <h1 class="hero-title range-title">IntelOps</h1>
+                    <p class="hero-summary">
+                        A source-first intelligence workspace for CVE triage, exploited vulnerability
+                        prioritization, ATT&CK mapping, OWASP references, and SOC investigation notes
+                        using trusted public sources only.
+                    </p>
+                    <div class="hero-pill-row" aria-label="Threat intelligence domains">
+                        <span>CVE Triage</span>
+                        <span>KEV Prioritization</span>
+                        <span>ATT&amp;CK Mapping</span>
+                        <span>EPSS Signal</span>
+                    </div>
+                    <label class="sr-only" for="intel-search">Search IntelOps</label>
+                    <input class="challenge-input intel-search" id="intel-search" type="search" placeholder="Search sources, actors, tools, MITRE IDs">
+                    <div class="ops-review-note" aria-label="IntelOps source review note">
+                        <span>Last reviewed: <time datetime="2026-07-16">July 16, 2026</time></span>
+                        <span>Source links are for learning and portfolio demonstration; validate with official advisories before operational use.</span>
+                    </div>
+                    <p class="ops-refresh" id="intel-update-time">Trusted-source workspace loading...</p>
+                </div>
+
+                <div class="range-hero-side reveal">
+                    <div class="glass-panel range-metrics-shell">
+                        <div class="range-metrics-grid" id="intel-analytics"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section ops-section" id="intel-feed">
+            <div class="container ops-dashboard-grid">
+                <article class="glass-panel ops-panel ops-panel-wide reveal">
+                    <div class="card-header">
+                        <span class="section-code">01</span>
+                        <h2>Trusted Source Library</h2>
+                    </div>
+                    <div class="ops-feed-grid" id="intel-news-feed"></div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal" id="cves">
+                    <div class="card-header">
+                        <span class="section-code">02</span>
+                        <h2>CISA KEV Official Source</h2>
+                    </div>
+                    <div class="ops-list" id="intel-cve-list"></div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal" id="actors">
+                    <div class="card-header">
+                        <span class="section-code">03</span>
+                        <h2>Threat Actor Intelligence</h2>
+                    </div>
+                    <div class="ops-list" id="intel-actors"></div>
+                </article>
+
+                <article class="glass-panel ops-panel ops-panel-wide reveal" id="iocs">
+                    <div class="card-header">
+                        <span class="section-code">04</span>
+                        <h2>IOC Collection Plan</h2>
+                    </div>
+                    <div class="ops-table-wrap" id="intel-ioc-table"></div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal">
+                    <div class="card-header">
+                        <span class="section-code">05</span>
+                        <h2>NVD CVE Lookup</h2>
+                    </div>
+                    <div class="ops-list" id="intel-nvd-cves"></div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal">
+                    <div class="card-header">
+                        <span class="section-code">06</span>
+                        <h2>Security Advisories</h2>
+                    </div>
+                    <div class="ops-list" id="intel-advisories"></div>
+                </article>
+
+                <article class="glass-panel ops-panel ops-panel-wide reveal">
+                    <div class="card-header">
+                        <span class="section-code">07</span>
+                        <h2>Tools &amp; Frameworks</h2>
+                    </div>
+                    <div class="ops-feed-grid" id="intel-tools"></div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal">
+                    <div class="card-header">
+                        <span class="section-code">08</span>
+                        <h2>MITRE ATT&CK Explorer</h2>
+                    </div>
+                    <div class="ops-list" id="intel-mitre"></div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal">
+                    <div class="card-header">
+                        <span class="section-code">09</span>
+                        <h2>SOC Triage Workflow</h2>
+                    </div>
+                    <ul class="ops-terminal-list" id="intel-kill-chain"></ul>
+                </article>
+
+                <article class="glass-panel ops-panel ops-panel-wide reveal">
+                    <div class="card-header">
+                        <span class="section-code">10</span>
+                        <h2>OWASP Web Risk Map</h2>
+                    </div>
+                    <ul class="ops-terminal-list owasp-list" id="intel-owasp"></ul>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> Suraj N S. IntelOps uses trusted public cybersecurity sources and avoids fabricated threat data.</p>
+            <a href="index.html">Back to portfolio</a>
+        </div>
+    </footer>
+</div>
+
+<button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">&#8593;</button>
+
+<script src="script.js"></script>
+</body>
+</html>

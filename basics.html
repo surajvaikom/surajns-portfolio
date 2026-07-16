@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Beginner-friendly cybersecurity basics by Suraj N S, explaining passkeys, MFA, phishing awareness, patching, backups, device safety, and practical IT support security habits.">
+    <meta name="theme-color" content="#07111b">
+    <meta name="color-scheme" content="dark light">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta property="og:title" content="Suraj N S | Cyber Basics">
+    <meta property="og:description" content="Simple cybersecurity basics for recruiters, beginners, and non-technical viewers.">
+    <title>Suraj N S | Cyber Basics</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark ops-page">
+<div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="page-shell">
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Go to portfolio home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+                        <path d="M24 4L10 10V22C10 31 15.8 39.2 24 42C32.2 39.2 38 31 38 22V10L24 4Z"></path>
+                        <path d="M18 22L22 26L30 18"></path>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>Suraj N S</strong>
+                    <span>Cyber Basics &bull; Simple Security Guide</span>
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <nav class="site-nav" id="site-nav" aria-label="Primary">
+                    <a href="index.html">Portfolio</a>
+                    <a href="challenges.html">Challenges Lab</a>
+                    <a href="intel.html">IntelOps</a>
+                    <a href="#basics">Basics</a>
+                    <a href="#checklist">Checklist</a>
+                    <a href="#glossary">Glossary</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark and light mode">
+                    <span class="theme-toggle-track">
+                        <span class="theme-toggle-thumb"></span>
+                    </span>
+                    <span class="theme-toggle-label">Theme</span>
+                </button>
+
+                <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-menu" aria-label="Open navigation menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Portfolio</a>
+            <a href="challenges.html">Challenges Lab</a>
+            <a href="intel.html">IntelOps</a>
+            <a href="#basics">Basics</a>
+            <a href="#checklist">Checklist</a>
+            <a href="#glossary">Glossary</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </header>
+
+    <aside class="floating-socials" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/surajvaikom/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/surajvaikom" target="_blank" rel="noreferrer" aria-label="GitHub">gh</a>
+        <a href="https://tryhackme.com/p/surajvaikom" target="_blank" rel="noreferrer" aria-label="TryHackMe">thm</a>
+        <a href="index.html" aria-label="Portfolio">pf</a>
+    </aside>
+
+    <main id="main-content">
+        <section class="section range-hero ops-hero" id="basics">
+            <div class="container range-hero-grid">
+                <div class="range-hero-copy reveal">
+                    <p class="terminal-line">$ cyber_basics.start --simple</p>
+                    <h1 class="hero-title range-title">Cyber Basics</h1>
+                    <p class="hero-summary">
+                        A simple security guide for recruiters, beginners, and non-technical viewers.
+                        This page explains practical cyber safety habits in clear language and connects
+                        them to IT support, user awareness, and security operations fundamentals.
+                    </p>
+                    <div class="hero-pill-row" aria-label="Cyber basics topics">
+                        <span>Passkeys &amp; MFA</span>
+                        <span>Phishing Awareness</span>
+                        <span>Patch Hygiene</span>
+                        <span>Backups</span>
+                    </div>
+                </div>
+
+                <div class="range-hero-side reveal">
+                    <div class="glass-panel range-metrics-shell">
+                        <div class="range-metrics-grid">
+                            <article class="stats-card">
+                                <span>Simple Topics</span>
+                                <strong>6</strong>
+                                <p>Clear, beginner-friendly security areas</p>
+                            </article>
+                            <article class="stats-card">
+                                <span>Checklist Items</span>
+                                <strong>8</strong>
+                                <p>Practical habits anyone can follow</p>
+                            </article>
+                            <article class="stats-card">
+                                <span>Glossary</span>
+                                <strong>Plain</strong>
+                                <p>Short explanations without heavy jargon</p>
+                            </article>
+                            <article class="stats-card">
+                                <span>Goal</span>
+                                <strong>Clarity</strong>
+                                <p>Security explained for real users</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section ops-section">
+            <div class="container ops-dashboard-grid">
+                <article class="glass-panel ops-panel ops-panel-wide reveal">
+                    <div class="card-header">
+                        <span class="section-code">01</span>
+                        <h2>Simple Security Concepts</h2>
+                    </div>
+                    <div class="ops-feed-grid">
+                        <article class="ops-feed-card">
+                            <span class="ops-code">Identity</span>
+                            <h3>Use passkeys, MFA, and unique passwords</h3>
+                            <p>Passkeys or authenticator-based MFA reduce account takeover risk. A password manager helps keep every password unique.</p>
+                        </article>
+                        <article class="ops-feed-card">
+                            <span class="ops-code">Phishing</span>
+                            <h3>Pause before you click</h3>
+                            <p>Fake emails often create urgency. Check the sender, link destination, attachment type, and whether the request makes sense.</p>
+                        </article>
+                        <article class="ops-feed-card">
+                            <span class="ops-code">Updates</span>
+                            <h3>Patch systems on time</h3>
+                            <p>Updates fix known security holes. Prioritize internet-facing systems, browsers, VPNs, and software listed in security advisories.</p>
+                        </article>
+                        <article class="ops-feed-card">
+                            <span class="ops-code">Backups</span>
+                            <h3>Keep safe copies of important data</h3>
+                            <p>Good backups help recover from accidental deletion, device failure, and ransomware incidents.</p>
+                        </article>
+                        <article class="ops-feed-card">
+                            <span class="ops-code">Devices</span>
+                            <h3>Lock and protect devices</h3>
+                            <p>Screen locks, antivirus, careful USB usage, and secure Wi-Fi reduce common everyday risks.</p>
+                        </article>
+                        <article class="ops-feed-card">
+                            <span class="ops-code">Reporting</span>
+                            <h3>Report suspicious activity early</h3>
+                            <p>Fast reporting helps IT teams preserve evidence, reset access safely, and stop small problems before they become incidents.</p>
+                        </article>
+                    </div>
+                </article>
+
+                <article class="glass-panel ops-panel reveal" id="checklist">
+                    <div class="card-header">
+                        <span class="section-code">02</span>
+                        <h2>Beginner Checklist</h2>
+                    </div>
+                    <ul class="ops-terminal-list">
+                        <li>Use passkeys or authenticator-based MFA wherever possible.</li>
+                        <li>Use a password manager and avoid password reuse.</li>
+                        <li>Check links before entering login details.</li>
+                        <li>Install approved updates without unnecessary delay.</li>
+                        <li>Keep important files backed up.</li>
+                        <li>Lock your computer when leaving the desk.</li>
+                        <li>Use trusted networks or VPN when working on public Wi-Fi.</li>
+                        <li>Report suspicious emails or popups quickly.</li>
+                    </ul>
+                </article>
+
+                <article class="glass-panel ops-panel reveal">
+                    <div class="card-header">
+                        <span class="section-code">03</span>
+                        <h2>Common Mistakes to Avoid</h2>
+                    </div>
+                    <div class="ops-list">
+                        <article class="ops-alert-card">
+                            <h3>Sharing passwords or one-time codes</h3>
+                            <p>No genuine support team should ask for your password, OTP, or authenticator code. Treat that request as suspicious.</p>
+                        </article>
+                        <article class="ops-alert-card">
+                            <h3>Clicking urgent links too fast</h3>
+                            <p>Attackers use fear and urgency. Pause, check the sender, and open official websites directly.</p>
+                        </article>
+                        <article class="ops-alert-card">
+                            <h3>Ignoring small warnings</h3>
+                            <p>Unexpected popups, slow devices, or strange login alerts should be reported early.</p>
+                        </article>
+                    </div>
+                </article>
+
+                <article class="glass-panel ops-panel ops-panel-wide reveal" id="glossary">
+                    <div class="card-header">
+                        <span class="section-code">04</span>
+                        <h2>Small Glossary</h2>
+                    </div>
+                    <div class="ops-table-wrap">
+                        <table class="ops-table">
+                            <thead>
+                                <tr>
+                                    <th>Term</th>
+                                    <th>Simple Meaning</th>
+                                    <th>Why It Matters</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Passkey</td>
+                                    <td>A safer login method that uses your device instead of a typed password.</td>
+                                    <td>Reduces phishing and stolen-password risk.</td>
+                                </tr>
+                                <tr>
+                                    <td>MFA</td>
+                                    <td>Extra login proof like an authenticator app, hardware key, or approval prompt.</td>
+                                    <td>Protects accounts even if a password is stolen.</td>
+                                </tr>
+                                <tr>
+                                    <td>Phishing</td>
+                                    <td>A fake message trying to trick you.</td>
+                                    <td>It is one of the most common ways accounts are stolen.</td>
+                                </tr>
+                                <tr>
+                                    <td>Patch</td>
+                                    <td>An update that fixes a bug or security issue.</td>
+                                    <td>Unpatched systems are easier to attack.</td>
+                                </tr>
+                                <tr>
+                                    <td>Backup</td>
+                                    <td>A safe copy of important files.</td>
+                                    <td>Helps recover after mistakes, damage, or ransomware.</td>
+                                </tr>
+                                <tr>
+                                    <td>Incident</td>
+                                    <td>A security or IT problem that needs action.</td>
+                                    <td>Early response can reduce damage and downtime.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> Suraj N S. Cyber Basics keeps security simple and practical.</p>
+            <a href="index.html">Back to portfolio</a>
+        </div>
+    </footer>
+</div>
+
+<button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">&#8593;</button>
+
+<script src="script.js"></script>
+</body>
+</html>

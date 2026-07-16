@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Suraj N S | Challenges Lab</title>
+
+<meta name="description" content="Interactive cybersecurity challenges lab for Suraj N S featuring SOC investigation, threat hunting, web exploitation, forensics, malware analysis, network traffic analysis, privilege escalation, cloud security, and downloadable portfolio completion PDFs.">
+<meta name="keywords" content="Suraj N S challenges lab, cybersecurity range, SOC investigation, threat hunting, web exploitation, digital forensics, malware analysis, network traffic analysis, privilege escalation, cloud security, completion PDF">
+<meta name="author" content="Suraj N S">
+<meta name="robots" content="index, follow">
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suraj N S | Challenges Lab">
+<meta property="og:description" content="An advanced practical cyber range integrated into Suraj N S's portfolio.">
+
+<meta name="theme-color" content="#07111b">
+<meta name="color-scheme" content="dark light">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta http-equiv="X-Content-Type-Options" content="nosniff">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2307111b'/%3E%3Cpath d='M32 8L17 15V29c0 13 8.2 22 15 26 6.8-4 15-13 15-26V15L32 8Z' fill='none' stroke='%2385ff8f' stroke-width='4'/%3E%3Cpath d='M25 31l5 5 10-12' fill='none' stroke='%2385ff8f' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="style.css">
+</head>
+<body class="theme-dark challenge-page">
+<div class="progress-bar" id="progress-bar" aria-hidden="true"></div>
+<canvas id="matrix-canvas" aria-hidden="true"></canvas>
+<canvas id="particle-canvas" aria-hidden="true"></canvas>
+
+<a class="skip-link" href="#main-content">Skip to content</a>
+
+<div class="page-shell">
+    <header class="site-header" id="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html" aria-label="Go to portfolio home">
+                <span class="brand-mark" aria-hidden="true">
+                    <svg viewBox="0 0 48 48" role="img" aria-hidden="true">
+                        <path d="M24 4L10 10V22C10 31 15.8 39.2 24 42C32.2 39.2 38 31 38 22V10L24 4Z"></path>
+                        <path d="M18 22L22 26L30 18"></path>
+                    </svg>
+                </span>
+                <span class="brand-text">
+                    <strong>Suraj N S</strong>
+                    <span>Challenges Lab &bull; Practical Technical Showcase</span>
+                </span>
+            </a>
+
+            <div class="header-actions">
+                <nav class="site-nav" id="site-nav" aria-label="Primary">
+                    <a href="index.html">Portfolio</a>
+                    <a href="#lab-overview">Overview</a>
+                    <a href="#lab-range">Cyber Range</a>
+                    <a href="intel.html">IntelOps</a>
+                    <a href="basics.html">Cyber Basics</a>
+                    <a href="#lab-certification">Completion PDFs</a>
+                    <a href="index.html#contact">Contact</a>
+                </nav>
+
+                <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Toggle dark and light mode">
+                    <span class="theme-toggle-track">
+                        <span class="theme-toggle-thumb"></span>
+                    </span>
+                    <span class="theme-toggle-label">Theme</span>
+                </button>
+
+                <button
+                    class="menu-toggle"
+                    id="menu-toggle"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="mobile-menu"
+                    aria-label="Open navigation menu"
+                >
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="index.html">Portfolio</a>
+            <a href="#lab-overview">Overview</a>
+            <a href="#lab-range">Cyber Range</a>
+            <a href="intel.html">IntelOps</a>
+            <a href="basics.html">Cyber Basics</a>
+            <a href="#lab-certification">Completion PDFs</a>
+            <a href="index.html#contact">Contact</a>
+        </div>
+    </header>
+
+    <aside class="floating-socials" aria-label="Social links">
+        <a href="https://www.linkedin.com/in/surajvaikom/" target="_blank" rel="noreferrer" aria-label="LinkedIn">in</a>
+        <a href="https://github.com/surajvaikom" target="_blank" rel="noreferrer" aria-label="GitHub">gh</a>
+        <a href="https://tryhackme.com/p/surajvaikom" target="_blank" rel="noreferrer" aria-label="TryHackMe">thm</a>
+        <a href="index.html" aria-label="Portfolio">pf</a>
+    </aside>
+
+    <main id="main-content">
+        <section class="section range-hero" id="lab-overview">
+            <div class="container range-hero-grid">
+                <div class="range-hero-copy reveal">
+                    <p class="terminal-line">$ access granted: challenges_lab</p>
+                    <h1 class="hero-title range-title">Challenges Lab</h1>
+                    <p class="hero-summary">
+                        A focused technical showcase for serious viewers: realistic cybersecurity
+                        investigations, exploitation paths, hunting exercises, forensics workflows,
+                        and cloud misconfiguration analysis presented as an interactive portfolio range.
+                    </p>
+                    <div class="hero-pill-row" aria-label="Challenge domains">
+                        <span>SOC Investigation</span>
+                        <span>Threat Hunting</span>
+                        <span>Web Exploitation</span>
+                        <span>Forensics</span>
+                        <span>API Security</span>
+                        <span>AI Security</span>
+                    </div>
+                </div>
+
+                <div class="range-hero-side reveal">
+                    <div class="glass-panel range-metrics-shell">
+                        <div class="range-metrics-grid">
+                            <article class="stats-card">
+                                <span>Challenge Tracks</span>
+                                <strong>13</strong>
+                                <p>Advanced domains mapped to real-world workflows</p>
+                            </article>
+                            <article class="stats-card">
+                                <span>Difficulty Levels</span>
+                                <strong>4</strong>
+                                <p>Easy, Medium, Hard, and Expert progressions</p>
+                            </article>
+                            <article class="stats-card">
+                                <span>Scenarios</span>
+                                <strong>52</strong>
+                                <p>Interactive tasks with validation, hints, and scoring</p>
+                            </article>
+                            <article class="stats-card">
+                                <span>Completion PDFs</span>
+                                <strong>13</strong>
+                                <p>Track-specific portfolio records for completed challenge paths</p>
+                            </article>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section challenge-range-section" id="lab-range">
+            <div class="container challenge-range-layout">
+                <aside class="glass-panel challenge-tracks reveal">
+                    <div class="card-header">
+                        <span class="section-code">01</span>
+                        <h2>Tracks</h2>
+                    </div>
+                    <div class="challenge-track-list" id="challenge-track-list"></div>
+                </aside>
+
+                <section class="glass-panel challenge-workspace reveal">
+                    <div class="challenge-workspace-header">
+                        <div class="challenge-breadcrumb" id="challenge-breadcrumb"></div>
+                        <div class="challenge-level-tabs" id="challenge-level-tabs" role="tablist" aria-label="Challenge levels"></div>
+                    </div>
+                    <div class="challenge-workspace-body" id="challenge-workspace"></div>
+                </section>
+
+                <aside class="glass-panel challenge-command reveal" id="lab-certification">
+                    <div class="card-header">
+                        <span class="section-code">02</span>
+                        <h2>Operator Console</h2>
+                    </div>
+                    <div class="challenge-score-grid" id="challenge-score-grid"></div>
+                    <div class="challenge-progress-block">
+                        <div class="challenge-progress-label">
+                            <span>Overall Progress</span>
+                            <strong id="challenge-progress-text">0%</strong>
+                        </div>
+                        <div class="challenge-progress-bar" aria-hidden="true">
+                            <span id="challenge-progress-fill"></span>
+                        </div>
+                    </div>
+                    <div class="challenge-badge-stack" id="challenge-badge-stack"></div>
+                    <div class="challenge-analytics-card" id="challenge-skill-analytics"></div>
+                    <div class="challenge-leaderboard-card" id="challenge-leaderboard"></div>
+                    <div class="challenge-certificate-card" id="challenge-certificate-card"></div>
+                    <div class="challenge-activity-card">
+                        <span class="lab-stat-label">Recent Activity</span>
+                        <ul class="challenge-activity-list" id="challenge-activity-list"></ul>
+                    </div>
+                </aside>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p>&copy; <span id="year"></span> Suraj N S. Challenges Lab built as a practical technical showcase with downloadable portfolio completion records.</p>
+            <a href="index.html">Back to portfolio</a>
+        </div>
+    </footer>
+</div>
+
+<button class="scroll-top" id="scroll-top" type="button" aria-label="Scroll to top">&#8593;</button>
+
+<script src="script.js"></script>
+</body>
+</html>
