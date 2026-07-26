@@ -579,6 +579,66 @@ body.theme-light .theme-toggle-track {
     margin-top: 30px;
 }
 
+.current-role-card {
+    display: grid;
+    gap: 6px;
+    max-width: 680px;
+    margin-top: 22px;
+    padding: 18px 20px;
+    border-radius: 20px;
+    border: 1px solid var(--line-strong);
+    background:
+        linear-gradient(135deg, rgba(98, 255, 129, 0.08), rgba(60, 149, 255, 0.05)),
+        rgba(255, 255, 255, 0.035);
+    box-shadow: 0 18px 44px rgba(0, 0, 0, 0.18);
+}
+
+body.theme-light .current-role-card {
+    background:
+        linear-gradient(135deg, rgba(15, 143, 132, 0.08), rgba(92, 145, 223, 0.06)),
+        rgba(255, 255, 255, 0.78);
+}
+
+.current-role-card span,
+.supporting-links span,
+.timeline-role-badge {
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.current-role-card strong {
+    font-size: 1.2rem;
+}
+
+.current-role-card p {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.65;
+}
+
+.supporting-links {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 14px;
+    margin-top: 20px;
+    color: var(--text-soft);
+}
+
+.supporting-links a {
+    color: var(--text-muted);
+    border-bottom: 1px solid rgba(98, 255, 129, 0.32);
+    transition: color var(--transition), border-color var(--transition);
+}
+
+.supporting-links a:hover {
+    color: var(--accent-strong);
+    border-color: var(--accent-strong);
+}
+
 .button {
     display: inline-flex;
     align-items: center;
@@ -1066,11 +1126,23 @@ body.theme-light .terminal-form {
         linear-gradient(180deg, var(--bg-surface), var(--bg-surface-strong));
 }
 
+.timeline-card.is-current,
+.timeline-item.is-current .timeline-card {
+    border-color: rgba(128, 255, 151, 0.42);
+    box-shadow: 0 24px 78px rgba(0, 0, 0, 0.38), 0 0 0 1px rgba(98, 255, 129, 0.08);
+}
+
 body.theme-light .timeline-card.is-featured,
 body.theme-light .timeline-item.is-featured .timeline-card {
     background:
         linear-gradient(135deg, rgba(225, 245, 241, 0.94), rgba(240, 248, 249, 0.98)),
         linear-gradient(180deg, var(--bg-surface), var(--bg-surface-strong));
+}
+
+body.theme-light .timeline-card.is-current,
+body.theme-light .timeline-item.is-current .timeline-card {
+    border-color: rgba(15, 121, 114, 0.28);
+    box-shadow: 0 20px 58px rgba(38, 64, 84, 0.16);
 }
 
 .timeline-brand {
@@ -1195,6 +1267,26 @@ body.theme-light .company-logo .crest-letter {
 .timeline-content h3 {
     margin: 0 0 8px;
     font-size: 1.18rem;
+}
+
+.timeline-title-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px 12px;
+    margin-bottom: 8px;
+}
+
+.timeline-title-row h3 {
+    margin: 0;
+}
+
+.timeline-role-badge {
+    min-height: 30px;
+    padding: 0 10px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(98, 255, 129, 0.08);
 }
 
 .timeline-content p {
@@ -1926,6 +2018,26 @@ body.theme-light .challenge-input {
     max-width: 560px;
 }
 
+.ops-review-note {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 16px;
+    max-width: 780px;
+    margin-top: 18px;
+    padding: 14px 16px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.035);
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.6;
+}
+
+.ops-review-note span:first-child {
+    color: var(--accent-strong);
+    font-family: var(--mono);
+}
+
 .ops-section {
     padding-top: 12px;
 }
@@ -2321,6 +2433,10 @@ body.theme-light .lab-tab:hover {
     gap: 20px;
 }
 
+.credentials-layout-single {
+    grid-template-columns: 1fr;
+}
+
 .credentials-card {
     padding: 26px;
     border-radius: 28px;
@@ -2376,6 +2492,37 @@ body.theme-light .resume-preview-role {
 .cert-provider-list {
     display: grid;
     gap: 14px;
+}
+
+.cert-feature-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.cert-more {
+    margin-top: 16px;
+}
+
+.cert-more summary {
+    display: inline-flex;
+    align-items: center;
+    min-height: 42px;
+    padding: 0 15px;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    color: var(--text);
+    background: rgba(255, 255, 255, 0.035);
+    cursor: pointer;
+    transition: color var(--transition), border-color var(--transition), transform var(--transition);
+}
+
+.cert-more summary:hover {
+    color: var(--accent-strong);
+    border-color: var(--line-strong);
+    transform: translateY(-2px);
+}
+
+.cert-more .cert-provider-list {
+    margin-top: 14px;
 }
 
 .cert-provider-group {
@@ -2778,6 +2925,7 @@ body.theme-light .resume-preview-role {
     .projects-grid,
     .skills-grid,
     .about-card-grid,
+    .cert-feature-grid,
     .lab-score-grid,
     .ops-feed-grid,
     .honeypot-grid,

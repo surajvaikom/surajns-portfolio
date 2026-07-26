@@ -3,70 +3,82 @@ const portfolioData = {
         name: "Suraj N S",
         email: "surajvaikom@gmail.com",
         phone: "+91 8129331770",
-        location: "Vaikom, Kottayam, Kerala",
+        location: "Vaikom, Kerala, India",
         linkedin: "https://www.linkedin.com/in/surajvaikom/",
         github: "https://github.com/surajvaikom",
         tryhackme: "https://tryhackme.com/p/surajvaikom",
         portfolio: "https://surajns-portfolio-e7um.vercel.app",
-        jobTitle: "Cybersecurity Analyst | SOC Analyst | IT Security Engineer",
+        jobTitle: "IT Infrastructure | System Administration | Cybersecurity",
         roles: [
-            "Cybersecurity Analyst",
-            "SOC Analyst",
-            "IT Security Engineer",
-            "Threat Intelligence Analyst",
-            "Vulnerability Assessment Practitioner",
-            "Penetration Testing Learner",
-            "API Security Tester",
-            "Mobile Security Tester",
-            "System Administration Professional"
+            "IT Infrastructure | System Administration | Cybersecurity",
+            "IT Executive",
+            "System Administrator",
+            "IT Infrastructure Engineer",
+            "Network Administrator",
+            "IT Support / Infrastructure",
+            "Junior IT Security"
         ],
         summary:
-            "Results-driven Cybersecurity and IT Infrastructure professional with 5+ years of experience across system administration, IT support, vulnerability management, penetration testing, and SOC operations. Proven ability to detect threats, analyze vulnerabilities, secure IT systems, and support enterprise environments through proactive security and technical excellence."
+            "IT Infrastructure and Cybersecurity professional with 5+ years of experience in system administration, network security, enterprise IT support, vulnerability assessment, and security operations. Currently working as an IT Executive at DC School of Management and Technology (DCSMAT), Trivandrum, supporting HCI, servers, NAS storage, Sophos Firewall, network and Wi-Fi services, Campus7 ERP, Google Workspace, software licensing, CCTV/NVR, backups, Koha, and user access administration. Experienced in Windows/Linux environments, infrastructure troubleshooting, network security, and reliable IT service delivery."
     },
     stats: [
-        { label: "Operations Experience", value: 5, suffix: "+", detail: "Years across support and secure workflows" },
-        { label: "Certifications", value: 10, suffix: "", detail: "Verified security learning milestones" },
-        { label: "Project Highlights", value: 4, suffix: "+", detail: "Security labs, exploitation, and secure authentication work" },
-        { label: "Challenge Labs", value: 13, suffix: "+", detail: "Interactive technical showcase tracks" },
-        { label: "Threat Intel Sources", value: "Verified", suffix: "", detail: "Trusted IOC, CVE, and advisory references" },
-        { label: "Security Basics", value: "Simple", suffix: "", detail: "Beginner-friendly cyber safety guidance" },
-        { label: "Security Domains", value: 9, suffix: "+", detail: "SOC, VAPT, cloud, mobile, API, AI, and forensics" }
+        { label: "IT Experience", value: 5, suffix: "+", detail: "Years across infrastructure, support, and secure operations" },
+        { label: "Current Role", value: "IT Executive", suffix: "", detail: "DCSMAT, Trivandrum" },
+        { label: "Core Infrastructure", value: "HCI/NAS", suffix: "", detail: "Servers, storage, firewall, Wi-Fi, ERP, and backups" },
+        { label: "Security Labs", value: 50, suffix: "+", detail: "PortSwigger and practical web security exercises" }
     ],
     focusAreas: [
         {
             code: "A1",
-            title: "IT Support",
-            text: "Reliable day-to-day support across hardware, software, Windows, Linux, networking, and ERP workflows."
+            title: "IT Infrastructure",
+            text: "Hands-on support for servers, HCI, NAS storage, endpoints, Wi-Fi, licensing, backups, and institutional IT services."
         },
         {
             code: "A2",
-            title: "Cybersecurity",
-            text: "Practical exposure to vulnerability assessment, web testing, reconnaissance, incident documentation, and OWASP-focused thinking."
+            title: "System Administration",
+            text: "Windows/Linux administration, access management, troubleshooting, ERP support, software deployment, and user service delivery."
         },
         {
             code: "A3",
-            title: "Security Operations",
-            text: "Foundational exposure to monitoring concepts, log review, incident triage, IOC awareness, and defensive analysis."
+            title: "Network Security",
+            text: "Practical network troubleshooting and security support across Sophos Firewall, DNS, DHCP, VPN, Wi-Fi, and access control."
         },
         {
             code: "A4",
-            title: "System Administration",
-            text: "Windows and Linux administration, endpoint setup, access support, patch-minded maintenance, and stable user environments."
+            title: "Cybersecurity Practice",
+            text: "Training and lab exposure in vulnerability assessment, OWASP testing, incident response fundamentals, and threat detection basics."
         }
     ],
     experience: [
         {
             featured: true,
-            title: "ERP and IT Executive",
+            current: true,
+            title: "IT Executive",
+            company: "DC School of Management and Technology (DCSMAT), Trivandrum",
+            date: "Jul 2026 - Present",
+            meta: "HCI | Servers | NAS | Sophos Firewall | ERP",
+            brand: "dcsmat",
+            summary:
+                "Current IT Executive role supporting institutional infrastructure, network security, enterprise platforms, licensing, backups, and day-to-day IT operations.",
+            bullets: [
+                "Manage HCI, servers, NAS storage, wired/wireless networks, Wi-Fi, and end-user IT infrastructure.",
+                "Administer Sophos Firewall and support network security, connectivity, access control, and troubleshooting.",
+                "Manage Campus7 ERP, Google Workspace, user provisioning, permissions, and institutional digital services.",
+                "Administer Adobe, Autodesk, and Microsoft licensing.",
+                "Support CCTV/NVR infrastructure, backups, Koha Library Management System, software deployment, and day-to-day IT operations."
+            ]
+        },
+        {
+            featured: true,
+            title: "ERP & IT Executive",
             company: "Seth M.R. Jaipuria School",
             date: "Apr 2024 - Jan 2026",
-            meta: "IT Infrastructure | ERP Support | Access Control",
+            meta: "IT Systems | ERP Support | Network Infrastructure",
             brand: "jaipuria",
             summary:
-                "Managed enterprise IT systems, network infrastructure, ERP support, and user access controls while supporting operational continuity.",
+                "Managed IT systems, network infrastructure, ERP support, user access, troubleshooting, and operational continuity.",
             bullets: [
-                "Managed enterprise IT systems, network infrastructure, ERP support, and user access controls.",
-                "Delivered technical troubleshooting, infrastructure support, and operational continuity."
+                "Managed IT systems, network infrastructure, ERP support, user access, troubleshooting, and operational continuity."
             ]
         },
         {
@@ -89,9 +101,9 @@ const portfolioData = {
             meta: "CAPTCHA Security | Web Security",
             brand: "tcs",
             summary:
-                "Developed secure CAPTCHA authentication systems and supported web security improvements.",
+                "Developed a secure CAPTCHA service using ASP.NET MVC, C#, and SQL Server.",
             bullets: [
-                "Developed secure CAPTCHA authentication systems and improved web security."
+                "Developed a secure CAPTCHA service using ASP.NET MVC, C#, and SQL Server."
             ]
         },
         {
@@ -103,58 +115,58 @@ const portfolioData = {
             summary:
                 "Managed confidential identity enrollment operations with compliance, accuracy, and secure handling of sensitive information.",
             bullets: [
-                "Managed confidential identity enrollment operations with compliance and accuracy."
+                "Managed confidential identity enrollment operations with emphasis on compliance, accuracy, and reliability."
             ]
         }
     ],
     projects: [
         {
+            title: "PortSwigger Web Security Academy",
+            category: "labs",
+            kicker: "50+ Practical Web Security Labs",
+            description:
+                "Completed 50+ practical web security labs covering authentication, access control, SQL injection, XSS, SSRF, and other OWASP-related vulnerabilities.",
+            tags: ["PortSwigger", "Authentication", "Access Control", "SQL Injection", "XSS", "SSRF"],
+            technologies: ["Burp Suite", "PortSwigger Academy", "Browser Developer Tools"],
+            skills: ["Web Security Testing", "Authentication Testing", "Access Control Review"],
+            owasp: ["Authentication", "Access Control", "Injection", "SSRF"],
+            learning: "Built structured hands-on practice in web application security testing."
+        },
+        {
             title: "Web Application Security Testing",
             category: "web-security",
-            kicker: "VAPT / OWASP Practice",
+            kicker: "Controlled VAPT Practice",
             description:
-                "Conducted web application security testing and vulnerability exploitation in controlled lab environments, focusing on OWASP Top 10 risks and clear remediation reporting.",
-            tags: ["Burp Suite", "OWASP Top 10", "Vulnerability Assessment", "Reporting"],
-            technologies: ["Burp Suite", "Browser DevTools", "Kali Linux"],
-            skills: ["Penetration Testing", "Vulnerability Assessment", "Security Reporting"],
+                "Practiced vulnerability assessment and exploitation in controlled lab environments using common web security testing workflows.",
+            tags: ["Burp Suite", "Kali Linux", "Developer Tools", "OWASP Top 10"],
+            technologies: ["Burp Suite", "Kali Linux", "Browser Developer Tools"],
+            skills: ["Vulnerability Assessment", "Penetration Testing Practice", "Security Reporting"],
             owasp: ["SQL Injection", "XSS", "Broken Access Control"],
-            learning: "Improved practical understanding of web application attack paths and defensive reporting."
+            learning: "Improved testing discipline, evidence collection, and remediation-focused reporting."
         },
         {
-            title: "PortSwigger Web Security Academy Labs",
+            title: "Kioptrix Security Labs",
             category: "labs",
-            kicker: "50+ Web Security Labs",
+            kicker: "Linux Enumeration & Privilege Escalation",
             description:
-                "Completed 50+ PortSwigger Web Security Academy labs covering authentication, access control, SQL injection, XSS, SSRF, and related web vulnerabilities.",
-            tags: ["PortSwigger", "SQL Injection", "XSS", "SSRF"],
-            technologies: ["Burp Suite", "PortSwigger Academy"],
-            skills: ["Web Exploitation", "Authentication Testing", "Access Control Review"],
-            owasp: ["Injection", "SSRF", "Identification and Authentication Failures"],
-            learning: "Strengthened hands-on OWASP testing methodology through structured lab practice."
-        },
-        {
-            title: "Kioptrix Privilege Escalation Labs",
-            category: "labs",
-            kicker: "Linux Exploitation Practice",
-            description:
-                "Performed privilege escalation and exploitation in Kioptrix virtual labs, building practical exposure to Linux enumeration, exploitation, and reporting.",
-            tags: ["Linux", "Privilege Escalation", "Enumeration", "VAPT"],
+                "Completed practical Linux lab exercises covering enumeration, exploitation, and privilege escalation in a safe virtual environment.",
+            tags: ["Kali Linux", "Nmap", "Metasploit", "VMware"],
             technologies: ["Kali Linux", "Nmap", "Metasploit", "VMware"],
             skills: ["Enumeration", "Exploitation", "Privilege Escalation"],
             mitre: ["T1068", "T1059"],
-            learning: "Built confidence in controlled exploitation workflows and post-exploitation analysis."
+            learning: "Strengthened Linux troubleshooting and controlled exploitation fundamentals."
         },
         {
             title: "CAPTCHA Authentication Service",
             category: "secure-build",
             kicker: "Secure Authentication",
             description:
-                "Developed a CAPTCHA service using ASP.NET MVC, C#, and SQL Server to strengthen authentication workflows and reduce automated abuse.",
+                "Developed a CAPTCHA authentication service using ASP.NET MVC, C#, and SQL Server.",
             tags: ["ASP.NET MVC", "C#", "SQL Server", "Authentication"],
             technologies: ["ASP.NET MVC", "C#", "SQL Server"],
             skills: ["Secure Authentication", "ASP.NET MVC", "Database Integration"],
             owasp: ["Identification and Authentication Failures"],
-            learning: "Connected secure development concepts with practical authentication control implementation."
+            learning: "Connected secure development concepts with a practical authentication control."
         }
     ],
     projectFilters: [
@@ -165,67 +177,42 @@ const portfolioData = {
     ],
     skillGroups: [
         {
-            title: "Security Operations (SOC)",
-            description: "SOC monitoring, incident response, log review, and threat detection fundamentals.",
-            items: ["SIEM Concepts", "Security Monitoring", "Log Analysis", "Incident Response", "Basic Threat Hunting", "MITRE ATT&CK Fundamentals"]
+            title: "Systems & Infrastructure",
+            description: "Core infrastructure administration and operational support.",
+            items: ["HCI", "Server Administration", "NAS Storage", "Windows Server", "Linux", "Active Directory", "Backup & Recovery"]
         },
         {
-            title: "Web Security",
-            description: "Web application security testing, OWASP methodology, and vulnerability assessment.",
-            items: ["OWASP Top 10", "Burp Suite", "Vulnerability Assessment", "SQL Injection Testing", "Cross-Site Scripting (XSS)", "Server-Side Request Forgery (SSRF)", "Broken Access Control", "Authentication & Session Security", "Security Testing Methodologies"]
+            title: "Networking & Security",
+            description: "Network operations, firewall support, and secure connectivity.",
+            items: ["Sophos Firewall", "TCP/IP", "DNS", "DHCP", "VPN", "Wi-Fi", "Firewalls", "IDS/IPS", "Network Troubleshooting"]
         },
         {
-            title: "API Security",
-            description: "API testing basics, authentication review, and OWASP API Security Top 10 awareness.",
-            items: ["API Authentication", "OWASP API Security Top 10", "API Vulnerability Assessment", "Postman", "Burp Suite API Testing"]
+            title: "Enterprise Platforms",
+            description: "Administration of institutional platforms, licensing, and digital services.",
+            items: ["Campus7 ERP", "Google Workspace Admin", "Adobe Admin Console", "Autodesk Administration", "Microsoft Licensing", "Koha Library Management System"]
         },
         {
-            title: "Mobile Security",
-            description: "Mobile application security fundamentals and Android testing awareness.",
-            items: ["Mobile Application Security Fundamentals", "Android Security Basics", "OWASP Mobile Top 10 Awareness", "Mobile Application Testing Basics"]
-        },
-        {
-            title: "Threat Intelligence",
-            description: "OSINT, CVE tracking, IOC analysis, and advisory interpretation.",
-            items: ["OSINT", "CVE Tracking", "IOC Analysis", "Threat Intelligence Fundamentals", "Security Advisory Analysis"]
-        },
-        {
-            title: "Phishing Defense",
-            description: "Email investigation, phishing detection, and user security awareness.",
-            items: ["Email Security Awareness", "Phishing Detection", "Email Header Analysis", "Suspicious Link Analysis", "Basic IOC Identification", "User Security Awareness"]
-        },
-        {
-            title: "AI Security",
-            description: "AI attack surface awareness, prompt injection risk, and secure AI usage fundamentals.",
-            items: ["AI Security Fundamentals", "Prompt Injection", "Model Abuse Awareness", "AI Attack Surface Awareness", "Secure AI Workflows", "Responsible AI Usage"]
-        },
-        {
-            title: "Networking",
-            description: "Networking fundamentals for troubleshooting, security monitoring, and infrastructure support.",
-            items: ["TCP/IP", "DNS", "DHCP", "Routing & Switching Fundamentals", "Network Troubleshooting", "VPN Concepts", "Firewall Fundamentals"]
-        },
-        {
-            title: "System Administration",
-            description: "Windows/Linux administration, endpoint support, ERP support, and access management.",
-            items: ["Windows Administration", "Linux Administration", "Active Directory Fundamentals", "Endpoint Support", "ERP Support", "User & Access Management", "System Troubleshooting", "Hardware & Software Support"]
+            title: "Cybersecurity",
+            description: "Practical exposure through training, labs, internships, and controlled security testing.",
+            items: ["Vulnerability Assessment", "Penetration Testing", "Incident Response fundamentals", "Threat Detection fundamentals", "OWASP Top 10", "MITRE ATT&CK fundamentals"]
         },
         {
             title: "Security Tools",
-            description: "Hands-on and foundational security tooling across VAPT, SOC, mobile, and lab environments.",
-            items: ["Burp Suite", "Nmap", "Wireshark", "OpenVAS", "Nessus", "Metasploit", "SQLMap", "Nikto", "Postman", "VMware Workstation", "VirtualBox", "Docker (Basic)"]
+            description: "Tools used in lab practice, assessment workflows, and infrastructure troubleshooting.",
+            items: ["Nmap", "Wireshark", "Burp Suite", "Nessus", "OpenVAS", "Metasploit"]
         }
     ],
     certifications: [
         {
-            name: "Google Cybersecurity Professional Certificate",
-            issuer: "Google",
-            tags: ["SOC", "SIEM", "Incident Response"],
+            name: "Certified Cyber Security Analyst",
+            issuer: "ICT Academy Kerala",
+            tags: ["Security Analysis", "Monitoring", "Reporting"],
             featured: true
         },
         {
-            name: "Certified Cyber Security Analyst",
-            issuer: "ICT Academy of Kerala",
-            tags: ["Security Analysis", "Monitoring", "Reporting"],
+            name: "Google Cybersecurity Professional Certificate",
+            issuer: "Google",
+            tags: ["Security Foundations", "Incident Response", "Linux"],
             featured: true
         },
         {
@@ -237,12 +224,14 @@ const portfolioData = {
         {
             name: "Jr Penetration Tester",
             issuer: "TryHackMe",
-            tags: ["Web Security", "Enumeration", "Exploitation"]
+            tags: ["Web Security", "Enumeration", "Exploitation"],
+            featured: true
         },
         {
             name: "Introduction to OSINT",
             issuer: "Security Blue Team",
-            tags: ["OSINT", "Investigation", "Intel"]
+            tags: ["OSINT", "Investigation", "Intel"],
+            featured: true
         },
         {
             name: "Practical Bug Bounty",
@@ -272,21 +261,21 @@ const portfolioData = {
     ],
     education: [
         {
-            degree: "Bachelor of Library and Information Science (BLIS)",
-            school: "IGNOU, Kochi",
-            years: "2024 - 2025",
-            note: "Awaiting results"
-        },
-        {
             degree: "Master of Computer Applications (MCA)",
-            school: "Rajiv Gandhi Institute of Technology, Kottayam",
+            school: "Rajiv Gandhi Institute of Technology",
             years: "2014 - 2017",
             note: "Score: 64.07%"
         },
         {
+            degree: "Bachelor of Library and Information Science (BLIS)",
+            school: "IGNOU",
+            years: "2024 - 2025",
+            note: "Awaiting results"
+        },
+        {
             degree: "B.Sc Electronics with Computer Hardware",
-            school: "School of Technology and Applied Sciences, Ernakulam",
-            years: "2009 - 2012",
+            school: "STAS Ernakulam",
+            years: "2008 - 2011",
             note: "Score: 56%"
         }
     ],
@@ -295,12 +284,12 @@ const portfolioData = {
             label: "Email",
             value: "surajvaikom@gmail.com",
             link: "mailto:surajvaikom@gmail.com",
-            note: "Available for recruiter and hiring conversations."
+            note: "Recruiter and hiring communication."
         },
         {
             label: "Phone",
             value: "+91 8129331770",
-            note: "Open to calls regarding roles and interviews."
+            note: "Available for role and interview discussions."
         },
         {
             label: "LinkedIn",
@@ -319,12 +308,6 @@ const portfolioData = {
             value: "surajns-portfolio-e7um.vercel.app",
             link: "https://surajns-portfolio-e7um.vercel.app",
             note: "Professional portfolio and cybersecurity showcase."
-        },
-        {
-            label: "TryHackMe",
-            value: "tryhackme.com/p/surajvaikom",
-            link: "https://tryhackme.com/p/surajvaikom",
-            note: "Hands-on labs, practical security learning, and challenge history."
         }
     ]
 };
@@ -1132,7 +1115,7 @@ const intelFeedData = {
         { label: "Trusted Sources", value: 12, trend: "Official catalogs, standards, advisories, and vendor research" },
         { label: "Triage Signals", value: 4, trend: "CVE, CVSS, KEV, and EPSS prioritization cues" },
         { label: "Actor Profiles", value: 9, trend: "Mapped to public ATT&CK-style guidance" },
-        { label: "Tools & Frameworks", value: 16, trend: "Resume-aligned SOC, VAPT, admin, and lab tools" }
+        { label: "Tools & Frameworks", value: 14, trend: "Resume-aligned infrastructure, VAPT, admin, and lab tools" }
     ],
     sources: [
         { name: "CISA Known Exploited Vulnerabilities", type: "Government KEV Catalog", url: "https://www.cisa.gov/known-exploited-vulnerabilities-catalog", use: "Prioritize exploited CVEs and remediation deadlines." },
@@ -1283,8 +1266,6 @@ const intelFeedData = {
         { name: "Wireshark", use: "Packet analysis", level: "Hands-on", description: "Inspect network traffic, protocols, and suspicious connections." },
         { name: "SQLMap", use: "SQL injection testing", level: "Lab practice", description: "Automate SQL injection detection in approved test scenarios." },
         { name: "Nikto", use: "Web server checks", level: "Hands-on", description: "Check common web server issues and insecure files." },
-        { name: "Splunk", use: "SIEM search", level: "Familiar", description: "Search logs and build detection-oriented queries." },
-        { name: "ELK Stack", use: "Log analytics", level: "Familiar", description: "Collect and search logs for operational and security use cases." },
         { name: "Kali Linux", use: "Security lab OS", level: "Hands-on", description: "Use common assessment tools in controlled labs." },
         { name: "Postman", use: "API testing", level: "Hands-on", description: "Test API requests, authentication flows, and response behavior." },
         { name: "Docker", use: "Lab environments", level: "Basic", description: "Run repeatable lab services and lightweight environments." },
@@ -1368,8 +1349,8 @@ function renderExperience() {
     container.innerHTML = portfolioData.experience
         .map(
             (role) => `
-                <article class="timeline-item ${role.featured ? "is-featured" : ""} reveal">
-                    <div class="timeline-card ${role.featured ? "is-featured" : ""}">
+                <article class="timeline-item ${role.featured ? "is-featured" : ""} ${role.current ? "is-current" : ""} reveal">
+                    <div class="timeline-card ${role.featured ? "is-featured" : ""} ${role.current ? "is-current" : ""}">
                         <div class="timeline-brand">
                             ${renderCompanyLogo(role)}
                             <div class="company-meta">
@@ -1379,7 +1360,10 @@ function renderExperience() {
                             </div>
                         </div>
                         <div class="timeline-content">
-                            <h3>${role.title}</h3>
+                            <div class="timeline-title-row">
+                                <h3>${role.title}</h3>
+                                ${role.current ? '<span class="timeline-role-badge">Current Role</span>' : ""}
+                            </div>
                             <p>${role.summary}</p>
                         </div>
                         <ul class="timeline-points">
@@ -1393,6 +1377,20 @@ function renderExperience() {
 }
 
 function renderCompanyLogo(role) {
+    if (role.brand === "dcsmat") {
+        return `
+            <div class="company-logo" aria-label="${role.company} logo treatment">
+                <span class="brand-orbit" aria-hidden="true"></span>
+                <svg viewBox="0 0 56 56" aria-hidden="true">
+                    <rect class="crest-fill" x="10" y="10" width="36" height="36" rx="11"></rect>
+                    <path class="crest-line" d="M19 30H37"></path>
+                    <path class="crest-line" d="M28 18V38"></path>
+                    <text class="crest-letter" x="28" y="34" text-anchor="middle">DC</text>
+                </svg>
+            </div>
+        `;
+    }
+
     if (role.brand === "jaipuria") {
         return `
             <div class="company-logo" aria-label="${role.company} logo treatment">
@@ -1516,17 +1514,13 @@ function renderSkills() {
 function renderCertifications() {
     const container = document.getElementById("certifications-list");
     const certifications = portfolioData.certifications.map((item, index) => ({ ...item, index }));
-    const featured = certifications.filter((item) => item.featured).slice(0, 3);
-    const grouped = certifications.reduce((groups, item) => {
-        groups[item.issuer] = groups[item.issuer] || [];
-        groups[item.issuer].push(item);
-        return groups;
-    }, {});
+    const featured = certifications.filter((item) => item.featured).slice(0, 5);
+    const additional = certifications.filter((item) => !featured.some((featuredItem) => featuredItem.index === item.index));
 
     function renderCertificateCard(item, modifier = "") {
         return `
             <article class="credential-item ${modifier}">
-                <span class="credential-tag">${item.featured ? "Featured" : "Certificate"}</span>
+                <span class="credential-tag">${modifier ? "Priority" : "Additional"}</span>
                 <strong>${item.name}</strong>
                 <p>${item.issuer}</p>
                 <div class="cert-tag-list">
@@ -1540,21 +1534,16 @@ function renderCertifications() {
         <div class="cert-feature-grid">
             ${featured.map((item) => renderCertificateCard(item, "credential-item-featured")).join("")}
         </div>
-        ${Object.entries(grouped)
-            .map(
-                ([issuer, items]) => `
-                    <section class="cert-provider-group">
-                        <div class="cert-provider-heading">
-                            <span>${issuer}</span>
-                            <strong>${items.length} credential${items.length > 1 ? "s" : ""}</strong>
-                        </div>
-                        <div class="cert-provider-list">
-                            ${items.map((item) => renderCertificateCard(item)).join("")}
-                        </div>
-                    </section>
-                `
-            )
-            .join("")}
+        ${
+            additional.length
+                ? `<details class="cert-more">
+                    <summary>View all additional certificates (${additional.length})</summary>
+                    <div class="cert-provider-list">
+                        ${additional.map((item) => renderCertificateCard(item)).join("")}
+                    </div>
+                </details>`
+                : ""
+        }
     `;
 }
 
@@ -2071,7 +2060,7 @@ function buildChallengeCertificatePdf(track, trackKey, score, rank) {
         pdfText("Generated from the interactive Challenges Lab in Suraj N S cybersecurity portfolio.", 70, 86, "F1", 10),
         "0.08 0.48 0.32 rg",
         pdfText("Validated Practical Track", 570, 108, "F2", 14),
-        pdfText("SOC | VAPT | Threat Analysis", 570, 86, "F1", 11)
+        pdfText("Web Security | VAPT | Threat Analysis", 570, 86, "F1", 11)
     ];
 
     const stream = streamLines.join("\n");
@@ -3020,6 +3009,10 @@ function setupTypingSubtitle() {
     const summary = document.getElementById("hero-summary");
     const roles = portfolioData.basics.roles;
 
+    if (!subtitle || !roles.length) {
+        return;
+    }
+
     if (summary) {
         summary.textContent = portfolioData.basics.summary;
     }
@@ -3034,6 +3027,10 @@ function setupTypingSubtitle() {
 function setupStatusLine() {
     const line = document.getElementById("status-line");
     let dots = 0;
+
+    if (!line) {
+        return;
+    }
 
     window.setInterval(() => {
         dots = (dots + 1) % 4;
@@ -3064,6 +3061,10 @@ function setupCounters() {
 function setupProjectFilters() {
     const filterContainer = document.getElementById("project-filters");
 
+    if (!filterContainer) {
+        return;
+    }
+
     filterContainer.addEventListener("click", (event) => {
         const button = event.target.closest("[data-filter]");
         if (!button) {
@@ -3083,6 +3084,10 @@ function setupTerminal() {
     const input = document.getElementById("terminal-input");
     const promptLabel = "suraj@secure-shell:~$";
 
+    if (!output || !form || !input) {
+        return;
+    }
+
     const lines = [
         "Suraj Security Console v1.0",
         "Enter whoami to inspect the active profile."
@@ -3091,7 +3096,7 @@ function setupTerminal() {
     const commands = {
         whoami: [
             `Suraj N S | ${portfolioData.basics.jobTitle}`,
-            "Target roles: SOC Analyst, Cybersecurity Analyst, Threat Intelligence Analyst, VAPT, IT Security Engineer."
+            "Target roles: IT Executive, System Administrator, IT Infrastructure Engineer, Network Administrator, IT Support, and Junior IT Security."
         ],
         help: [
             "Available commands:",
@@ -3108,12 +3113,12 @@ function setupTerminal() {
             "sudo hire suraj"
         ],
         about: [
-            "Hands-on experience across secure IT support, vulnerability assessment, lab practice, and practical documentation.",
-            "Strengths include Windows/Linux support, OWASP-focused testing, and recruiter-ready reporting."
+            "Current IT Executive with hands-on infrastructure, system administration, network security, and enterprise support experience.",
+            "Cybersecurity work is presented as internships, training, labs, and practical exposure."
         ],
         skills: [
             "Core skills:",
-            "SOC, SIEM, Incident Response, OWASP Top 10, API Security, Mobile Security, Threat Intelligence, Networking, Windows, Linux, Active Directory"
+            "HCI, Server Administration, NAS Storage, Windows Server, Linux, Active Directory, Sophos Firewall, DNS, DHCP, VPN, Wi-Fi, Campus7 ERP, Google Workspace, OWASP Top 10"
         ],
         projects: portfolioData.projects.map((project) => `- ${project.title}`),
         lab: ["Open challenges.html for the full Challenges Lab with advanced SOC, hunting, web, API, mobile, AI, phishing, forensics, malware, network, privilege escalation, and cloud scenarios."],
@@ -3128,7 +3133,7 @@ function setupTerminal() {
         ],
         "sudo hire suraj": [
             "Access granted.",
-            "Recommendation: Strong fit for support-focused cybersecurity and junior security operations roles."
+            "Recommendation: Strong fit for IT infrastructure, system administration, network support, and junior IT security roles."
         ]
     };
 
@@ -3227,7 +3232,7 @@ function setupResumeModal() {
                     .join("")}
             </section>
             <section class="resume-preview-section">
-                <h4>Projects</h4>
+                <h4>Selected Cybersecurity Projects & Labs</h4>
                 <ul class="resume-preview-list">
                     ${portfolioData.projects
                         .map(
@@ -3573,7 +3578,7 @@ function buildResumePdf() {
         addSpacer(8);
     });
 
-    addHeading("Projects");
+    addHeading("Selected Cybersecurity Projects & Labs");
     portfolioData.projects.forEach((project) => {
         addLines([`${project.title} | ${project.kicker}`], { font: "F2", size: 11, lineHeight: 17 });
         addParagraph(project.description, { size: 10 });
