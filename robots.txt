@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://surajns-portfolio-e7um.vercel.app/sitemap.xml

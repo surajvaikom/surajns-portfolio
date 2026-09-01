@@ -3,14 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Suraj N S IntelOps dashboard for source-led cybersecurity intelligence, CVE triage, CISA KEV prioritization, MITRE ATT&CK mapping, OWASP references, and SOC investigation workflow.">
+    <meta name="description" content="Suraj N S IntelOps source guide for cybersecurity learning, CVE triage, CISA KEV prioritization, MITRE ATT&CK mapping, and OWASP references.">
+    <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://surajns-portfolio-e7um.vercel.app/intel.html">
     <meta name="theme-color" content="#07111b">
     <meta name="color-scheme" content="dark light">
     <meta name="referrer" content="strict-origin-when-cross-origin">
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
-    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://services.nvd.nist.gov https://www.cisa.gov https://api.github.com; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://surajns-portfolio-e7um.vercel.app/intel.html">
     <meta property="og:title" content="Suraj N S | IntelOps">
-    <meta property="og:description" content="A trusted-source cybersecurity intelligence dashboard inside Suraj N S portfolio.">
+    <meta property="og:description" content="A trusted-source cybersecurity learning and research guide inside Suraj N S portfolio.">
     <title>Suraj N S | IntelOps</title>
     <link rel="stylesheet" href="style.css">
 </head>
@@ -33,7 +37,7 @@
                 </span>
                 <span class="brand-text">
                     <strong>Suraj N S</strong>
-                    <span>IntelOps &bull; Threat Intelligence Dashboard</span>
+                    <span>IntelOps &bull; Security Sources &amp; Learning</span>
                 </span>
             </a>
 
@@ -88,9 +92,8 @@
                     <p class="terminal-line">$ intelops.sources --verify cisa,nvd,mitre,owasp,first</p>
                     <h1 class="hero-title range-title">IntelOps</h1>
                     <p class="hero-summary">
-                        A source-first intelligence workspace for CVE triage, exploited vulnerability
-                        prioritization, ATT&CK mapping, OWASP references, and SOC investigation notes
-                        using trusted public sources only.
+                        A source-first learning workspace for CVE triage, exploited vulnerability
+                        prioritization, ATT&CK mapping, and OWASP references using trusted public sources.
                     </p>
                     <div class="hero-pill-row" aria-label="Threat intelligence domains">
                         <span>CVE Triage</span>
@@ -101,7 +104,7 @@
                     <label class="sr-only" for="intel-search">Search IntelOps</label>
                     <input class="challenge-input intel-search" id="intel-search" type="search" placeholder="Search sources, actors, tools, MITRE IDs">
                     <div class="ops-review-note" aria-label="IntelOps source review note">
-                        <span>Last reviewed: <time datetime="2026-07-16">July 16, 2026</time></span>
+                        <span>Last reviewed: <time datetime="2026-09-02">September 2, 2026</time></span>
                         <span>Source links are for learning and portfolio demonstration; validate with official advisories before operational use.</span>
                     </div>
                     <p class="ops-refresh" id="intel-update-time">Trusted-source workspace loading...</p>

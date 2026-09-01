@@ -106,6 +106,16 @@ select {
     font: inherit;
 }
 
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+summary:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 4px;
+}
+
 .sr-only {
     position: absolute;
     width: 1px;
@@ -537,6 +547,22 @@ body.theme-light .theme-toggle-track {
     font-size: clamp(1.45rem, 3vw, 2.5rem);
     line-height: 1.14;
     color: var(--text);
+}
+
+.hero-role-label {
+    display: inline-flex;
+    align-items: center;
+    min-height: 34px;
+    margin: 18px 0 0;
+    padding: 0 12px;
+    border-radius: 999px;
+    border: 1px solid var(--line-strong);
+    background: rgba(98, 255, 129, 0.08);
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .hero-summary {
@@ -1308,6 +1334,9 @@ body.theme-light .company-logo .crest-letter {
 }
 
 .filter-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     min-height: 40px;
     padding: 0 14px;
     border-radius: 999px;
@@ -1316,6 +1345,19 @@ body.theme-light .company-logo .crest-letter {
     color: var(--text-muted);
     cursor: pointer;
     transition: all var(--transition);
+}
+
+.filter-chip-count {
+    display: grid;
+    place-items: center;
+    min-width: 22px;
+    height: 22px;
+    padding: 0 6px;
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.1);
+    color: inherit;
+    font-family: var(--mono);
+    font-size: 0.7rem;
 }
 
 .filter-chip.is-active,
@@ -1327,7 +1369,7 @@ body.theme-light .company-logo .crest-letter {
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
 }
 
@@ -1338,10 +1380,146 @@ body.theme-light .company-logo .crest-letter {
     border-radius: 24px;
 }
 
+.project-evidence,
+.skill-context {
+    width: fit-content;
+    padding: 6px 9px;
+    border: 1px solid var(--line);
+    border-radius: 999px;
+    color: var(--text-muted);
+    background: rgba(255, 255, 255, 0.035);
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    text-transform: uppercase;
+}
+
+.project-evidence-professional,
+.skill-context-professional {
+    border-color: rgba(98, 255, 129, 0.34);
+    color: var(--accent-strong);
+    background: rgba(98, 255, 129, 0.08);
+}
+
+.project-evidence-labs,
+.skill-context-labs,
+.skill-context-practice {
+    border-color: rgba(130, 204, 255, 0.28);
+    color: #b6e7ff;
+    background: rgba(90, 175, 231, 0.09);
+}
+
+.project-evidence-training,
+.skill-context-training,
+.project-evidence-internship {
+    border-color: rgba(255, 211, 106, 0.3);
+    color: var(--warning);
+    background: rgba(255, 211, 106, 0.08);
+}
+
+body.theme-light .project-evidence-labs,
+body.theme-light .skill-context-labs,
+body.theme-light .skill-context-practice {
+    color: #126c92;
+}
+
+.project-visual {
+    min-height: 170px;
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    gap: 18px;
+    padding: 18px;
+    border-radius: 22px;
+    border: 1px solid rgba(98, 255, 129, 0.12);
+    background:
+        radial-gradient(circle at 18% 28%, rgba(98, 255, 129, 0.16), transparent 34%),
+        linear-gradient(135deg, rgba(8, 20, 32, 0.92), rgba(12, 38, 27, 0.72));
+    overflow: hidden;
+    position: relative;
+}
+
+.project-visual::before {
+    content: "";
+    position: absolute;
+    inset: 16px;
+    border-radius: 18px;
+    border: 1px solid rgba(183, 255, 191, 0.08);
+    background:
+        linear-gradient(90deg, transparent 0 94%, rgba(98, 255, 129, 0.08) 94% 100%),
+        linear-gradient(180deg, transparent 0 94%, rgba(98, 255, 129, 0.06) 94% 100%);
+    background-size: 32px 32px;
+}
+
+body.theme-light .project-visual {
+    background:
+        radial-gradient(circle at 18% 28%, rgba(15, 143, 132, 0.12), transparent 34%),
+        linear-gradient(135deg, rgba(244, 250, 249, 0.94), rgba(218, 239, 236, 0.88));
+}
+
+.project-visual span {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    place-items: center;
+    width: 78px;
+    height: 78px;
+    border-radius: 22px;
+    border: 1px solid var(--line-strong);
+    background: rgba(255, 255, 255, 0.04);
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 1.35rem;
+    font-weight: 700;
+}
+
+.project-visual div {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 4px;
+    text-align: right;
+}
+
+.project-visual strong,
+.project-visual small {
+    font-family: var(--mono);
+}
+
+.project-visual small {
+    color: var(--text-soft);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+}
+
 .project-card p {
     margin: 0;
     color: var(--text-muted);
     line-height: 1.7;
+}
+
+.project-case-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 10px;
+}
+
+.project-case-grid div {
+    padding: 12px;
+    border-radius: 16px;
+    border: 1px solid rgba(98, 255, 129, 0.08);
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.project-case-grid strong {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
 }
 
 .project-meta {
@@ -1380,10 +1558,61 @@ body.theme-light .company-logo .crest-letter {
     line-height: 1.65;
 }
 
+.project-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.project-actions .button {
+    min-height: 42px;
+    padding: 0 14px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+}
+
+.project-empty-state {
+    grid-column: 1 / -1;
+    display: grid;
+    gap: 8px;
+    min-height: 160px;
+    place-content: center;
+    padding: 28px;
+    border: 1px dashed var(--line-strong);
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.025);
+    text-align: center;
+}
+
+.project-empty-state strong {
+    color: var(--accent-strong);
+}
+
+.project-empty-state p {
+    margin: 0;
+    color: var(--text-muted);
+}
+
 .skills-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 18px;
+}
+
+.skill-card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.skill-card-heading h3 {
+    margin: 0;
+}
+
+.skill-context {
+    max-width: 54%;
+    text-align: right;
 }
 
 .cyber-lab-section {
@@ -2780,6 +3009,149 @@ body.theme-light .resume-preview-role {
     gap: 12px;
 }
 
+.project-modal {
+    width: min(900px, calc(100vw - 24px));
+}
+
+.project-modal-content {
+    display: grid;
+    gap: 22px;
+    padding: 28px 24px;
+}
+
+.case-study-hero {
+    display: grid;
+    gap: 12px;
+}
+
+.case-study-hero h2,
+.case-study-flow h3,
+.case-study-details h3 {
+    margin: 0;
+}
+
+.case-study-hero > p:last-child,
+.case-study-flow p,
+.case-study-details p,
+.case-study-learning {
+    margin: 0;
+    color: var(--text-muted);
+    line-height: 1.72;
+}
+
+.case-study-flow {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.case-study-flow article,
+.case-study-details article {
+    display: grid;
+    gap: 8px;
+    padding: 16px;
+    border: 1px solid rgba(98, 255, 129, 0.1);
+    border-radius: 18px;
+    background: rgba(255, 255, 255, 0.025);
+}
+
+.case-study-flow article > span {
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.09em;
+}
+
+.case-study-details {
+    display: grid;
+    gap: 12px;
+}
+
+.case-study-details > div {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+}
+
+.case-study-details strong,
+.case-study-learning strong {
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.case-study-learning {
+    padding: 14px 16px;
+    border-left: 2px solid var(--accent);
+    background: rgba(98, 255, 129, 0.045);
+}
+
+.case-study-actions {
+    padding-top: 2px;
+}
+
+.lab-boundary-note {
+    margin: 16px 0 0;
+    color: var(--text-soft);
+    font-size: 0.9rem;
+    line-height: 1.6;
+}
+
+.basics-response-section {
+    padding-top: 10px;
+}
+
+.basics-response-heading {
+    display: grid;
+    gap: 8px;
+    max-width: 760px;
+    margin-bottom: 20px;
+}
+
+.basics-response-heading h2,
+.basics-response-heading p {
+    margin: 0;
+}
+
+.basics-response-heading p {
+    color: var(--text-muted);
+    line-height: 1.7;
+}
+
+.basics-response-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 14px;
+}
+
+.basics-response-card {
+    display: grid;
+    gap: 9px;
+    padding: 20px;
+    border: 1px solid var(--line);
+    border-radius: 20px;
+    background: linear-gradient(145deg, rgba(255, 255, 255, 0.045), rgba(98, 255, 129, 0.035));
+}
+
+.basics-response-card > span {
+    color: var(--accent-strong);
+    font-family: var(--mono);
+    font-size: 0.76rem;
+    letter-spacing: 0.09em;
+}
+
+.basics-response-card h3,
+.basics-response-card p {
+    margin: 0;
+}
+
+.basics-response-card p {
+    color: var(--text-muted);
+    line-height: 1.68;
+}
+
 .noscript-banner {
     position: fixed;
     left: 16px;
@@ -2925,6 +3297,10 @@ body.theme-light .resume-preview-role {
     .projects-grid,
     .skills-grid,
     .about-card-grid,
+    .project-case-grid,
+    .case-study-flow,
+    .case-study-details > div,
+    .basics-response-grid,
     .cert-feature-grid,
     .lab-score-grid,
     .ops-feed-grid,
@@ -3000,6 +3376,15 @@ body.theme-light .resume-preview-role {
 
     .resume-preview-skill-grid {
         grid-template-columns: 1fr;
+    }
+
+    .skill-card-heading {
+        display: grid;
+    }
+
+    .skill-context {
+        max-width: 100%;
+        text-align: left;
     }
 
     .lab-game-tabs,

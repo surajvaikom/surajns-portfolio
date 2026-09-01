@@ -8,24 +8,24 @@ const portfolioData = {
         github: "https://github.com/surajvaikom",
         tryhackme: "https://tryhackme.com/p/surajvaikom",
         portfolio: "https://surajns-portfolio-e7um.vercel.app",
-        jobTitle: "IT Infrastructure | System Administration | Cybersecurity",
+        jobTitle: "IT Executive | Cybersecurity | VAPT | IT Security",
         roles: [
-            "IT Infrastructure | System Administration | Cybersecurity",
+            "Cybersecurity | VAPT | IT Security",
             "IT Executive",
-            "System Administrator",
-            "IT Infrastructure Engineer",
-            "Network Administrator",
-            "IT Support / Infrastructure",
-            "Junior IT Security"
+            "Entry-Level Cybersecurity Analyst",
+            "Junior SOC Analyst",
+            "Vulnerability Assessment Practitioner",
+            "Web Application Security Tester",
+            "IT Security Support"
         ],
         summary:
-            "IT Infrastructure and Cybersecurity professional with 5+ years of experience in system administration, network security, enterprise IT support, vulnerability assessment, and security operations. Currently working as an IT Executive at DC School of Management and Technology (DCSMAT), Trivandrum, supporting HCI, servers, NAS storage, Sophos Firewall, network and Wi-Fi services, Campus7 ERP, Google Workspace, software licensing, CCTV/NVR, backups, Koha, and user access administration. Experienced in Windows/Linux environments, infrastructure troubleshooting, network security, and reliable IT service delivery."
+            "Cybersecurity-focused IT Executive with 5+ years of IT infrastructure and technical support experience, now targeting cybersecurity, VAPT, IT security, and junior SOC roles. Currently working at DC School of Management and Technology (DCSMAT), Thiruvananthapuram, supporting Sophos Firewall, servers, NAS storage, network and Wi-Fi services, Google Workspace, Campus7 ERP, backups, CCTV/NVR, licensing, and user access administration. Strengths include OWASP Top 10 testing, vulnerability assessment practice, Burp Suite, Nmap, Wireshark, Linux, Windows administration, access control, incident response fundamentals, and clear security documentation."
     },
     stats: [
         { label: "IT Experience", value: 5, suffix: "+", detail: "Years across infrastructure, support, and secure operations" },
-        { label: "Current Role", value: "IT Executive", suffix: "", detail: "DCSMAT, Trivandrum" },
-        { label: "Core Infrastructure", value: "HCI/NAS", suffix: "", detail: "Servers, storage, firewall, Wi-Fi, ERP, and backups" },
-        { label: "Security Labs", value: 50, suffix: "+", detail: "PortSwigger and practical web security exercises" }
+        { label: "Current Role", value: "IT Executive", suffix: "", detail: "DCSMAT, Thiruvananthapuram" },
+        { label: "Security Labs", value: 50, suffix: "+", detail: "PortSwigger, TryHackMe, and controlled practice labs" },
+        { label: "Target Focus", value: "Cyber", suffix: "", detail: "VAPT, junior SOC, and IT security roles" }
     ],
     focusAreas: [
         {
@@ -54,7 +54,7 @@ const portfolioData = {
             featured: true,
             current: true,
             title: "IT Executive",
-            company: "DC School of Management and Technology (DCSMAT), Trivandrum",
+            company: "DC School of Management and Technology (DCSMAT), Thiruvananthapuram",
             date: "Jul 2026 - Present",
             meta: "HCI | Servers | NAS | Sophos Firewall | ERP",
             brand: "dcsmat",
@@ -121,85 +121,171 @@ const portfolioData = {
     ],
     projects: [
         {
+            title: "Web Application Security Testing",
+            category: "web-security",
+            kicker: "VAPT / OWASP Practice",
+            evidenceType: "labs",
+            evidenceLabel: "Controlled lab practice",
+            description:
+                "Practiced vulnerability assessment and exploitation in controlled lab environments using OWASP-focused web security testing workflows.",
+            problem: "Web applications commonly fail because of weak authentication, broken access control, injection flaws, and insecure request handling.",
+            solution: "Used Burp Suite, Kali Linux, and browser developer tools to test requests, validate vulnerabilities, document evidence, and prepare remediation notes.",
+            result: "Built stronger practical understanding of web attack paths and clear security reporting for junior cybersecurity roles.",
+            tags: ["Burp Suite", "OWASP Top 10", "SQL Injection", "XSS", "Access Control"],
+            technologies: ["Burp Suite", "Kali Linux", "Browser Developer Tools"],
+            skills: ["Vulnerability Assessment", "Web Security Testing", "Security Reporting"],
+            github: "https://github.com/surajvaikom",
+            demo: "challenges.html"
+        },
+        {
             title: "PortSwigger Web Security Academy",
-            category: "labs",
+            category: "web-security",
             kicker: "50+ Practical Web Security Labs",
+            evidenceType: "labs",
+            evidenceLabel: "50+ controlled lab exercises",
             description:
                 "Completed 50+ practical web security labs covering authentication, access control, SQL injection, XSS, SSRF, and other OWASP-related vulnerabilities.",
+            problem: "Web application risks need hands-on understanding before they can be explained clearly or remediated effectively.",
+            solution: "Work through structured PortSwigger labs using Burp Suite and browser testing workflows in controlled environments.",
+            result: "Built stronger practical understanding of OWASP-style web vulnerabilities and remediation reporting.",
             tags: ["PortSwigger", "Authentication", "Access Control", "SQL Injection", "XSS", "SSRF"],
             technologies: ["Burp Suite", "PortSwigger Academy", "Browser Developer Tools"],
             skills: ["Web Security Testing", "Authentication Testing", "Access Control Review"],
-            owasp: ["Authentication", "Access Control", "Injection", "SSRF"],
-            learning: "Built structured hands-on practice in web application security testing."
+            github: "https://github.com/surajvaikom",
+            demo: "challenges.html"
         },
         {
-            title: "Web Application Security Testing",
-            category: "web-security",
-            kicker: "Controlled VAPT Practice",
+            title: "Sophos Firewall & Network Security Support",
+            category: "network-security",
+            kicker: "Real Infrastructure Security Exposure",
+            evidenceType: "professional",
+            evidenceLabel: "Professional infrastructure support",
             description:
-                "Practiced vulnerability assessment and exploitation in controlled lab environments using common web security testing workflows.",
-            tags: ["Burp Suite", "Kali Linux", "Developer Tools", "OWASP Top 10"],
-            technologies: ["Burp Suite", "Kali Linux", "Browser Developer Tools"],
-            skills: ["Vulnerability Assessment", "Penetration Testing Practice", "Security Reporting"],
-            owasp: ["SQL Injection", "XSS", "Broken Access Control"],
-            learning: "Improved testing discipline, evidence collection, and remediation-focused reporting."
+                "Supported secure network operations through Sophos Firewall, connectivity troubleshooting, access control awareness, VPN concepts, and Wi-Fi/network support.",
+            problem: "Recruiters need to see practical security exposure beyond lab work, especially around networks, firewalls, and access control.",
+            solution: "Applied infrastructure troubleshooting experience to support secure connectivity, firewall-aware issue analysis, and reliable user access.",
+            result: "Shows real-world IT security foundation for cybersecurity analyst, IT security, and junior SOC pathways.",
+            tags: ["Sophos Firewall", "Network Security", "VPN", "DNS", "DHCP"],
+            technologies: ["Sophos Firewall", "TCP/IP", "DNS", "DHCP", "Wi-Fi"],
+            skills: ["Network Security", "Firewall Support", "Security-Aware Troubleshooting"],
+            github: "https://github.com/surajvaikom",
+            demo: "#experience"
         },
         {
             title: "Kioptrix Security Labs",
             category: "labs",
             kicker: "Linux Enumeration & Privilege Escalation",
+            evidenceType: "labs",
+            evidenceLabel: "Controlled virtual lab",
             description:
                 "Completed practical Linux lab exercises covering enumeration, exploitation, and privilege escalation in a safe virtual environment.",
+            problem: "Linux security concepts are easier to retain when practiced in a safe, repeatable lab.",
+            solution: "Use Kali Linux, Nmap, Metasploit, and VMware to practice enumeration, exploitation, and privilege escalation.",
+            result: "Strengthened Linux troubleshooting and controlled exploitation fundamentals.",
             tags: ["Kali Linux", "Nmap", "Metasploit", "VMware"],
             technologies: ["Kali Linux", "Nmap", "Metasploit", "VMware"],
             skills: ["Enumeration", "Exploitation", "Privilege Escalation"],
-            mitre: ["T1068", "T1059"],
-            learning: "Strengthened Linux troubleshooting and controlled exploitation fundamentals."
+            github: "https://github.com/surajvaikom",
+            demo: "challenges.html"
+        },
+        {
+            title: "Google Workspace Access Administration",
+            category: "access-control",
+            kicker: "Identity & Access Support",
+            evidenceType: "professional",
+            evidenceLabel: "Professional access administration",
+            description:
+                "Supported user provisioning, permissions, and access administration for Google Workspace and institutional digital services.",
+            problem: "Security teams value candidates who understand identity, permissions, user lifecycle, and access-control discipline.",
+            solution: "Handled account support, permission checks, access requests, and user administration with clear documentation and operational care.",
+            result: "Connects real IT experience to identity security, access management, and least-privilege thinking.",
+            tags: ["Access Control", "Google Workspace", "User Provisioning", "Permissions"],
+            technologies: ["Google Admin Console", "Campus7 ERP", "User Access Management"],
+            skills: ["Identity Support", "Access Administration", "Documentation"],
+            github: "https://github.com/surajvaikom",
+            demo: "#experience"
+        },
+        {
+            title: "Phishing Analysis & Awareness Practice",
+            category: "awareness",
+            kicker: "Email Security Fundamentals",
+            evidenceType: "training",
+            evidenceLabel: "Training and lab-style practice",
+            description:
+                "Practiced phishing detection, suspicious link review, email security awareness, and user-focused reporting through training and lab-style exercises.",
+            problem: "Phishing remains one of the most common paths to account compromise and requires careful user-facing communication.",
+            solution: "Reviewed indicators such as sender mismatch, urgency, suspicious links, credential prompts, and attachment behavior.",
+            result: "Built beginner-friendly communication skills for security awareness and incident reporting support.",
+            tags: ["Phishing", "Email Security", "Awareness", "IOC Basics"],
+            technologies: ["Email Header Review", "URL Inspection", "Security Awareness"],
+            skills: ["Phishing Detection", "User Awareness", "Security Reporting"],
+            github: "https://github.com/surajvaikom",
+            demo: "basics.html"
         },
         {
             title: "CAPTCHA Authentication Service",
             category: "secure-build",
             kicker: "Secure Authentication",
+            evidenceType: "internship",
+            evidenceLabel: "Internship secure-development project",
             description:
                 "Developed a CAPTCHA authentication service using ASP.NET MVC, C#, and SQL Server.",
+            problem: "Authentication flows need protection against automated abuse and repeated bot-style submissions.",
+            solution: "Developed a CAPTCHA-backed authentication service using ASP.NET MVC, C#, and SQL Server.",
+            result: "Connected secure development fundamentals with a practical authentication control.",
             tags: ["ASP.NET MVC", "C#", "SQL Server", "Authentication"],
             technologies: ["ASP.NET MVC", "C#", "SQL Server"],
             skills: ["Secure Authentication", "ASP.NET MVC", "Database Integration"],
             owasp: ["Identification and Authentication Failures"],
-            learning: "Connected secure development concepts with a practical authentication control."
+            learning: "Connected secure development concepts with a practical authentication control.",
+            github: "https://github.com/surajvaikom",
+            demo: "#projects"
         }
     ],
     projectFilters: [
         { label: "All", value: "all" },
         { label: "Web Security", value: "web-security" },
+        { label: "Network Security", value: "network-security" },
+        { label: "Access Control", value: "access-control" },
         { label: "Labs", value: "labs" },
+        { label: "Awareness", value: "awareness" },
         { label: "Secure Build", value: "secure-build" }
     ],
     skillGroups: [
         {
-            title: "Systems & Infrastructure",
-            description: "Core infrastructure administration and operational support.",
-            items: ["HCI", "Server Administration", "NAS Storage", "Windows Server", "Linux", "Active Directory", "Backup & Recovery"]
+            title: "Web & Application Security",
+            description: "Cybersecurity testing skills for VAPT and junior web security roles.",
+            context: "Hands-on labs and controlled practice",
+            contextType: "labs",
+            items: ["OWASP Top 10", "Burp Suite", "SQL Injection Testing", "Cross-Site Scripting (XSS)", "SSRF", "Broken Access Control", "Authentication & Session Security"]
         },
         {
-            title: "Networking & Security",
-            description: "Network operations, firewall support, and secure connectivity.",
-            items: ["Sophos Firewall", "TCP/IP", "DNS", "DHCP", "VPN", "Wi-Fi", "Firewalls", "IDS/IPS", "Network Troubleshooting"]
+            title: "Security Tools & Assessment",
+            description: "Hands-on tools used in labs, vulnerability assessment, and infrastructure troubleshooting.",
+            context: "Labs, assessments, and troubleshooting",
+            contextType: "practice",
+            items: ["Nmap", "Wireshark", "Nessus", "OpenVAS", "Metasploit", "Nikto", "Kali Linux"]
         },
         {
-            title: "Enterprise Platforms",
-            description: "Administration of institutional platforms, licensing, and digital services.",
-            items: ["Campus7 ERP", "Google Workspace Admin", "Adobe Admin Console", "Autodesk Administration", "Microsoft Licensing", "Koha Library Management System"]
+            title: "SOC & Incident Response Fundamentals",
+            description: "Training-level knowledge for entry-level cybersecurity and junior SOC roles.",
+            context: "Training and practical exposure",
+            contextType: "training",
+            items: ["SIEM Concepts", "Basic Log Analysis", "Incident Response Fundamentals", "Threat Detection Fundamentals", "MITRE ATT&CK Fundamentals", "IOC Basics"]
         },
         {
-            title: "Cybersecurity",
-            description: "Practical exposure through training, labs, internships, and controlled security testing.",
-            items: ["Vulnerability Assessment", "Penetration Testing", "Incident Response fundamentals", "Threat Detection fundamentals", "OWASP Top 10", "MITRE ATT&CK fundamentals"]
+            title: "Network & Infrastructure Security",
+            description: "Real IT infrastructure experience that supports cybersecurity readiness.",
+            context: "Professional IT infrastructure exposure",
+            contextType: "professional",
+            items: ["Sophos Firewall", "TCP/IP", "DNS", "DHCP", "VPN", "Wi-Fi", "Firewall Fundamentals", "Network Troubleshooting"]
         },
         {
-            title: "Security Tools",
-            description: "Tools used in lab practice, assessment workflows, and infrastructure troubleshooting.",
-            items: ["Nmap", "Wireshark", "Burp Suite", "Nessus", "OpenVAS", "Metasploit"]
+            title: "Systems, Access & Scripting",
+            description: "Support skills that strengthen identity security, automation, and secure operations.",
+            context: "Professional administration plus fundamentals",
+            contextType: "professional",
+            items: ["Windows Administration", "Linux Administration", "Active Directory Fundamentals", "Google Workspace Admin", "User Provisioning", "Python", "PowerShell", "Bash", "SQL"]
         }
     ],
     certifications: [
@@ -555,16 +641,16 @@ const challengeRangeData = {
                 explanation: "Because the payload persists in the application and executes on later page loads, this is stored XSS."
             },
             expert: {
-                title: "Metadata Reachability",
+                title: "Internal Service Reachability",
                 points: 55,
-                tags: ["SSRF", "Cloud", "Internal Access"],
-                prompt: "A URL-fetch feature allows the server to request internal resources, including cloud metadata. Identify the finding.",
+                tags: ["SSRF", "Internal Access", "Web Security"],
+                prompt: "A URL-fetch feature allows the server to request internal-only services. Identify the finding.",
                 evidenceTitle: "Server Fetch Logs",
-                evidence: `GET /fetch?url=http://example.com/image.png -> 200\nGET /fetch?url=http://169.254.169.254/latest/meta-data/iam/security-credentials/ -> 200`,
+                evidence: `GET /fetch?url=http://example.com/image.png -> 200\nGET /fetch?url=http://127.0.0.1:8080/admin/status -> 200`,
                 question: "Which vulnerability does this demonstrate?",
                 answers: ["ssrf", "server-side request forgery"],
                 hint: "The server is making the request on behalf of the user and can reach internal-only addresses.",
-                explanation: "The application can be coerced into requesting internal metadata endpoints, which is a classic SSRF condition."
+                explanation: "The application can be coerced into requesting internal services, which is a classic SSRF condition."
             }
         }
     },
@@ -781,60 +867,6 @@ const challengeRangeData = {
                 answers: ["path hijacking", "path injection", "tar path hijacking"],
                 hint: "If a privileged script calls a command without an absolute path, a malicious replacement may be found first.",
                 explanation: "The missing absolute path opens the door for PATH hijacking if the execution environment can be influenced."
-            }
-        }
-    },
-    cloud: {
-        label: "Cloud Security Challenges",
-        summary: "Assess public exposure, S3 issues, IAM abuse, and risky cloud permissions.",
-        levels: {
-            easy: {
-                title: "Public Bucket Detection",
-                points: 20,
-                tags: ["S3", "Exposure", "Cloud"],
-                prompt: "One object storage bucket allows public listing. Identify the main issue.",
-                evidenceTitle: "Bucket Policy Summary",
-                evidence: `bucket=finance-backups\nacl=private\npolicy=Allow s3:ListBucket Principal=*`,
-                question: "What is the security problem here?",
-                answers: ["public bucket listing", "public s3 bucket", "public exposure"],
-                hint: "The ACL says private, but the policy tells a different story.",
-                explanation: "A bucket policy that grants ListBucket to everyone creates public exposure even if the ACL is private."
-            },
-            medium: {
-                title: "IAM Privilege Abuse",
-                points: 30,
-                tags: ["IAM", "Privilege", "Cloud"],
-                prompt: "An analyst account can attach policies to itself. Identify the risk.",
-                evidenceTitle: "IAM Capability Review",
-                evidence: `principal=arn:aws:iam::123456789012:user/analyst\nallowed=iam:AttachUserPolicy, iam:ListRoles, s3:GetObject`,
-                question: "What is the primary abuse path?",
-                answers: ["self privilege escalation", "attach admin policy to self", "iam privilege escalation"],
-                hint: "If a low-privileged user can attach policies to itself, it can likely become more privileged.",
-                explanation: "Self-attachment of stronger policies creates a direct IAM privilege escalation path."
-            },
-            hard: {
-                title: "Public Exposure Analysis",
-                points: 40,
-                tags: ["Cloud", "Exposure", "Attack Surface"],
-                prompt: "A workload is internet-facing on a management port. Identify the most dangerous exposure.",
-                evidenceTitle: "Security Group Snapshot",
-                evidence: `sg-webadmin inbound tcp/22 0.0.0.0/0\nsg-webadmin inbound tcp/443 0.0.0.0/0`,
-                question: "Which exposure deserves immediate remediation?",
-                answers: ["ssh open to the internet", "tcp 22 open to 0.0.0.0/0", "public ssh exposure"],
-                hint: "HTTPS may be intentional for a public app; the management port is the bigger issue.",
-                explanation: "SSH exposed to the entire internet is the highest-priority risk in this configuration."
-            },
-            expert: {
-                title: "Cross-Service Blast Radius",
-                points: 55,
-                tags: ["IAM", "Storage", "Abuse"],
-                prompt: "An instance profile can read all buckets and pass roles to new compute resources. Identify the broader impact.",
-                evidenceTitle: "Privilege Notes",
-                evidence: `ec2 role: s3:GetObject on *\niam:PassRole on arn:aws:iam::*:role/*\nec2:RunInstances allowed`,
-                question: "What is the most likely high-severity abuse outcome?",
-                answers: ["privilege escalation through launching instances with stronger roles", "passrole abuse", "launch new instance with stronger role"],
-                hint: "Think about how PassRole and RunInstances can be chained together.",
-                explanation: "The attacker can launch new instances and attach stronger roles, creating broad cloud privilege escalation."
             }
         }
     },
@@ -1112,7 +1144,7 @@ const challengeRangeData = {
 
 const intelFeedData = {
     analytics: [
-        { label: "Trusted Sources", value: 12, trend: "Official catalogs, standards, advisories, and vendor research" },
+        { label: "Trusted Sources", value: 11, trend: "Official catalogs, standards, advisories, and vendor research" },
         { label: "Triage Signals", value: 4, trend: "CVE, CVSS, KEV, and EPSS prioritization cues" },
         { label: "Actor Profiles", value: 9, trend: "Mapped to public ATT&CK-style guidance" },
         { label: "Tools & Frameworks", value: 14, trend: "Resume-aligned infrastructure, VAPT, admin, and lab tools" }
@@ -1128,7 +1160,6 @@ const intelFeedData = {
         { name: "CISA Cybersecurity Advisories", type: "Government Advisories", url: "https://www.cisa.gov/news-events/cybersecurity-advisories", use: "Review joint advisories, mitigations, and government-backed defensive guidance." },
         { name: "Microsoft Security Response Center", type: "Vendor Advisories", url: "https://msrc.microsoft.com/update-guide", use: "Track Microsoft vulnerability updates and patch guidance." },
         { name: "SANS Internet Storm Center", type: "Security Diary", url: "https://isc.sans.edu/", use: "Review handler diaries, attack trends, and practical defender notes." },
-        { name: "Google Cloud Threat Intelligence", type: "Vendor Research", url: "https://cloud.google.com/blog/topics/threat-intelligence", use: "Review cloud, malware, actor, and campaign research." },
         { name: "Cisco Talos", type: "Vendor Research", url: "https://talosintelligence.com/research", use: "Review malware, vulnerability, and campaign intelligence." }
     ],
     advisories: [
@@ -1183,12 +1214,12 @@ const intelFeedData = {
             origin: "Public reporting commonly associates APT29 with Russia.",
             motivation: "Stealthy espionage and long-term intelligence access.",
             targets: "Government, diplomatic, technology, and research organizations.",
-            access: "Spearphishing, valid accounts, cloud abuse, and stealthy persistence.",
+            access: "Spearphishing, valid accounts, SaaS identity abuse, and stealthy persistence.",
             techniques: ["T1078", "T1566", "T1053", "T1027"],
             malware: "Public reporting documents custom backdoors and stealth tooling.",
             campaigns: "Known for stealthy operations and long dwell-time campaigns.",
-            detection: "Watch OAuth abuse, unusual cloud sign-ins, scheduled tasks, and low-noise beaconing.",
-            mitigation: "Conditional access, cloud logging, MFA, token hygiene, and privileged access review.",
+            detection: "Watch OAuth abuse, unusual SaaS sign-ins, scheduled tasks, and low-noise beaconing.",
+            mitigation: "Conditional access, identity logging, MFA, token hygiene, and privileged access review.",
             source: "https://attack.mitre.org/groups/G0016/"
         },
         {
@@ -1234,7 +1265,7 @@ const intelFeedData = {
             name: "Scattered Spider",
             origin: "Public advisories describe a cybercriminal community using social engineering.",
             motivation: "Financial extortion and data theft.",
-            targets: "Telecom, BPO, hospitality, identity providers, and cloud/SaaS environments.",
+            targets: "Telecom, BPO, hospitality, identity providers, and SaaS environments.",
             access: "Helpdesk social engineering, MFA fatigue, SIM swapping, and credential theft.",
             techniques: ["T1566", "T1110", "T1078", "T1621"],
             malware: "Often uses legitimate remote access tools and ransomware partners.",
@@ -1427,46 +1458,98 @@ function renderCompanyLogo(role) {
 
 function renderProjectFilters() {
     const container = document.getElementById("project-filters");
+    if (!container) {
+        return;
+    }
+
     container.innerHTML = portfolioData.projectFilters
-        .map(
-            (filter) => `
+        .map((filter) => {
+            const count = filter.value === "all" ? portfolioData.projects.length : portfolioData.projects.filter((project) => project.category === filter.value).length;
+            const isActive = filter.value === currentProjectFilter;
+
+            return `
                 <button
-                    class="filter-chip ${filter.value === currentProjectFilter ? "is-active" : ""}"
+                    class="filter-chip ${isActive ? "is-active" : ""}"
                     type="button"
                     data-filter="${filter.value}"
                     role="tab"
-                    aria-selected="${filter.value === currentProjectFilter ? "true" : "false"}"
+                    aria-controls="projects-list"
+                    aria-selected="${isActive ? "true" : "false"}"
+                    tabindex="${isActive ? "0" : "-1"}"
+                    aria-label="${filter.label} projects, ${count} items"
                 >
                     ${filter.label}
+                    <span class="filter-chip-count" aria-hidden="true">${count}</span>
                 </button>
-            `
-        )
+            `;
+        })
         .join("");
 }
 
 function renderProjects() {
     const container = document.getElementById("projects-list");
+    if (!container) {
+        return;
+    }
+
     const projects = portfolioData.projects.filter((project) => {
         return currentProjectFilter === "all" ? true : project.category === currentProjectFilter;
     });
 
+    const status = document.getElementById("project-filter-status");
+    const activeFilter = portfolioData.projectFilters.find((filter) => filter.value === currentProjectFilter);
+    if (status) {
+        status.textContent = `Showing ${projects.length} ${activeFilter ? activeFilter.label : ""} project${projects.length === 1 ? "" : "s"}.`;
+    }
+
+    if (!projects.length) {
+        container.innerHTML = `
+            <article class="project-empty-state">
+                <strong>No projects in this category yet.</strong>
+                <p>Select All to view the full cybersecurity project portfolio.</p>
+            </article>
+        `;
+        return;
+    }
+
     container.innerHTML = projects
         .map(
-            (project) => {
+            (project, index) => {
                 const detailRows = [
                     project.technologies ? ["Technologies", project.technologies] : null,
                     project.skills ? ["Skills", project.skills] : null,
                     project.mitre ? ["MITRE", project.mitre] : null,
                     project.owasp ? ["OWASP", project.owasp] : null
                 ].filter(Boolean);
+                const initials = project.title
+                    .split(/\s+/)
+                    .filter(Boolean)
+                    .slice(0, 3)
+                    .map((word) => word[0])
+                    .join("")
+                    .toUpperCase();
+                const projectId = `project-card-${index + 1}`;
 
                 return `
-                <article class="project-card reveal">
-                    <div>
-                        <span class="project-kicker">${project.kicker}</span>
-                        <h3>${project.title}</h3>
+                <article class="project-card reveal" id="${projectId}">
+                    <span class="project-evidence project-evidence-${escapeHtml(project.evidenceType || "training")}">${escapeHtml(project.evidenceLabel || "Hands-on practice")}</span>
+                    <div class="project-visual" aria-hidden="true">
+                        <span>${escapeHtml(initials)}</span>
+                        <div>
+                            <strong>${escapeHtml(project.kicker)}</strong>
+                            <small>${escapeHtml(project.category.replace(/-/g, " "))}</small>
+                        </div>
                     </div>
-                    <p>${project.description}</p>
+                    <div>
+                        <span class="project-kicker">${escapeHtml(project.kicker)}</span>
+                        <h3 id="${projectId}-title">${escapeHtml(project.title)}</h3>
+                    </div>
+                    <p>${escapeHtml(project.description)}</p>
+                    <div class="project-case-grid">
+                        ${project.problem ? `<div><strong>Problem</strong><p>${escapeHtml(project.problem)}</p></div>` : ""}
+                        ${project.solution ? `<div><strong>Solution</strong><p>${escapeHtml(project.solution)}</p></div>` : ""}
+                        ${project.result ? `<div><strong>Result</strong><p>${escapeHtml(project.result)}</p></div>` : ""}
+                    </div>
                     ${
                         detailRows.length
                             ? `<div class="project-detail-list">
@@ -1474,8 +1557,8 @@ function renderProjects() {
                                     .map(
                                         ([label, values]) => `
                                             <div>
-                                                <strong>${label}</strong>
-                                                <span>${values.join(", ")}</span>
+                                                <strong>${escapeHtml(label)}</strong>
+                                                <span>${values.map((value) => escapeHtml(value)).join(", ")}</span>
                                             </div>
                                         `
                                     )
@@ -1483,9 +1566,14 @@ function renderProjects() {
                             </div>`
                             : ""
                     }
-                    ${project.learning ? `<p class="project-learning"><strong>Learning Outcome:</strong> ${project.learning}</p>` : ""}
+                    ${project.learning ? `<p class="project-learning"><strong>Learning Outcome:</strong> ${escapeHtml(project.learning)}</p>` : ""}
                     <div class="project-meta">
-                        ${project.tags.map((tag) => `<span>${tag}</span>`).join("")}
+                        ${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+                    </div>
+                    <div class="project-actions">
+                        <button class="button button-secondary" type="button" data-project-case-study="${escapeHtml(project.title)}" aria-label="View ${escapeHtml(project.title)} case study">View Case Study</button>
+                        ${project.github ? `<a class="button button-ghost" href="${escapeHtml(project.github)}" target="_blank" rel="noreferrer">GitHub</a>` : ""}
+                        ${project.demo ? `<a class="button button-ghost" href="${escapeHtml(project.demo)}">Explore Lab</a>` : ""}
                     </div>
                 </article>
             `;
@@ -1496,14 +1584,21 @@ function renderProjects() {
 
 function renderSkills() {
     const container = document.getElementById("skills-list");
+    if (!container) {
+        return;
+    }
+
     container.innerHTML = portfolioData.skillGroups
         .map(
             (group) => `
                 <article class="skill-card reveal">
-                    <h3>${group.title}</h3>
-                    <p>${group.description}</p>
+                    <div class="skill-card-heading">
+                        <h3>${escapeHtml(group.title)}</h3>
+                        <span class="skill-context skill-context-${escapeHtml(group.contextType || "training")}">${escapeHtml(group.context || "Practical learning")}</span>
+                    </div>
+                    <p>${escapeHtml(group.description)}</p>
                     <div class="skill-list">
-                        ${group.items.map((item) => `<span>${item}</span>`).join("")}
+                        ${group.items.map((item) => `<span>${escapeHtml(item)}</span>`).join("")}
                     </div>
                 </article>
             `
@@ -1722,11 +1817,6 @@ function getUnlockedBadges() {
             unlocked: isTrackComplete("forensics")
         },
         {
-            title: "Cloud Sentinel",
-            text: "Complete the Cloud Security Challenges track.",
-            unlocked: isTrackComplete("cloud")
-        },
-        {
             title: "API Breaker",
             text: "Complete the API Exploitation Lab track.",
             unlocked: isTrackComplete("api")
@@ -1764,7 +1854,7 @@ function renderChallengeTrackList() {
         .map(([trackKey, track]) => {
             const solvedCount = challengeLevelOrder.filter((levelKey) => isChallengeSolved(trackKey, levelKey)).length;
             return `
-                <button class="challenge-track ${challengeRangeState.activeTrack === trackKey ? "is-active" : ""}" type="button" data-challenge-track="${trackKey}">
+                <button class="challenge-track ${challengeRangeState.activeTrack === trackKey ? "is-active" : ""}" type="button" data-challenge-track="${trackKey}" aria-pressed="${challengeRangeState.activeTrack === trackKey ? "true" : "false"}">
                     <strong>${track.label}</strong>
                     <p>${track.summary}</p>
                     <div class="challenge-track-meta">${solvedCount}/${challengeLevelOrder.length} cleared</div>
@@ -1790,7 +1880,10 @@ function renderChallengeLevelTabs() {
                     class="challenge-level ${challengeRangeState.activeLevel === levelKey ? "is-active" : ""}"
                     type="button"
                     role="tab"
+                    id="challenge-level-${levelKey}"
+                    aria-controls="challenge-workspace-panel"
                     aria-selected="${challengeRangeState.activeLevel === levelKey ? "true" : "false"}"
+                    tabindex="${challengeRangeState.activeLevel === levelKey ? "0" : "-1"}"
                     data-challenge-level="${levelKey}"
                 >
                     ${levelKey}${solved ? " ✓" : ""}
@@ -1848,7 +1941,7 @@ function renderChallengeWorkspace() {
                         <button class="button button-ghost" type="button" data-challenge-action="next">${solved ? "Next Scenario" : "Skip Forward"}</button>
                     </div>
                 </form>
-                <p class="challenge-feedback">${feedback}</p>
+                <p class="challenge-feedback" aria-live="polite">${feedback}</p>
             </article>
             <article class="challenge-terminal-card">
                 <span class="challenge-label">Operator Notes</span>
@@ -1902,7 +1995,7 @@ function renderChallengeLeaderboard(container, score, rank) {
         { name: "NightWatch-7", score: 1280, rank: "Nightmare" },
         { name: "BlueTrace", score: 1030, rank: "Ghost" },
         { name: "PacketSage", score: 850, rank: "Elite" },
-        { name: "CloudScout", score: 620, rank: "Operator" }
+        { name: "WebScout", score: 620, rank: "Operator" }
     ].sort((a, b) => b.score - a.score);
 
     container.innerHTML = `
@@ -1927,6 +2020,7 @@ function renderChallengeLeaderboard(container, score, rank) {
 function renderChallengeScoreboard() {
     const grid = document.getElementById("challenge-score-grid");
     const fill = document.getElementById("challenge-progress-fill");
+    const progressBar = document.getElementById("challenge-progress-bar");
     const text = document.getElementById("challenge-progress-text");
     const badges = document.getElementById("challenge-badge-stack");
     const certificate = document.getElementById("challenge-certificate-card");
@@ -1973,6 +2067,7 @@ function renderChallengeScoreboard() {
 
     fill.style.width = `${progress}%`;
     text.textContent = `${progress}%`;
+    progressBar?.setAttribute("aria-valuenow", String(progress));
 
     badges.innerHTML = getUnlockedBadges()
         .map(
@@ -2023,7 +2118,7 @@ function moveToNextChallenge() {
     }
 }
 
-function buildChallengeCertificatePdf(track, trackKey, score, rank) {
+function buildLegacyChallengeCertificatePdf(track, trackKey, score, rank) {
     const pageWidth = 842;
     const pageHeight = 595;
     const issuedOn = new Date().toLocaleDateString(undefined, {
@@ -2094,6 +2189,102 @@ function buildChallengeCertificatePdf(track, trackKey, score, rank) {
     return new Blob([pdf], { type: "application/pdf" });
 }
 
+function buildChallengeCertificatePdf(track, trackKey, score, rank) {
+    const pageWidth = 842;
+    const pageHeight = 595;
+    const issuedOn = new Date().toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+    });
+    const certificateId = `SNLAB-${trackKey.toUpperCase()}-${String(score).padStart(4, "0")}-${new Date().getFullYear()}`;
+    const solvedCount = challengeLevelOrder.filter((levelKey) => isChallengeSolved(trackKey, levelKey)).length;
+    const colors = {
+        accent: "0.05 0.49 0.30",
+        dark: "0.035 0.10 0.14",
+        ink: "0.05 0.11 0.16",
+        muted: "0.32 0.40 0.44",
+        white: "1 1 1"
+    };
+
+    function pdfText(text, x, y, font = "F1", size = 12, color = colors.ink) {
+        return `BT ${color} rg /${font} ${size} Tf 1 0 0 1 ${x} ${y} Tm (${escapePdfText(text)}) Tj ET`;
+    }
+
+    function pdfTextCentered(text, y, font = "F1", size = 12, color = colors.ink) {
+        const estimatedWidth = String(text).length * size * 0.52;
+        return pdfText(text, Math.max(178, (pageWidth - estimatedWidth) / 2 + 76), y, font, size, color);
+    }
+
+    function trackTitleLines(text) {
+        return wrapText(text, 22, 510).slice(0, 2);
+    }
+
+    const trackLines = trackTitleLines(track.label);
+    const trackStartY = trackLines.length > 1 ? 296 : 306;
+    const streamLines = [
+        "0.97 1 0.98 rg 0 0 842 595 re f",
+        `${colors.dark} rg 0 0 154 595 re f`,
+        `${colors.accent} rg 154 0 7 595 re f`,
+        "0.08 0.48 0.32 RG 2.4 w 178 32 632 531 re S",
+        "0.20 0.82 0.38 RG 0.8 w 193 47 602 501 re S",
+        "q 0.06 0.22 0.18 rg 32 444 88 88 re f Q",
+        "q 0.20 0.82 0.38 RG 2.2 w 47 492 m 61 478 l 89 510 l S Q",
+        pdfText("SURAJ N S", 32, 404, "F2", 16, colors.white),
+        pdfText("CYBERSECURITY PORTFOLIO", 32, 384, "F1", 7.5, "0.72 0.84 0.82"),
+        pdfText("PRACTICAL LEARNING", 32, 106, "F2", 9, "0.76 0.94 0.83"),
+        pdfText("AUTHORISED USE ONLY", 32, 88, "F1", 7.5, "0.72 0.84 0.82"),
+        pdfTextCentered("CHALLENGES LAB", 510, "F2", 11, colors.accent),
+        pdfTextCentered("Practical Cybersecurity Completion Record", 466, "F2", 27, colors.ink),
+        pdfTextCentered("This verifies completion of an interactive portfolio learning track.", 432, "F1", 11, colors.muted),
+        pdfTextCentered(portfolioData.basics.name, 375, "F2", 27, colors.ink),
+        pdfTextCentered("completed the following authorized learning track", 343, "F1", 10.5, colors.muted),
+        ...trackLines.map((line, index) => pdfTextCentered(line, trackStartY - index * 27, "F2", 21, colors.accent)),
+        "q 0.93 0.98 0.95 rg 205 183 178 58 re f Q",
+        "q 0.93 0.98 0.95 rg 399 183 178 58 re f Q",
+        "q 0.93 0.98 0.95 rg 593 183 180 58 re f Q",
+        pdfText("LEVELS VERIFIED", 220, 220, "F2", 7.5, colors.muted),
+        pdfText(`${solvedCount}/${challengeLevelOrder.length} CLEARED`, 220, 200, "F2", 13, colors.ink),
+        pdfText("SCORE", 414, 220, "F2", 7.5, colors.muted),
+        pdfText(`${score} XP`, 414, 200, "F2", 13, colors.ink),
+        pdfText("RANK", 608, 220, "F2", 7.5, colors.muted),
+        pdfText(rank.title.toUpperCase(), 608, 200, "F2", 13, colors.ink),
+        `${colors.accent} RG 0.8 w 205 152 m 773 152 l S`,
+        pdfText(`Issued: ${issuedOn}`, 205, 122, "F1", 9.5, colors.muted),
+        pdfText(`Certificate ID: ${certificateId}`, 205, 102, "F1", 9.5, colors.muted),
+        pdfText("Portfolio learning record - not a third-party professional certification.", 205, 68, "F1", 8.5, colors.muted),
+        pdfText("Generated from Suraj N S Challenges Lab.", 205, 50, "F1", 8.5, colors.muted)
+    ];
+
+    const stream = streamLines.join("\n");
+    const objects = [
+        "",
+        "<< /Type /Catalog /Pages 2 0 R >>",
+        "<< /Type /Pages /Count 1 /Kids [5 0 R] >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>",
+        "<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>",
+        `<< /Type /Page /Parent 2 0 R /MediaBox [0 0 ${pageWidth} ${pageHeight}] /Resources << /Font << /F1 3 0 R /F2 4 0 R >> >> /Contents 6 0 R >>`,
+        `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`
+    ];
+
+    let pdf = "%PDF-1.4\n";
+    const offsets = [0];
+    for (let index = 1; index < objects.length; index += 1) {
+        offsets[index] = pdf.length;
+        pdf += `${index} 0 obj\n${objects[index]}\nendobj\n`;
+    }
+
+    const xrefStart = pdf.length;
+    pdf += `xref\n0 ${objects.length}\n`;
+    pdf += "0000000000 65535 f \n";
+    for (let index = 1; index < objects.length; index += 1) {
+        pdf += `${String(offsets[index]).padStart(10, "0")} 00000 n \n`;
+    }
+    pdf += `trailer\n<< /Size ${objects.length} /Root 1 0 R >>\nstartxref\n${xrefStart}\n%%EOF`;
+
+    return new Blob([pdf], { type: "application/pdf" });
+}
+
 function downloadChallengeCertificate() {
     const track = challengeRangeData[challengeRangeState.activeTrack];
     if (!isTrackComplete(challengeRangeState.activeTrack)) {
@@ -2154,6 +2345,39 @@ function setupChallengeRangePage() {
         challengeRangeState.lastFeedback = `${challengeRangeState.activeLevel.toUpperCase()} challenge loaded.`;
         saveChallengeState();
         renderChallengeRangePage();
+    });
+
+    levelTabs.addEventListener("keydown", (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+            return;
+        }
+
+        const tabs = Array.from(levelTabs.querySelectorAll("[data-challenge-level]"));
+        const currentIndex = tabs.indexOf(document.activeElement);
+        if (currentIndex < 0) {
+            return;
+        }
+
+        event.preventDefault();
+        let nextIndex = currentIndex;
+        if (event.key === "ArrowLeft") {
+            nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
+        } else if (event.key === "ArrowRight") {
+            nextIndex = (currentIndex + 1) % tabs.length;
+        } else if (event.key === "Home") {
+            nextIndex = 0;
+        } else if (event.key === "End") {
+            nextIndex = tabs.length - 1;
+        }
+
+        const nextLevel = tabs[nextIndex].getAttribute("data-challenge-level") || "easy";
+        challengeRangeState.activeLevel = nextLevel;
+        challengeRangeState.lastFeedback = `${nextLevel.toUpperCase()} challenge loaded.`;
+        saveChallengeState();
+        renderChallengeRangePage();
+        Array.from(levelTabs.querySelectorAll("[data-challenge-level]"))
+            .find((tab) => tab.getAttribute("data-challenge-level") === nextLevel)
+            ?.focus();
     });
 
     workspace.addEventListener("submit", (event) => {
@@ -3065,16 +3289,125 @@ function setupProjectFilters() {
         return;
     }
 
+    function activateFilter(value) {
+        currentProjectFilter = value || "all";
+        renderProjectFilters();
+        renderProjects();
+        setupRevealAnimations();
+    }
+
     filterContainer.addEventListener("click", (event) => {
         const button = event.target.closest("[data-filter]");
         if (!button) {
             return;
         }
 
-        currentProjectFilter = button.getAttribute("data-filter") || "all";
-        renderProjectFilters();
-        renderProjects();
-        setupRevealAnimations();
+        activateFilter(button.getAttribute("data-filter"));
+    });
+
+    filterContainer.addEventListener("keydown", (event) => {
+        if (!['ArrowLeft', 'ArrowRight', 'Home', 'End'].includes(event.key)) {
+            return;
+        }
+
+        const buttons = Array.from(filterContainer.querySelectorAll("[data-filter]"));
+        const currentIndex = buttons.indexOf(document.activeElement);
+        if (currentIndex < 0) {
+            return;
+        }
+
+        event.preventDefault();
+        let nextIndex = currentIndex;
+        if (event.key === "ArrowLeft") {
+            nextIndex = (currentIndex - 1 + buttons.length) % buttons.length;
+        } else if (event.key === "ArrowRight") {
+            nextIndex = (currentIndex + 1) % buttons.length;
+        } else if (event.key === "Home") {
+            nextIndex = 0;
+        } else if (event.key === "End") {
+            nextIndex = buttons.length - 1;
+        }
+
+        const nextButton = buttons[nextIndex];
+        const nextFilter = nextButton.getAttribute("data-filter");
+        activateFilter(nextFilter);
+        Array.from(filterContainer.querySelectorAll("[data-filter]"))
+            .find((candidate) => candidate.getAttribute("data-filter") === nextFilter)
+            ?.focus();
+    });
+}
+
+function setupProjectCaseStudyModal() {
+    const modal = document.getElementById("project-modal");
+    const closeButton = document.getElementById("project-modal-close");
+    const content = document.getElementById("project-modal-content");
+    let trigger = null;
+
+    if (!modal || !closeButton || !content) {
+        return;
+    }
+
+    function renderCaseStudy(project) {
+        const detailRows = [
+            project.technologies ? ["Technologies", project.technologies] : null,
+            project.skills ? ["Skills Demonstrated", project.skills] : null,
+            project.mitre ? ["MITRE ATT&CK", project.mitre] : null,
+            project.owasp ? ["OWASP", project.owasp] : null
+        ].filter(Boolean);
+
+        content.innerHTML = `
+            <section class="case-study-hero">
+                <span class="project-evidence project-evidence-${escapeHtml(project.evidenceType || "training")}">${escapeHtml(project.evidenceLabel || "Hands-on practice")}</span>
+                <p class="modal-kicker">${escapeHtml(project.kicker)}</p>
+                <h2 id="project-modal-title">${escapeHtml(project.title)}</h2>
+                <p>${escapeHtml(project.description)}</p>
+            </section>
+            <section class="case-study-flow" aria-label="Project case study">
+                <article><span>01</span><h3>Problem</h3><p>${escapeHtml(project.problem || "Security-focused practical scenario.")}</p></article>
+                <article><span>02</span><h3>Approach</h3><p>${escapeHtml(project.solution || "Applied structured testing and documentation.")}</p></article>
+                <article><span>03</span><h3>Outcome</h3><p>${escapeHtml(project.result || project.learning || "Built practical cybersecurity knowledge.")}</p></article>
+            </section>
+            ${detailRows.length ? `<section class="case-study-details"><h3>Technical Evidence</h3><div>${detailRows.map(([label, values]) => `<article><strong>${escapeHtml(label)}</strong><p>${values.map((value) => escapeHtml(value)).join(", ")}</p></article>`).join("")}</div></section>` : ""}
+            ${project.learning ? `<p class="case-study-learning"><strong>Learning outcome:</strong> ${escapeHtml(project.learning)}</p>` : ""}
+            <div class="project-meta">
+                ${project.tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")}
+            </div>
+            <div class="project-actions case-study-actions">
+                ${project.github ? `<a class="button button-ghost" href="${escapeHtml(project.github)}" target="_blank" rel="noreferrer">GitHub</a>` : ""}
+                ${project.demo ? `<a class="button button-secondary" href="${escapeHtml(project.demo)}">Explore Related Lab</a>` : ""}
+            </div>
+        `;
+    }
+
+    function closeModal() {
+        modal.close();
+        trigger?.focus();
+    }
+
+    document.addEventListener("click", (event) => {
+        const button = event.target.closest("[data-project-case-study]");
+        if (!button) {
+            return;
+        }
+
+        const project = portfolioData.projects.find((item) => item.title === button.getAttribute("data-project-case-study"));
+        if (!project) {
+            return;
+        }
+
+        trigger = button;
+        renderCaseStudy(project);
+        if (typeof modal.showModal === "function") {
+            modal.showModal();
+        }
+    });
+
+    closeButton.addEventListener("click", closeModal);
+    modal.addEventListener("click", (event) => {
+        const rect = modal.getBoundingClientRect();
+        if (event.clientX < rect.left || event.clientX > rect.right || event.clientY < rect.top || event.clientY > rect.bottom) {
+            closeModal();
+        }
     });
 }
 
@@ -3096,7 +3429,7 @@ function setupTerminal() {
     const commands = {
         whoami: [
             `Suraj N S | ${portfolioData.basics.jobTitle}`,
-            "Target roles: IT Executive, System Administrator, IT Infrastructure Engineer, Network Administrator, IT Support, and Junior IT Security."
+            "Target roles: Entry-Level Cybersecurity Analyst, Junior SOC Analyst, VAPT, Web Security, IT Security, and security-focused Technical Support."
         ],
         help: [
             "Available commands:",
@@ -3113,16 +3446,16 @@ function setupTerminal() {
             "sudo hire suraj"
         ],
         about: [
-            "Current IT Executive with hands-on infrastructure, system administration, network security, and enterprise support experience.",
-            "Cybersecurity work is presented as internships, training, labs, and practical exposure."
+            "Current IT Executive building toward cybersecurity, VAPT, IT security, and junior SOC roles.",
+            "Cybersecurity work is presented as internships, certifications, controlled labs, and practical exposure."
         ],
         skills: [
             "Core skills:",
-            "HCI, Server Administration, NAS Storage, Windows Server, Linux, Active Directory, Sophos Firewall, DNS, DHCP, VPN, Wi-Fi, Campus7 ERP, Google Workspace, OWASP Top 10"
+            "OWASP Top 10, Burp Suite, Nmap, Wireshark, Nessus, OpenVAS, Sophos Firewall, Linux, Windows, access control, incident response fundamentals, SIEM concepts"
         ],
         projects: portfolioData.projects.map((project) => `- ${project.title}`),
-        lab: ["Open challenges.html for the full Challenges Lab with advanced SOC, hunting, web, API, mobile, AI, phishing, forensics, malware, network, privilege escalation, and cloud scenarios."],
-        intel: ["Open intel.html for the IntelOps dashboard with trusted source links, CVE triage, KEV prioritization, ATT&CK mapping, OWASP references, and SOC workflow notes."],
+        lab: ["Open challenges.html for the Challenges Lab with SOC, hunting, web, API, mobile, AI, phishing, forensics, malware, network, and privilege escalation scenarios."],
+        intel: ["Open intel.html for IntelOps, a trusted-source guide for CVE triage, KEV prioritization, ATT&CK mapping, and OWASP references."],
         basics: ["Open basics.html for simple cybersecurity basics explained in beginner-friendly language."],
         resume: ["Use the Download Resume or Preview Resume buttons above for the ATS-friendly resume."],
         contact: [
@@ -3133,7 +3466,7 @@ function setupTerminal() {
         ],
         "sudo hire suraj": [
             "Access granted.",
-            "Recommendation: Strong fit for IT infrastructure, system administration, network support, and junior IT security roles."
+            "Recommendation: Strong fit for entry-level cybersecurity, VAPT, IT security, and junior SOC roles supported by real IT operations experience."
         ]
     };
 
@@ -3176,6 +3509,7 @@ function setupResumeModal() {
     const modal = document.getElementById("resume-modal");
     const closeButton = document.getElementById("resume-close");
     const previewContent = document.getElementById("resume-preview-content");
+    let previewTrigger = null;
 
     function createResumeBlob() {
         return buildResumePdf();
@@ -3234,13 +3568,14 @@ function setupResumeModal() {
             <section class="resume-preview-section">
                 <h4>Selected Cybersecurity Projects & Labs</h4>
                 <ul class="resume-preview-list">
-                    ${portfolioData.projects
+                    ${getResumeProjects()
                         .map(
                             (project) => `
                                 <li>
                                     <strong>${project.title}</strong> - ${project.description}
                                     ${project.technologies ? `<br>Technologies: ${project.technologies.join(", ")}` : ""}
                                     ${project.skills ? `<br>Skills: ${project.skills.join(", ")}` : ""}
+                                    ${project.result ? `<br>Result: ${project.result}` : ""}
                                 </li>
                             `
                         )
@@ -3284,7 +3619,8 @@ function setupResumeModal() {
         window.setTimeout(() => URL.revokeObjectURL(url), 1000);
     }
 
-    function openPreview() {
+    function openPreview(event) {
+        previewTrigger = event?.currentTarget || document.activeElement;
         renderResumePreview();
         if (typeof modal.showModal === "function") {
             modal.showModal();
@@ -3310,6 +3646,10 @@ function setupResumeModal() {
         if (clickedOutside) {
             closePreview();
         }
+    });
+
+    modal.addEventListener("close", () => {
+        previewTrigger?.focus();
     });
 }
 
@@ -3459,7 +3799,8 @@ function setupParticles() {
 }
 
 function escapePdfText(text) {
-    return text
+    return String(text)
+        .replace(/[^\x20-\x7E]/g, "-")
         .replace(/\\/g, "\\\\")
         .replace(/\(/g, "\\(")
         .replace(/\)/g, "\\)")
@@ -3493,16 +3834,37 @@ function wrapText(text, fontSize, maxWidth) {
     return lines;
 }
 
+function getResumeProjects() {
+    return portfolioData.projects.slice(0, 5);
+}
+
 function buildResumePdf() {
     const pageWidth = 595;
     const pageHeight = 842;
-    const marginX = 48;
-    const marginTop = 54;
-    const bottomSafe = 54;
+    const marginX = 46;
+    const marginTop = 82;
+    const bottomSafe = 64;
     const contentWidth = pageWidth - marginX * 2;
     const pages = [[]];
     let currentPage = 0;
     let cursorY = marginTop;
+
+    const colors = {
+        accent: "0.05 0.49 0.30",
+        ink: "0.04 0.10 0.15",
+        muted: "0.28 0.36 0.42",
+        white: "1 1 1"
+    };
+
+    function makeText(text, x, yTop, font, size, color = colors.ink) {
+        const yPdf = pageHeight - yTop;
+        return `BT ${color} rg /${font} ${size} Tf 1 0 0 1 ${x} ${yPdf} Tm (${escapePdfText(text)}) Tj ET`;
+    }
+
+    function makeLine(x1, yTop, x2, width, color = colors.accent) {
+        const yPdf = pageHeight - yTop;
+        return `q ${color} RG ${width} w ${x1} ${yPdf} m ${x2} ${yPdf} l S Q`;
+    }
 
     function ensureSpace(heightNeeded) {
         if (cursorY + heightNeeded > pageHeight - bottomSafe) {
@@ -3512,99 +3874,103 @@ function buildResumePdf() {
         }
     }
 
-    function pushText(text, x, yTop, font, size) {
-        const yPdf = pageHeight - yTop;
-        pages[currentPage].push(`BT /${font} ${size} Tf 1 0 0 1 ${x} ${yPdf} Tm (${escapePdfText(text)}) Tj ET`);
+    function pushText(text, x, yTop, font, size, color = colors.ink) {
+        pages[currentPage].push(makeText(text, x, yTop, font, size, color));
     }
 
     function addLines(lines, options = {}) {
         const font = options.font || "F1";
-        const size = options.size || 11;
+        const size = options.size || 10;
         const x = options.x || marginX;
-        const lineHeight = options.lineHeight || size * 1.42;
+        const color = options.color || colors.ink;
+        const lineHeight = options.lineHeight || size * 1.45;
         ensureSpace(lines.length * lineHeight + 4);
         lines.forEach((line) => {
-            pushText(line, x, cursorY, font, size);
+            pushText(line, x, cursorY, font, size, color);
             cursorY += lineHeight;
         });
     }
 
     function addParagraph(text, options = {}) {
-        const size = options.size || 10.5;
+        const size = options.size || 9.7;
         const x = options.x || marginX;
         const maxWidth = options.maxWidth || contentWidth;
         addLines(wrapText(text, size, maxWidth), { ...options, x, size });
     }
 
     function addHeading(text) {
-        ensureSpace(26);
-        pushText(text.toUpperCase(), marginX, cursorY, "F2", 14);
-        cursorY += 20;
+        ensureSpace(30);
+        pushText(text.toUpperCase(), marginX, cursorY, "F2", 11.5, colors.accent);
+        pages[currentPage].push(makeLine(marginX, cursorY + 6, marginX + contentWidth, 0.8));
+        cursorY += 21;
     }
 
     function addSpacer(amount) {
         cursorY += amount;
     }
 
-    addLines([portfolioData.basics.name], { font: "F2", size: 24, lineHeight: 28 });
-    addLines([portfolioData.basics.jobTitle], { font: "F2", size: 12, lineHeight: 18 });
+    function addRole(role) {
+        ensureSpace(72);
+        addLines([role.title], { font: "F2", size: 11.5, lineHeight: 15.5 });
+        addParagraph(`${role.company} | ${role.date}`, { size: 9.3, color: colors.muted });
+        addParagraph(role.summary, { size: 9.6 });
+        role.bullets.forEach((bullet) => {
+            addParagraph(`- ${bullet}`, { x: marginX + 8, size: 9.4, maxWidth: contentWidth - 8 });
+        });
+        addSpacer(7);
+    }
+
+    function addProject(project) {
+        ensureSpace(56);
+        addLines([project.title], { font: "F2", size: 10.7, lineHeight: 14.5 });
+        addParagraph(`${project.evidenceLabel || "Hands-on practice"} | ${project.kicker}`, { size: 9.1, color: colors.muted });
+        addParagraph(project.description, { size: 9.4 });
+        addParagraph(`Tools: ${project.tags.join(", ")}`, { size: 9.1, color: colors.muted });
+        if (project.result) {
+            addParagraph(`Outcome: ${project.result}`, { size: 9.1 });
+        }
+        addSpacer(7);
+    }
+
+    addLines([portfolioData.basics.name], { font: "F2", size: 23, lineHeight: 26 });
+    addLines([portfolioData.basics.jobTitle], { font: "F2", size: 11.2, color: colors.accent, lineHeight: 16 });
     addLines(
         [
             `${portfolioData.basics.location} | ${portfolioData.basics.phone} | ${portfolioData.basics.email}`,
-            `LinkedIn: linkedin.com/in/surajvaikom | Portfolio: surajns-portfolio-e7um.vercel.app`,
-            `GitHub: github.com/surajvaikom | TryHackMe: tryhackme.com/p/surajvaikom`
+            "LinkedIn: linkedin.com/in/surajvaikom | GitHub: github.com/surajvaikom",
+            "TryHackMe: tryhackme.com/p/surajvaikom | Portfolio: surajns-portfolio-e7um.vercel.app"
         ],
-        { size: 10, lineHeight: 16 }
+        { size: 9.1, color: colors.muted, lineHeight: 13.5 }
     );
-    addSpacer(8);
+    addSpacer(10);
 
     addHeading("Professional Summary");
     addParagraph(portfolioData.basics.summary);
-    addSpacer(8);
+    addSpacer(7);
 
     addHeading("Technical Skills");
     portfolioData.skillGroups.forEach((group) => {
-        addParagraph(`${group.title}: ${group.items.join(", ")}`, { size: 10 });
+        addParagraph(`${group.title}: ${group.items.join(", ")}`, { size: 9.4 });
     });
-    addSpacer(8);
+    addSpacer(7);
 
     addHeading("Professional Experience");
-    portfolioData.experience.forEach((role) => {
-        addLines([`${role.title} | ${role.company} | ${role.date}`], { font: "F2", size: 11, lineHeight: 17 });
-        addParagraph(role.summary, { size: 10 });
-        role.bullets.forEach((bullet) => {
-            addParagraph(`- ${bullet}`, { x: marginX + 10, size: 10, maxWidth: contentWidth - 10 });
-        });
-        addSpacer(8);
-    });
+    portfolioData.experience.forEach(addRole);
 
     addHeading("Selected Cybersecurity Projects & Labs");
-    portfolioData.projects.forEach((project) => {
-        addLines([`${project.title} | ${project.kicker}`], { font: "F2", size: 11, lineHeight: 17 });
-        addParagraph(project.description, { size: 10 });
-        if (project.technologies) {
-            addParagraph(`Technologies: ${project.technologies.join(", ")}`, { size: 10 });
-        }
-        if (project.skills) {
-            addParagraph(`Skills Demonstrated: ${project.skills.join(", ")}`, { size: 10 });
-        }
-        if (project.learning) {
-            addParagraph(`Learning Outcome: ${project.learning}`, { size: 10 });
-        }
-        addParagraph(`Tools: ${project.tags.join(", ")}`, { size: 10 });
-        addSpacer(8);
-    });
+    getResumeProjects().forEach(addProject);
 
     addHeading("Education");
     portfolioData.education.forEach((item) => {
-        addLines([`${item.degree} | ${item.school} | ${item.years}`], { font: "F2", size: 11, lineHeight: 17 });
-        addParagraph(item.note, { size: 10 });
+        ensureSpace(43);
+        addLines([item.degree], { font: "F2", size: 10.7, lineHeight: 14.5 });
+        addParagraph(`${item.school} | ${item.years} | ${item.note}`, { size: 9.2, color: colors.muted });
         addSpacer(6);
     });
 
     addHeading("Certifications");
     portfolioData.certifications.forEach((item) => {
-        addParagraph(`- ${item.name} - ${item.issuer}`, { size: 10 });
+        addParagraph(`- ${item.name} - ${item.issuer}`, { size: 9.3 });
     });
 
     const objects = [];
@@ -3615,8 +3981,20 @@ function buildResumePdf() {
     let nextObjectId = 5;
     const pageIds = [];
 
-    pages.forEach((contentLines) => {
-        const stream = contentLines.join("\n");
+    pages.forEach((contentLines, pageIndex) => {
+        const pageNumber = pageIndex + 1;
+        const pageHeader = [
+            "q 0.04 0.10 0.15 rg 0 798 595 44 re f Q",
+            makeText("SURAJ N S", marginX, 29, "F2", 12, colors.white),
+            makeText(pageIndex === 0 ? "CYBERSECURITY | VAPT | IT SECURITY" : "ATS-FRIENDLY RESUME", 320, 29, "F2", 8.5, colors.white),
+            makeLine(marginX, 61, marginX + contentWidth, 1.1)
+        ];
+        const pageFooter = [
+            makeLine(marginX, 795, marginX + contentWidth, 0.6, colors.muted),
+            makeText("Suraj N S | Cybersecurity Portfolio", marginX, 816, "F1", 8, colors.muted),
+            makeText(`Page ${pageNumber} of ${pages.length}`, 484, 816, "F1", 8, colors.muted)
+        ];
+        const stream = [...pageHeader, ...contentLines, ...pageFooter].join("\n");
         const contentId = nextObjectId;
         nextObjectId += 1;
         objects[contentId] = `<< /Length ${stream.length} >>\nstream\n${stream}\nendstream`;
@@ -3686,6 +4064,7 @@ function init() {
         setupStatusLine();
         setupCounters();
         setupProjectFilters();
+        setupProjectCaseStudyModal();
         setupTerminal();
         setupResumeModal();
         setupEasterEgg();

@@ -5,20 +5,22 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Suraj N S | Challenges Lab</title>
 
-<meta name="description" content="Interactive cybersecurity challenges lab for Suraj N S featuring SOC investigation, threat hunting, web exploitation, forensics, malware analysis, network traffic analysis, privilege escalation, cloud security, and downloadable portfolio completion PDFs.">
-<meta name="keywords" content="Suraj N S challenges lab, cybersecurity range, SOC investigation, threat hunting, web exploitation, digital forensics, malware analysis, network traffic analysis, privilege escalation, cloud security, completion PDF">
+<meta name="description" content="Interactive cybersecurity challenges lab for Suraj N S featuring SOC investigation, threat hunting, web exploitation, forensics, malware analysis, network traffic analysis, privilege escalation, API security, mobile security, and downloadable portfolio completion PDFs.">
+<meta name="keywords" content="Suraj N S challenges lab, cybersecurity range, SOC investigation, threat hunting, web exploitation, digital forensics, malware analysis, network traffic analysis, privilege escalation, API security, mobile security, completion PDF">
 <meta name="author" content="Suraj N S">
 <meta name="robots" content="index, follow">
+<link rel="canonical" href="https://surajns-portfolio-e7um.vercel.app/challenges.html">
 
 <meta property="og:type" content="website">
+<meta property="og:url" content="https://surajns-portfolio-e7um.vercel.app/challenges.html">
 <meta property="og:title" content="Suraj N S | Challenges Lab">
-<meta property="og:description" content="An advanced practical cyber range integrated into Suraj N S's portfolio.">
+<meta property="og:description" content="A hands-on cybersecurity learning lab inside Suraj N S's portfolio.">
 
 <meta name="theme-color" content="#07111b">
 <meta name="color-scheme" content="dark light">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta http-equiv="X-Content-Type-Options" content="nosniff">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; connect-src 'self' https://services.nvd.nist.gov https://www.cisa.gov https://api.github.com; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; img-src 'self' data: blob:; frame-src blob:; object-src 'none'; base-uri 'self'; form-action 'self'">
 
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2307111b'/%3E%3Cpath d='M32 8L17 15V29c0 13 8.2 22 15 26 6.8-4 15-13 15-26V15L32 8Z' fill='none' stroke='%2385ff8f' stroke-width='4'/%3E%3Cpath d='M25 31l5 5 10-12' fill='none' stroke='%2385ff8f' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
 <link rel="stylesheet" href="style.css">
@@ -106,8 +108,9 @@
                     <p class="hero-summary">
                         A focused technical showcase for serious viewers: realistic cybersecurity
                         investigations, exploitation paths, hunting exercises, forensics workflows,
-                        and cloud misconfiguration analysis presented as an interactive portfolio range.
+                        and API/mobile security analysis presented as an interactive portfolio range.
                     </p>
+                    <p class="lab-boundary-note">All scenarios are fictional and designed only for authorized learning environments.</p>
                     <div class="hero-pill-row" aria-label="Challenge domains">
                         <span>SOC Investigation</span>
                         <span>Threat Hunting</span>
@@ -123,7 +126,7 @@
                         <div class="range-metrics-grid">
                             <article class="stats-card">
                                 <span>Challenge Tracks</span>
-                                <strong>13</strong>
+                                <strong>12</strong>
                                 <p>Advanced domains mapped to real-world workflows</p>
                             </article>
                             <article class="stats-card">
@@ -133,12 +136,12 @@
                             </article>
                             <article class="stats-card">
                                 <span>Scenarios</span>
-                                <strong>52</strong>
+                                <strong>48</strong>
                                 <p>Interactive tasks with validation, hints, and scoring</p>
                             </article>
                             <article class="stats-card">
                                 <span>Completion PDFs</span>
-                                <strong>13</strong>
+                                <strong>12</strong>
                                 <p>Track-specific portfolio records for completed challenge paths</p>
                             </article>
                         </div>
@@ -157,7 +160,7 @@
                     <div class="challenge-track-list" id="challenge-track-list"></div>
                 </aside>
 
-                <section class="glass-panel challenge-workspace reveal">
+                <section class="glass-panel challenge-workspace reveal" id="challenge-workspace-panel" role="tabpanel" aria-label="Active challenge workspace" tabindex="0">
                     <div class="challenge-workspace-header">
                         <div class="challenge-breadcrumb" id="challenge-breadcrumb"></div>
                         <div class="challenge-level-tabs" id="challenge-level-tabs" role="tablist" aria-label="Challenge levels"></div>
@@ -176,7 +179,7 @@
                             <span>Overall Progress</span>
                             <strong id="challenge-progress-text">0%</strong>
                         </div>
-                        <div class="challenge-progress-bar" aria-hidden="true">
+                        <div class="challenge-progress-bar" id="challenge-progress-bar" role="progressbar" aria-label="Overall challenge progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
                             <span id="challenge-progress-fill"></span>
                         </div>
                     </div>
